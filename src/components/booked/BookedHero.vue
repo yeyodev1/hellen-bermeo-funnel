@@ -108,16 +108,13 @@ onMounted(() => {
     font-size: clamp(1.85rem, 8vw, 3.5rem);
     line-height: 1.1;
     margin: 0;
-    background: linear-gradient(135deg, colors.$white 20%, colors.$BRAND-PRIMARY 70%, colors.$BRAND-SECONDARY);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #0f172a;
   }
 
   &__subtitle {
     @include fonts.body-font(400);
     font-size: 0.95rem;
-    color: rgba(colors.$white, 0.7);
+    color: #475569;
     margin: 0;
     line-height: 1.6;
     max-width: 540px;

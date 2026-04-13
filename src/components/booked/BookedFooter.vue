@@ -20,10 +20,15 @@
 
     <!-- Información de Copyright -->
     <p class="booked-footer__copy">
-      © {{ new Date().getFullYear() }} NEGOCIOS DEL PACIFICO. 
+      © {{ new Date().getFullYear() }} Hellen Bermeo. 
       <br class="mobile-break" />
       Todos los derechos reservados.
     </p>
+
+    <!-- Aviso Legal Completo -->
+    <div class="booked-footer__disclaimer">
+      Esta página web es operada y mantenida por Hellen Bermeo. El uso del sitio web se rige por nuestros Términos de Servicio y Política de Privacidad. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos, inversiones financieras o sistemas de "enriquecimiento rápido". Nuestro objetivo es proporcionar herramientas y estrategias para el cumplimiento legal y la optimización de recursos; sin embargo, no garantizamos resultados económicos específicos, ya que estos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
+    </div>
   </footer>
 </template>
 
@@ -35,8 +40,8 @@
   width: 100%;
   padding: 2.5rem 1.5rem 3.5rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
   margin-top: auto;
 
   @media (min-width: 768px) {
@@ -59,14 +64,14 @@
   &__link {
     @include fonts.interface-font(500);
     font-size: 0.72rem;
-    color: rgba(colors.$white, 0.35);
+    color: #64748b;
     text-decoration: none;
     transition: all 0.3s ease;
     letter-spacing: 0.4px;
 
     &:hover {
-      color: colors.$white;
-      text-shadow: 0 0 12px rgba(colors.$white, 0.4);
+      color: colors.$BRAND-PRIMARY;
+      text-shadow: none;
     }
 
     @media (min-width: 768px) {
@@ -75,7 +80,7 @@
   }
 
   &__separator {
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     line-height: 1;
   }
@@ -83,7 +88,7 @@
   &__copy {
     @include fonts.interface-font(500);
     font-size: 0.65rem;
-    color: rgba(colors.$white, 0.18);
+    color: #94a3b8;
     margin: 0;
     line-height: 1.8;
     text-transform: uppercase;
@@ -91,8 +96,20 @@
 
     @media (min-width: 768px) {
       font-size: 0.72rem;
-      letter-spacing: 2.2px;
+      letter-spacing: 1.5px;
     }
+  }
+
+  &__disclaimer {
+    @include fonts.interface-font(400);
+    font-size: 0.65rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: normal;
   }
 }
 

@@ -245,7 +245,7 @@ onMounted(() => {
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </span>
-              <span>Metodología probada para <strong>mantener tu empresa en regla con el SRI</strong> y sin dolores de cabeza.</span>
+              <span><strong>Método Hellen Bermeo</strong> probado para <strong>mantener tu empresa en regla con el SRI</strong> y sin dolores de cabeza.</span>
             </li>
           </ul>
         </div>

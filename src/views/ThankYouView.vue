@@ -40,7 +40,7 @@ const calendarOpen = ref(false)
           <div class="ty__vsl">
             <iframe
               src="https://fast.wistia.net/embed/iframe/u9yljeo589?videoFoam=true&autoPlay=false"
-              title="Video — Metodología Data Growth Business"
+              title="Video — Método Hellen Bermeo"
               allow="autoplay; fullscreen"
               allowfullscreen
               frameborder="0"

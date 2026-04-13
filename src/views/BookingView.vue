@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import brandLogo from '@/assets/logos/logo.png'
 
 const router = useRouter()
 const iframeEl = ref<HTMLIFrameElement | null>(null)
 const iframeHeight = ref(1100)
 
-const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png'
-const BASE_URL = 'https://api.leadconnectorhq.com/widget/booking/dtpY2GCQjoOkpm8JUtYz'
+const BASE_URL = 'https://api.leadconnectorhq.com/widget/booking/yBLKoKMssyYPdUCC1DsD'
 
 // Pre-fill calendar with stored contact data
 const calendarUrl = computed(() => {
@@ -56,7 +56,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
 
     <!-- TOP BAR -->
     <header class="booking__topbar">
-      <img :src="LOGO" alt="Hellen Bermeo" class="booking__logo" />
+      <img :src="brandLogo" alt="Hellen Bermeo" class="booking__logo" />
     </header>
 
     <!-- STEPPER -->
@@ -112,7 +112,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
         <span class="footer__sep">·</span>
         <RouterLink to="/aviso-legal">Aviso Legal</RouterLink>
       </div>
-      <p class="footer__copy">© {{ new Date().getFullYear() }} NEGOCIOS DEL PACIFICO. Todos los derechos reservados.</p>
+      <p class="footer__copy">© {{ new Date().getFullYear() }} Hellen Bermeo. Todos los derechos reservados.</p>
     </footer>
 
   </div>
@@ -124,8 +124,8 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
 
 .booking {
   min-height: 100vh;
-  background-color: #0a0712;
-  color: colors.$white;
+  background-color: #f8fafc;
+  color: #1e293b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,8 +136,8 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     padding: 1.25rem 2rem;
     display: flex;
     justify-content: center;
-    background: rgba(#0a0712, 0.95);
-    border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -170,16 +170,13 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     line-height: 1.15;
     margin: 0 0 0.75rem;
-    background: linear-gradient(135deg, colors.$white 40%, colors.$BRAND-SECONDARY);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #0f172a;
   }
 
   &__subtitle {
     font-family: fonts.$font-secondary;
     font-size: 1.05rem;
-    color: rgba(colors.$white, 0.65);
+    color: #475569;
     margin: 0;
     line-height: 1.6;
   }
@@ -201,7 +198,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     width: 100%;
     padding: 2rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -230,13 +227,14 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     font-family: fonts.$font-accent;
     font-weight: 700;
     font-size: 0.9rem;
-    border: 2px solid rgba(colors.$BRAND-SECONDARY, 0.4);
-    color: rgba(colors.$white, 0.4);
+    border: 2px solid rgba(0,0,0,0.15);
+    color: #64748b;
+    background: #ffffff;
     transition: all 0.3s ease;
 
     .stepper__step--done & {
-      background: colors.$BRAND-ACCENT;
-      border-color: colors.$BRAND-ACCENT;
+      background: #10b981; // green
+      border-color: #10b981;
       color: colors.$white;
     }
 
@@ -250,28 +248,29 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
   &__label {
     font-family: fonts.$font-interface;
     font-size: 0.72rem;
-    font-weight: 600;
-    color: rgba(colors.$white, 0.4);
+    font-weight: 700;
+    color: #64748b;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
-    .stepper__step--done & { color: colors.$BRAND-ACCENT; }
-    .stepper__step--active & { color: colors.$white; }
+    .stepper__step--done & { color: #10b981; }
+    .stepper__step--active & { color: colors.$BRAND-PRIMARY; }
   }
 
   &__line {
     width: 48px;
-    height: 2px;
-    background: rgba(colors.$BRAND-SECONDARY, 0.25);
+    height: 3px;
+    background: rgba(0,0,0,0.08);
     border-radius: 2px;
 
-    &--done { background: colors.$BRAND-ACCENT; }
+    &--done { background: #10b981; }
   }
 
   &__caption {
     font-family: fonts.$font-interface;
     font-size: 0.8rem;
-    color: rgba(colors.$white, 0.4);
+    font-weight: 600;
+    color: #94a3b8;
     margin: 0;
   }
 }
@@ -282,8 +281,9 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     width: 100%;
     border-radius: 16px;
     overflow: visible;
-    border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.25);
-    background: rgba(colors.$BRAND-SECONDARY, 0.05);
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
   }
 
   &__iframe {
@@ -318,13 +318,13 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
 
   &--ghost {
     background: transparent;
-    border: 1.5px solid rgba(colors.$white, 0.25);
-    color: rgba(colors.$white, 0.6);
+    border: 1.5px solid rgba(0,0,0,0.15);
+    color: #475569;
 
     &:hover {
-      border-color: colors.$BRAND-SECONDARY;
-      color: colors.$white;
-      background: rgba(colors.$BRAND-SECONDARY, 0.1);
+      border-color: colors.$BRAND-PRIMARY;
+      color: colors.$BRAND-PRIMARY;
+      background: rgba(colors.$BRAND-PRIMARY, 0.05);
     }
   }
 }
@@ -341,22 +341,23 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     a {
       font-family: fonts.$font-interface;
       font-size: 0.8rem;
-      color: rgba(colors.$white, 0.4);
+      color: #64748b;
+      font-weight: 500;
       text-decoration: none;
       transition: color 0.2s;
 
-      &:hover { color: colors.$white; }
+      &:hover { color: colors.$BRAND-PRIMARY; }
     }
   }
 
   &__sep {
-    color: rgba(colors.$white, 0.2);
+    color: rgba(0,0,0,0.1);
   }
 
   &__copy {
     font-family: fonts.$font-interface;
     font-size: 0.75rem;
-    color: rgba(colors.$white, 0.25);
+    color: #94a3b8;
     margin: 0;
   }
 }

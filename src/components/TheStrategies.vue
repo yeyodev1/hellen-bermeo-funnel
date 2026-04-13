@@ -99,7 +99,7 @@ onUnmounted(() => {
       
       <!-- Header Section -->
       <div class="strategies__header">
-        <p class="strategies__subtitle">METODOLOGÍA 1M</p>
+        <p class="strategies__subtitle">MÉTODO HELLEN BERMEO</p>
         <h2 class="strategies__title">
           Ingeniería de Crecimiento al<br>
           Estilo <span>Silicon Valley</span>

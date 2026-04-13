@@ -1,19 +1,35 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import brandLogo from '@/assets/logos/logo.png'
 
-const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png'
-
-const hoursLeft = ref(0)
+const timeLeft = ref('')
+let timerId: ReturnType<typeof setInterval> | null = null
 
 onMounted(() => {
   const bkDisqAt = localStorage.getItem('bk_disq_at')
   if (bkDisqAt) {
-    const elapsed = Date.now() - Number(bkDisqAt)
-    const remaining = 24 * 60 * 60 * 1000 - elapsed
-    if (remaining > 0) {
-      hoursLeft.value = Math.ceil(remaining / 3_600_000)
+    const updateCountdown = () => {
+      const elapsed = Date.now() - Number(bkDisqAt)
+      const remaining = 24 * 60 * 60 * 1000 - elapsed
+      
+      if (remaining > 0) {
+        const h = Math.floor(remaining / 3600000)
+        const m = Math.floor((remaining % 3600000) / 60000)
+        const s = Math.floor((remaining % 60000) / 1000)
+        timeLeft.value = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+      } else {
+        timeLeft.value = ''
+        if (timerId) clearInterval(timerId)
+      }
     }
+    
+    updateCountdown()
+    timerId = setInterval(updateCountdown, 1000)
   }
+})
+
+onUnmounted(() => {
+  if (timerId) clearInterval(timerId)
 })
 </script>
 
@@ -22,16 +38,16 @@ onMounted(() => {
 
     <!-- TOP BAR -->
     <header class="nospace__topbar">
-      <img :src="LOGO" alt="Hellen Bermeo" class="nospace__logo" />
+      <img :src="brandLogo" alt="Hellen Bermeo" class="nospace__logo" />
     </header>
 
     <!-- MAIN CONTENT -->
     <main class="nospace__main">
 
       <!-- COOLDOWN BANNER -->
-      <div v-if="hoursLeft > 0" class="nospace__cooldown-banner">
+      <div v-if="timeLeft !== ''" class="nospace__cooldown-banner">
         <i class="fa-solid fa-clock"></i>
-        Ya enviaste una solicitud. Podrás intentarlo de nuevo en {{ hoursLeft }}h
+        Solo puedes enviar una solicitud por día. Intenta de nuevo en <span class="timer-monospaced">{{ timeLeft }}</span>
       </div>
 
       <!-- ICON -->
@@ -43,45 +59,8 @@ onMounted(() => {
       <h1 class="nospace__title">En este momento no tenemos espacio disponible</h1>
 
       <p class="nospace__subtitle">
-        Lo lamentamos. Nuestros cupos de asesoría personalizada están completos.
-        Trabajamos con un número limitado de negocios para garantizar resultados reales.
+        Pronto lo sabrás. Trabajamos con un número limitado de negocios para garantizar resultados reales.
       </p>
-
-      <!-- COURSE TEASER CARD -->
-      <div class="nospace__course-card">
-        <div class="nospace__course-badge">
-          <i class="fa-solid fa-graduation-cap"></i>
-          Próximamente
-        </div>
-
-        <h3 class="nospace__course-title">Aprende a hacerlo tú mismo</h3>
-
-        <p class="nospace__course-body">
-          Estamos preparando un curso completo donde te enseñaremos exactamente lo que hacemos
-          nosotros: la metodología Data Growth Business™ para que la implementes en tu negocio
-          paso a paso.
-        </p>
-
-        <ul class="nospace__course-checks">
-          <li>
-            <i class="fa-solid fa-check"></i>
-            Estrategia data-driven paso a paso
-          </li>
-          <li>
-            <i class="fa-solid fa-check"></i>
-            Cómo abrir mercado sin depender de la viralidad
-          </li>
-          <li>
-            <i class="fa-solid fa-check"></i>
-            Sistemas de ventas predecibles
-          </li>
-        </ul>
-
-        <a href="#" class="btn btn--ghost-purple">
-          <i class="fa-solid fa-bell"></i>
-          Avísame cuando esté disponible
-        </a>
-      </div>
 
       <!-- BACK LINK -->
       <RouterLink to="/" class="btn btn--ghost">
@@ -98,7 +77,10 @@ onMounted(() => {
         <span class="footer__sep">·</span>
         <RouterLink to="/aviso-legal">Aviso Legal</RouterLink>
       </div>
-      <p class="footer__copy">© {{ new Date().getFullYear() }} NEGOCIOS DEL PACIFICO. Todos los derechos reservados.</p>
+      <p class="footer__copy">© {{ new Date().getFullYear() }} Hellen Bermeo. Todos los derechos reservados.</p>
+      <div class="footer__disclaimer">
+        Esta página web es operada y mantenida por Hellen Bermeo. El uso del sitio web se rige por nuestros Términos de Servicio y Política de Privacidad. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos, inversiones financieras o sistemas de "enriquecimiento rápido". Nuestro objetivo es proporcionar herramientas y estrategias para el cumplimiento legal y la optimización de recursos; sin embargo, no garantizamos resultados económicos específicos, ya que estos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
+      </div>
     </footer>
 
   </div>
@@ -110,8 +92,8 @@ onMounted(() => {
 
 .nospace {
   min-height: 100vh;
-  background-color: #0a0712;
-  color: colors.$white;
+  background-color: #f8fafc;
+  color: #1e293b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,8 +104,8 @@ onMounted(() => {
     padding: 1.25rem 2rem;
     display: flex;
     justify-content: center;
-    background: rgba(#0a0712, 0.95);
-    border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   &__logo {
@@ -148,19 +130,30 @@ onMounted(() => {
   &__cooldown-banner {
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.6rem 1.25rem;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 999px;
-    background: rgba(colors.$BRAND-PRIMARY, 0.1);
-    border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.35);
+    background: #ffffff;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.05);
     font-family: fonts.$font-interface;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: rgba(colors.$BRAND-PRIMARY, 0.9);
+    color: #ef4444; // Red color for cooldown/rejection
     letter-spacing: 0.01em;
 
     i {
-      font-size: 0.85rem;
+      font-size: 1rem;
+    }
+
+    .timer-monospaced {
+      font-family: monospace;
+      font-weight: 800;
+      font-size: 1.05rem;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 6px;
+      margin-left: 0.25rem;
     }
   }
 
@@ -169,17 +162,17 @@ onMounted(() => {
     width: 88px;
     height: 88px;
     border-radius: 50%;
-    background: rgba(colors.$BRAND-PRIMARY, 0.08);
+    background: rgba(239, 68, 68, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1.5px solid rgba(colors.$BRAND-PRIMARY, 0.25);
+    border: 1.5px solid rgba(239, 68, 68, 0.25);
     margin-bottom: 0.5rem;
   }
 
   &__x-icon {
     font-size: 3rem;
-    color: rgba(colors.$BRAND-PRIMARY, 0.8);
+    color: #ef4444;
     line-height: 1;
   }
 
@@ -190,13 +183,13 @@ onMounted(() => {
     font-size: clamp(1.6rem, 4vw, 2.25rem);
     line-height: 1.2;
     margin: 0;
-    color: colors.$white;
+    color: #0f172a;
   }
 
   &__subtitle {
     font-family: fonts.$font-secondary;
     font-size: 1.05rem;
-    color: rgba(colors.$white, 0.6);
+    color: #475569;
     margin: 0;
     line-height: 1.7;
   }
@@ -204,15 +197,15 @@ onMounted(() => {
   // ── COURSE CARD ──────────────────────────────────────
   &__course-card {
     width: 100%;
-    background: rgba(colors.$BRAND-SECONDARY, 0.08);
-    border: 1.5px solid rgba(colors.$BRAND-SECONDARY, 0.45);
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0, 0.08);
     border-radius: 16px;
     padding: 1.75rem 1.75rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 0 32px rgba(colors.$BRAND-SECONDARY, 0.12), 0 0 8px rgba(colors.$BRAND-SECONDARY, 0.08);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.03);
     text-align: center;
   }
 
@@ -222,12 +215,12 @@ onMounted(() => {
     gap: 0.45rem;
     padding: 0.35rem 0.9rem;
     border-radius: 999px;
-    background: rgba(colors.$BRAND-SECONDARY, 0.18);
-    border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.4);
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
     font-family: fonts.$font-interface;
     font-size: 0.75rem;
     font-weight: 700;
-    color: rgba(colors.$BRAND-SECONDARY, 1);
+    color: #16a34a;
     letter-spacing: 0.04em;
     text-transform: uppercase;
 
@@ -240,7 +233,7 @@ onMounted(() => {
     font-family: fonts.$font-principal;
     font-weight: 800;
     font-size: clamp(1.2rem, 3vw, 1.5rem);
-    color: colors.$white;
+    color: #1e293b;
     margin: 0;
     line-height: 1.25;
   }
@@ -248,7 +241,7 @@ onMounted(() => {
   &__course-body {
     font-family: fonts.$font-secondary;
     font-size: 0.95rem;
-    color: rgba(colors.$white, 0.55);
+    color: #475569;
     margin: 0;
     line-height: 1.75;
   }
@@ -263,19 +256,19 @@ onMounted(() => {
     text-align: left;
     width: 100%;
 
-    li {
+      li {
       display: flex;
       align-items: flex-start;
       gap: 0.6rem;
       font-family: fonts.$font-secondary;
       font-size: 0.9rem;
-      color: rgba(colors.$white, 0.7);
+      color: #334155;
       line-height: 1.5;
 
       i {
         margin-top: 0.2rem;
         font-size: 0.8rem;
-        color: colors.$BRAND-ACCENT;
+        color: #10b981;
         flex-shrink: 0;
       }
     }
@@ -286,7 +279,7 @@ onMounted(() => {
     width: 100%;
     padding: 2rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -306,26 +299,26 @@ onMounted(() => {
 
   &--ghost {
     background: transparent;
-    border: 1.5px solid rgba(colors.$white, 0.2);
-    color: rgba(colors.$white, 0.55);
+    border: 1.5px solid rgba(0,0,0, 0.15);
+    color: #64748b;
     margin-top: 0.25rem;
 
     &:hover {
-      border-color: rgba(colors.$white, 0.5);
-      color: colors.$white;
-      background: rgba(colors.$white, 0.04);
+      border-color: colors.$BRAND-PRIMARY;
+      color: colors.$BRAND-PRIMARY;
+      background: rgba(colors.$BRAND-PRIMARY, 0.05);
     }
   }
 
   &--ghost-purple {
     background: transparent;
-    border: 1.5px solid rgba(colors.$BRAND-SECONDARY, 0.5);
-    color: rgba(colors.$BRAND-SECONDARY, 0.9);
+    border: 1.5px solid rgba(colors.$BRAND-PRIMARY, 0.5);
+    color: colors.$BRAND-PRIMARY;
 
     &:hover {
-      border-color: colors.$BRAND-SECONDARY;
-      color: colors.$white;
-      background: rgba(colors.$BRAND-SECONDARY, 0.12);
+      border-color: colors.$BRAND-PRIMARY;
+      color: #ffffff;
+      background: colors.$BRAND-PRIMARY;
     }
   }
 }
@@ -342,23 +335,33 @@ onMounted(() => {
     a {
       font-family: fonts.$font-interface;
       font-size: 0.8rem;
-      color: rgba(colors.$white, 0.4);
+      color: #64748b;
       text-decoration: none;
       transition: color 0.2s;
 
-      &:hover { color: colors.$white; }
+      &:hover { color: colors.$BRAND-PRIMARY; }
     }
   }
 
   &__sep {
-    color: rgba(colors.$white, 0.2);
+    color: rgba(0,0,0, 0.15);
   }
 
   &__copy {
     font-family: fonts.$font-interface;
     font-size: 0.75rem;
-    color: rgba(colors.$white, 0.25);
+    color: #94a3b8;
     margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__disclaimer {
+    font-family: fonts.$font-interface;
+    font-size: 0.65rem;
+    color: #94a3b8;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 </style>

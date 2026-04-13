@@ -91,6 +91,18 @@ onMounted(() => {
     ;(window as any).fbq?.('track', 'ViewContent', { content_name: 'video-vsl' })
     startTimer()
   }
+
+  // Inject Wistia scripts
+  const script1 = document.createElement('script')
+  script1.src = 'https://fast.wistia.com/player.js'
+  script1.async = true
+  document.head.appendChild(script1)
+
+  const script2 = document.createElement('script')
+  script2.src = 'https://fast.wistia.com/embed/4jhhq3de5e.js'
+  script2.async = true
+  script2.type = 'module'
+  document.head.appendChild(script2)
 })
 
 onUnmounted(() => {
@@ -104,7 +116,7 @@ onUnmounted(() => {
     <!-- ── Top bar ──────────────────────────────────────────────────────────── -->
     <header class="vv-topbar">
       <img
-        src="https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png"
+        src="@/assets/logos/logo.png"
         alt="Hellen Bermeo"
         class="vv-topbar__logo"
       />
@@ -136,15 +148,10 @@ onUnmounted(() => {
 
       <!-- Wistia video embed -->
       <div class="vv-video-wrapper">
-        <div class="vv-video-ratio">
-          <iframe
-            src="https://fast.wistia.net/embed/iframe/u9yljeo589?videoFoam=true"
-            title="Video Hellen Bermeo"
-            allow="autoplay; fullscreen"
-            allowfullscreen
-            class="vv-video-iframe"
-          ></iframe>
-        </div>
+        <component is="style">
+          wistia-player[media-id='4jhhq3de5e']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/4jhhq3de5e/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+        </component>
+        <wistia-player media-id="4jhhq3de5e" aspect="1.7777777777777777"></wistia-player>
       </div>
 
       <!-- CTA section -->
@@ -196,8 +203,8 @@ onUnmounted(() => {
     <!-- ── Footer ────────────────────────────────────────────────────────────── -->
     <footer class="vv-footer">
       <p class="vv-footer__copy">&copy; {{ new Date().getFullYear() }} Hellen Bermeo. Todos los derechos reservados.</p>
-      <div style="font-size: 0.7rem; color: rgba(255, 255, 255, 0.38); max-width: 600px; text-align: center; margin-bottom: 20px;">
-        Esta página web es operada y mantenida por Hellen Bermeo. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos.
+      <div style="font-size: 0.7rem; color: rgba(0, 0, 0, 0.55); max-width: 600px; text-align: center; margin-bottom: 20px;">
+        Esta página web es operada y mantenida por Hellen Bermeo. El uso del sitio web se rige por nuestros Términos de Servicio y Política de Privacidad. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos, inversiones financieras o sistemas de "enriquecimiento rápido". Nuestro objetivo es proporcionar herramientas y estrategias para el cumplimiento legal y la optimización de recursos; sin embargo, no garantizamos resultados económicos específicos, ya que estos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
       </div>
       <nav class="vv-footer__links" aria-label="Legal">
         <RouterLink to="/politicas-privacidad" class="vv-footer__link">Políticas de Privacidad</RouterLink>
@@ -323,11 +330,11 @@ onUnmounted(() => {
 @use '@/styles/colorVariables.module.scss' as colors;
 @use '@/styles/fonts.modules.scss' as fonts;
 
-$bg:          #0a0712;
-$bg2:         #0f0b1a;
-$border:      rgba(255, 255, 255, 0.07);
-$text-muted:  rgba(255, 255, 255, 0.38);
-$text-body:   rgba(255, 255, 255, 0.68);
+$bg:          #ffffff;
+$border:      rgba(0, 0, 0, 0.08);
+$text-muted:  rgba(0, 0, 0, 0.55);
+$text-body:   rgba(0, 0, 0, 0.72);
+$text-dark:   #212529;
 
 // ── Page shell ────────────────────────────────────────────────────────────────
 .vv-page {
@@ -335,7 +342,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   background: $bg;
   display: flex;
   flex-direction: column;
-  color: colors.$white;
+  color: $text-dark;
 }
 
 // ── Top bar ───────────────────────────────────────────────────────────────────
@@ -397,7 +404,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.18);
   flex-shrink: 0;
   transition: background 0.2s;
 
@@ -442,7 +449,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   font-weight: 800;
   letter-spacing: -0.025em;
   line-height: 1.18;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0;
 }
 
@@ -473,21 +480,6 @@ $text-body:   rgba(255, 255, 255, 0.68);
     0 32px 80px rgba(0, 0, 0, 0.7);
 }
 
-.vv-video-ratio {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; // 16:9
-}
-
-.vv-video-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
 // ── CTA section ───────────────────────────────────────────────────────────────
 .vv-cta-section {
   width: 100%;
@@ -504,8 +496,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  background: rgba(colors.$BRAND-DARK, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid $border;
   border-radius: 10px;
   width: 100%;
 }
@@ -552,20 +544,20 @@ $text-body:   rgba(255, 255, 255, 0.68);
 
   // Locked state
   &--locked {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    color: rgba(255, 255, 255, 0.28);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    color: rgba(0, 0, 0, 0.4);
     cursor: not-allowed;
 
-    i { color: rgba(255, 255, 255, 0.2); }
+    i { color: rgba(0, 0, 0, 0.3); }
   }
 
   // Active / unlocked state
   &--active {
-    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
+    background: colors.$BRAND-PRIMARY;
     box-shadow:
       0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.35),
-      0 2px 8px rgba(0, 0, 0, 0.4);
+      0 2px 8px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     animation: cta-pulse 2.8s ease-in-out infinite;
 
@@ -584,8 +576,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
 }
 
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.35), 0 2px 8px rgba(0,0,0,0.4); }
-  50%       { box-shadow: 0 10px 44px rgba(colors.$BRAND-PRIMARY, 0.55), 0 2px 8px rgba(0,0,0,0.4); }
+  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.35), 0 2px 8px rgba(0,0,0,0.05); }
+  50%       { box-shadow: 0 10px 44px rgba(colors.$BRAND-PRIMARY, 0.55), 0 2px 8px rgba(0,0,0,0.08); }
 }
 
 // Trust line
@@ -637,11 +629,11 @@ $text-body:   rgba(255, 255, 255, 0.68);
 .vv-footer__link {
   font-family: fonts.$font-interface;
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.5);
   text-decoration: none;
   transition: color 0.2s;
 
-  &:hover { color: rgba(255, 255, 255, 0.6); }
+  &:hover { color: rgba(0, 0, 0, 0.8); }
 }
 
 .vv-footer__sep {
@@ -667,8 +659,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
 .cap-card {
   width: 100%;
   max-width: 460px;
-  background: #12101c;
-  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.25);
+  background: $bg;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 20px;
   padding: 40px 36px 32px;
   display: flex;
@@ -676,9 +668,9 @@ $text-body:   rgba(255, 255, 255, 0.68);
   align-items: center;
   gap: 0;
   box-shadow:
-    0 0 0 1px rgba(colors.$BRAND-SECONDARY, 0.08) inset,
-    0 32px 80px rgba(0, 0, 0, 0.8),
-    0 0 60px rgba(colors.$BRAND-SECONDARY, 0.15);
+    0 0 0 1px rgba(0,0,0,0.03) inset,
+    0 32px 80px rgba(0, 0, 0, 0.15),
+    0 0 60px rgba(colors.$BRAND-PRIMARY, 0.05);
 
   @media (max-width: 480px) {
     padding: 32px 22px 28px;
@@ -708,7 +700,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: colors.$white;
+  color: $text-dark;
   text-align: center;
   margin: 0 0 10px;
 }
@@ -756,23 +748,23 @@ $text-body:   rgba(255, 255, 255, 0.68);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(colors.$white, 0.5);
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .cap-input {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
-  color: colors.$white;
+  color: $text-dark;
   font-family: fonts.$font-secondary;
   font-size: 0.95rem;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
   box-sizing: border-box;
 
-  &::placeholder { color: rgba(255, 255, 255, 0.22); }
+  &::placeholder { color: rgba(0, 0, 0, 0.25); }
 
   &:focus {
     border-color: rgba(colors.$BRAND-SECONDARY, 0.55);
@@ -794,7 +786,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   justify-content: center;
   gap: 10px;
   padding: 16px 24px;
-  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
+  background: colors.$BRAND-PRIMARY;
   border: none;
   border-radius: 12px;
   color: colors.$white;

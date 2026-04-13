@@ -3,12 +3,12 @@
  * BookedHeader.vue
  * Dedicated top bar for the confirmation page.
  */
-const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png';
+import brandLogo from '@/assets/logos/logo.png';
 </script>
 
 <template>
   <header class="booked-header">
-    <img :src="LOGO" alt="Hellen Bermeo" class="booked-header__logo" />
+    <img :src="brandLogo" alt="Hellen Bermeo" class="booked-header__logo" />
   </header>
 </template>
 
@@ -20,10 +20,10 @@ const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57
   padding: 1.25rem 1rem;
   display: flex;
   justify-content: center;
-  background: rgba(#0a0712, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;

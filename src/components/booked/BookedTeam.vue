@@ -65,7 +65,7 @@ const props = defineProps({
   &__section-title {
     @include fonts.heading-font(700);
     font-size: 1.15rem;
-    color: colors.$white;
+    color: #0f172a;
     margin: 0 0 1.5rem;
     display: flex;
     align-items: center;
@@ -81,14 +81,9 @@ const props = defineProps({
 }
 
 .team-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-
-  @media (min-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem;
-  }
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .team-card {
@@ -96,8 +91,8 @@ const props = defineProps({
   align-items: center;
   gap: 1.25rem;
   padding: 1.25rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 28px;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
@@ -107,16 +102,16 @@ const props = defineProps({
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(colors.$BRAND-PRIMARY, 0.1), transparent 70%);
+    background: radial-gradient(circle at top right, rgba(colors.$BRAND-PRIMARY, 0.05), transparent 70%);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: #f8fafc;
     border-color: rgba(colors.$BRAND-PRIMARY, 0.3);
     transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 
     &::before { opacity: 1; }
 
@@ -133,10 +128,12 @@ const props = defineProps({
   }
 
   @media (min-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    padding: 2.5rem 1.5rem;
-    gap: 1.75rem;
+    flex-direction: row;
+    text-align: left;
+    padding: 2rem 2.5rem;
+    gap: 2rem;
+    width: 100%;
+    max-width: 480px;
   }
 
   &__image-wrap {
@@ -144,11 +141,11 @@ const props = defineProps({
     width: 68px;
     height: 68px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(0, 0, 0, 0.08);
     padding: 4px;
     transition: all 0.5s ease;
     flex-shrink: 0;
-    background: #0a0712;
+    background: #ffffff;
 
     @media (min-width: 768px) {
       width: 110px;
@@ -171,14 +168,14 @@ const props = defineProps({
     right: 2px;
     width: 22px;
     height: 22px;
-    background: rgba(colors.$BRAND-SECONDARY, 0.9);
+    background: colors.$BRAND-PRIMARY;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.7rem;
     color: colors.$white;
-    border: 2px solid #0a0712;
+    border: 2px solid #ffffff;
     transition: all 0.4s ease;
 
     @media (min-width: 768px) {
@@ -201,7 +198,7 @@ const props = defineProps({
   &__name {
     @include fonts.heading-font(700);
     font-size: 1.1rem;
-    color: colors.$white;
+    color: #1e293b;
     margin: 0;
     letter-spacing: -0.01em;
 
@@ -213,7 +210,7 @@ const props = defineProps({
   &__role {
     @include fonts.interface-font(600);
     font-size: 0.75rem;
-    color: rgba(colors.$white, 0.5);
+    color: #64748b;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: 1.5px;

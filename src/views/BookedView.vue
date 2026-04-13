@@ -17,7 +17,7 @@ onMounted(() => {
   ;(window as any).fbq?.('track', 'CompleteRegistration', { content_name: 'cita-confirmada' })
 })
 
-import brandLogo from '@/assets/logos/logo.png';
+import founderPhoto from '@/assets/stock/hellen.jpeg';
 
 /**
  * Recuperar el nombre del contacto desde localStorage para una experiencia personalizada.
@@ -60,7 +60,7 @@ const team = [
   {
     name: 'Hellen Bermeo',
     role: 'CEO & Fundadora',
-    photo: brandLogo,
+    photo: founderPhoto,
   }
 ];
 </script>
@@ -114,8 +114,8 @@ const team = [
 .booked-view {
   position: relative;
   min-height: 100vh;
-  background-color: #050308; // Color negro profundo para mayor contraste
-  color: colors.$white;
+  background-color: #f8fafc; // Color claro para mantener contraste
+  color: #1e293b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,7 +135,7 @@ const team = [
       position: absolute;
       inset: 0;
       background-image: url('https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/utils/grain.png');
-      opacity: 0.03;
+      opacity: 0.01;
       pointer-events: none;
     }
   }
@@ -168,8 +168,8 @@ const team = [
     width: 100%; // Toma el 100% del container (que ya tiene padding)
     padding: 1.25rem 1.5rem;
     margin: 1.5rem 0 3.5rem;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 20px;
     display: flex;
     gap: 1rem;
@@ -186,7 +186,7 @@ const team = [
     p {
       @include fonts.body-font(400);
       font-size: 0.82rem;
-      color: rgba(colors.$white, 0.35);
+      color: #64748b;
       margin: 0;
       line-height: 1.7;
     }

@@ -234,6 +234,9 @@ const openWhatsApp = () =>
           >yeyo.dev</a>
         </p>
       </div>
+      <div class="footer__inner footer__disclaimer">
+        Esta página web es operada y mantenida por Hellen Bermeo. El uso del sitio web se rige por nuestros Términos de Servicio y Política de Privacidad. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos, inversiones financieras o sistemas de "enriquecimiento rápido". Nuestro objetivo es proporcionar herramientas y estrategias para el cumplimiento legal y la optimización de recursos; sin embargo, no garantizamos resultados económicos específicos, ya que estos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
+      </div>
     </div>
 
   </footer>
@@ -686,6 +689,20 @@ $text-body: rgba(255, 255, 255, 0.65);
 
   &:hover {
     opacity: 0.8;
+  }
+}
+
+.footer__disclaimer {
+  @include fonts.interface-font(400);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin-top: 24px;
+
+  @media (max-width: 600px) {
+    font-size: 0.65rem;
   }
 }
 

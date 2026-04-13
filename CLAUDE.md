@@ -1,7 +1,7 @@
-# Bakano Web — VSL Funnel Landing
+# Hellen Bermeo — VSL Funnel Landing
 
 ## Proyecto
-Este repositorio es la landing page / funnel de **Bakano** (bakano.ec).
+Este repositorio es la landing page / funnel de **Hellen Bermeo** (hellenbermeo.ec).
 Ya **no es un sitio multi-sección**: es un **funnel de una sola página** (VSL Funnel) orientado a conversión.
 
 ## Stack
@@ -79,14 +79,11 @@ Los subcomponentes (`BookedHero`, `BookedSteps`, `BookedTeam`) usan `padding: 0`
 - **Wistia media-id `u9yljeo589`** → video principal del funnel (usado en `/ver-video`)
 - Script Wistia no se agrega al HTML global; se usa iframe responsive 16:9
 
-## Funnel — Contenido
-Basado en https://mkt.bakano.ec/registro-vsl-tr
-
-- **Headline**: "Ayudamos a dueños de negocios establecidos a abrir su mercado y aumentar su facturación entre un 10% y 20% de forma predecible"
-- **Metodología**: Data Growth Business™
+- **Headline**: "Tu tranquilidad financiera, en manos expertas. Gestión contable estratégica respaldada por especialistas en crecimiento empresarial."
+- **Metodología**: Método Hellen Bermeo
 - **CTA principal**: "REGISTRARME A LA ASESORÍA ¡AHORA!" → abre `RegistrationModal`
-- **Luis Reyes**: CEO & Co-fundador, foto local `src/assets/team/luis.webp`
-- **Entidad legal**: NEGOCIOS DEL PACIFICO
+- **Hellen Bermeo**: CEO & Fundadora, foto local `src/assets/stock/hellen.jpeg`
+- **Entidad legal**: Hellen Bermeo
 
 ## Imágenes CDN
 Las imágenes del funnel se suben a Cloudinary:

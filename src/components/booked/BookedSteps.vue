@@ -64,7 +64,7 @@ const props = defineProps({
   &__section-title {
     @include fonts.heading-font(700);
     font-size: 1.1rem;
-    color: colors.$white;
+    color: #0f172a;
     margin: 0 0 1.25rem;
     display: flex;
     align-items: center;
@@ -97,18 +97,17 @@ const props = defineProps({
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(colors.$BRAND-SECONDARY, 0.04);
-  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
   &:hover {
-    background: rgba(colors.$BRAND-SECONDARY, 0.08);
+    background: #f0f7ff;
     border-color: rgba(colors.$BRAND-PRIMARY, 0.4);
     transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 
     .steps-item__icon-wrap {
       background: rgba(colors.$BRAND-PRIMARY, 0.2);
@@ -175,7 +174,7 @@ const props = defineProps({
     display: block;
     @include fonts.interface-font(700);
     font-size: 0.95rem;
-    color: colors.$white;
+    color: #1e293b;
     margin-bottom: 0.35rem;
 
     @media (min-width: 768px) {
@@ -186,7 +185,7 @@ const props = defineProps({
   &__body {
     @include fonts.body-font(400);
     font-size: 0.9rem;
-    color: rgba(colors.$white, 0.65);
+    color: #475569;
     margin: 0;
     line-height: 1.6;
 

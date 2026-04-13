@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const LOGO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png'
+const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png'
 
 const hoursLeft = ref(0)
 
@@ -22,7 +22,7 @@ onMounted(() => {
 
     <!-- TOP BAR -->
     <header class="nospace__topbar">
-      <img :src="LOGO" alt="Bakano" class="nospace__logo" />
+      <img :src="LOGO" alt="Hellen Bermeo" class="nospace__logo" />
     </header>
 
     <!-- MAIN CONTENT -->
@@ -123,7 +123,7 @@ onMounted(() => {
     display: flex;
     justify-content: center;
     background: rgba(#0a0712, 0.95);
-    border-bottom: 1px solid rgba(colors.$BAKANO-PURPLE, 0.2);
+    border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
   }
 
   &__logo {
@@ -151,12 +151,12 @@ onMounted(() => {
     gap: 0.55rem;
     padding: 0.6rem 1.25rem;
     border-radius: 999px;
-    background: rgba(colors.$BAKANO-PINK, 0.1);
-    border: 1px solid rgba(colors.$BAKANO-PINK, 0.35);
+    background: rgba(colors.$BRAND-PRIMARY, 0.1);
+    border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.35);
     font-family: fonts.$font-interface;
     font-size: 0.85rem;
     font-weight: 600;
-    color: rgba(colors.$BAKANO-PINK, 0.9);
+    color: rgba(colors.$BRAND-PRIMARY, 0.9);
     letter-spacing: 0.01em;
 
     i {
@@ -169,17 +169,17 @@ onMounted(() => {
     width: 88px;
     height: 88px;
     border-radius: 50%;
-    background: rgba(colors.$BAKANO-PINK, 0.08);
+    background: rgba(colors.$BRAND-PRIMARY, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1.5px solid rgba(colors.$BAKANO-PINK, 0.25);
+    border: 1.5px solid rgba(colors.$BRAND-PRIMARY, 0.25);
     margin-bottom: 0.5rem;
   }
 
   &__x-icon {
     font-size: 3rem;
-    color: rgba(colors.$BAKANO-PINK, 0.8);
+    color: rgba(colors.$BRAND-PRIMARY, 0.8);
     line-height: 1;
   }
 
@@ -204,15 +204,15 @@ onMounted(() => {
   // ── COURSE CARD ──────────────────────────────────────
   &__course-card {
     width: 100%;
-    background: rgba(colors.$BAKANO-PURPLE, 0.08);
-    border: 1.5px solid rgba(colors.$BAKANO-PURPLE, 0.45);
+    background: rgba(colors.$BRAND-SECONDARY, 0.08);
+    border: 1.5px solid rgba(colors.$BRAND-SECONDARY, 0.45);
     border-radius: 16px;
     padding: 1.75rem 1.75rem 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    box-shadow: 0 0 32px rgba(colors.$BAKANO-PURPLE, 0.12), 0 0 8px rgba(colors.$BAKANO-PURPLE, 0.08);
+    box-shadow: 0 0 32px rgba(colors.$BRAND-SECONDARY, 0.12), 0 0 8px rgba(colors.$BRAND-SECONDARY, 0.08);
     text-align: center;
   }
 
@@ -222,12 +222,12 @@ onMounted(() => {
     gap: 0.45rem;
     padding: 0.35rem 0.9rem;
     border-radius: 999px;
-    background: rgba(colors.$BAKANO-PURPLE, 0.18);
-    border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.4);
+    background: rgba(colors.$BRAND-SECONDARY, 0.18);
+    border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.4);
     font-family: fonts.$font-interface;
     font-size: 0.75rem;
     font-weight: 700;
-    color: rgba(colors.$BAKANO-PURPLE, 1);
+    color: rgba(colors.$BRAND-SECONDARY, 1);
     letter-spacing: 0.04em;
     text-transform: uppercase;
 
@@ -275,7 +275,7 @@ onMounted(() => {
       i {
         margin-top: 0.2rem;
         font-size: 0.8rem;
-        color: colors.$BAKANO-GREEN;
+        color: colors.$BRAND-ACCENT;
         flex-shrink: 0;
       }
     }
@@ -286,7 +286,7 @@ onMounted(() => {
     width: 100%;
     padding: 2rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(colors.$BAKANO-PURPLE, 0.15);
+    border-top: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
   }
 }
 
@@ -319,13 +319,13 @@ onMounted(() => {
 
   &--ghost-purple {
     background: transparent;
-    border: 1.5px solid rgba(colors.$BAKANO-PURPLE, 0.5);
-    color: rgba(colors.$BAKANO-PURPLE, 0.9);
+    border: 1.5px solid rgba(colors.$BRAND-SECONDARY, 0.5);
+    color: rgba(colors.$BRAND-SECONDARY, 0.9);
 
     &:hover {
-      border-color: colors.$BAKANO-PURPLE;
+      border-color: colors.$BRAND-SECONDARY;
       color: colors.$white;
-      background: rgba(colors.$BAKANO-PURPLE, 0.12);
+      background: rgba(colors.$BRAND-SECONDARY, 0.12);
     }
   }
 }

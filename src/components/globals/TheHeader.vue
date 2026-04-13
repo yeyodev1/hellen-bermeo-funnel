@@ -3,7 +3,7 @@ import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import { RouterLink, useRouter, useRoute } from 'vue-router'
 import { gsap } from 'gsap'
 
-import bakanoLogo from '../../assets/logos/bakano-light.png'
+import brandLogo from '@/assets/logos/logo.png'
 
 // ── Estado ────────────────────────────────────────────────────────────────────
 const isMenuOpen = ref(false)
@@ -120,7 +120,7 @@ onUnmounted(() => {
 
         <!-- ── Logo ─────────────────────────────────── -->
         <RouterLink to="/" class="nav__logo" aria-label="Ir al inicio">
-          <img :src="bakanoLogo" alt="Bakano" class="nav__logo-img" />
+          <img :src="brandLogo" alt="Hellen Bermeo" class="nav__logo-img" />
         </RouterLink>
 
         <!-- ── Links desktop ─────────────────────────── -->
@@ -183,7 +183,7 @@ onUnmounted(() => {
       >
         <!-- Barra superior del overlay -->
         <div class="nav__overlay-bar">
-          <img :src="bakanoLogo" alt="Bakano" class="nav__overlay-logo" />
+          <img :src="brandLogo" alt="Hellen Bermeo" class="nav__overlay-logo" />
           <button
             class="nav__overlay-close"
             @click="closeMenu"
@@ -343,7 +343,7 @@ $dark-bg: #0b0815;
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+      background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.25s ease;
@@ -359,8 +359,8 @@ $dark-bg: #0b0815;
 
     // Herramientas — estilo especial
     &--tools {
-      color: colors.$BAKANO-PINK;
-      border: 1px solid rgba(colors.$BAKANO-PINK, 0.3);
+      color: colors.$BRAND-PRIMARY;
+      border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.3);
       border-radius: 100px;
       padding: 4px 12px;
 
@@ -371,8 +371,8 @@ $dark-bg: #0b0815;
       &:hover,
       &.router-link-active {
         color: colors.$white;
-        background: colors.$BAKANO-PINK;
-        border-color: colors.$BAKANO-PINK;
+        background: colors.$BRAND-PRIMARY;
+        border-color: colors.$BRAND-PRIMARY;
       }
     }
   }
@@ -388,7 +388,7 @@ $dark-bg: #0b0815;
     letter-spacing: 2px;
     color: colors.$white;
     background: transparent;
-    border: 1px solid rgba(colors.$BAKANO-PINK, 0.45);
+    border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.45);
     border-radius: 24px;
     padding: 7px 16px;
     cursor: pointer;
@@ -404,9 +404,9 @@ $dark-bg: #0b0815;
     }
 
     &:hover {
-      background: colors.$BAKANO-PINK;
-      border-color: colors.$BAKANO-PINK;
-      box-shadow: 0 0 24px rgba(colors.$BAKANO-PINK, 0.35);
+      background: colors.$BRAND-PRIMARY;
+      border-color: colors.$BRAND-PRIMARY;
+      box-shadow: 0 0 24px rgba(colors.$BRAND-PRIMARY, 0.35);
 
       svg {
         transform: translateX(3px);
@@ -498,8 +498,8 @@ $dark-bg: #0b0815;
       width: 320px;
       height: 320px;
       background: radial-gradient(circle,
-          rgba(colors.$BAKANO-PINK, 0.09) 0%,
-          rgba(colors.$BAKANO-PURPLE, 0.05) 50%,
+          rgba(colors.$BRAND-PRIMARY, 0.09) 0%,
+          rgba(colors.$BRAND-SECONDARY, 0.05) 50%,
           transparent 70%);
       pointer-events: none;
       border-radius: 50%;
@@ -573,7 +573,7 @@ $dark-bg: #0b0815;
       top: 0;
       bottom: 0;
       width: 3px;
-      background: linear-gradient(180deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+      background: linear-gradient(180deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
       transition: left 0.3s ease;
     }
 
@@ -589,7 +589,7 @@ $dark-bg: #0b0815;
 
     &:hover .nav__overlay-num,
     &.router-link-active .nav__overlay-num {
-      color: colors.$BAKANO-PINK;
+      color: colors.$BRAND-PRIMARY;
     }
 
     // Herramientas — badge "Nuevo"
@@ -604,7 +604,7 @@ $dark-bg: #0b0815;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: colors.$white;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     border-radius: 100px;
     padding: 2px 8px;
     margin-left: auto;
@@ -616,7 +616,7 @@ $dark-bg: #0b0815;
     font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: rgba(colors.$BAKANO-PINK, 0.5);
+    color: rgba(colors.$BRAND-PRIMARY, 0.5);
     transition: color 0.25s ease;
     flex-shrink: 0;
     padding-top: 4px;
@@ -641,7 +641,7 @@ $dark-bg: #0b0815;
     gap: 12px;
     margin: 40px 32px 0;
     padding: 16px 24px;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     border: none;
     border-radius: 14px;
     color: colors.$white;
@@ -654,7 +654,7 @@ $dark-bg: #0b0815;
     &:hover {
       opacity: 0.92;
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(colors.$BAKANO-PINK, 0.35);
+      box-shadow: 0 12px 32px rgba(colors.$BRAND-PRIMARY, 0.35);
     }
 
     &:active {

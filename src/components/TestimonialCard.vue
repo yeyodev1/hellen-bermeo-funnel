@@ -102,11 +102,11 @@ $quote-color:  rgba(255, 255, 255, 0.80);
   // ── Hover ────────────────────────────────────────────────────
   &:hover,
   &:focus-visible {
-    border-color: rgba(colors.$BAKANO-PINK, 0.28);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.28);
     box-shadow:
-      0 0 0 1px rgba(colors.$BAKANO-PINK, 0.15),
+      0 0 0 1px rgba(colors.$BRAND-PRIMARY, 0.15),
       0 28px 56px rgba(0, 0, 0, 0.5),
-      0  8px 24px rgba(colors.$BAKANO-PINK, 0.10);
+      0  8px 24px rgba(colors.$BRAND-PRIMARY, 0.10);
 
     .t-card__top-glow  { opacity: 1; }
     .t-card__play      { transform: scale(1.08); }
@@ -122,7 +122,7 @@ $quote-color:  rgba(255, 255, 255, 0.80);
     line-height: 0.75;
     margin-bottom: 12px;
     // Gradiente como color de texto
-    background: linear-gradient(135deg, colors.$BAKANO-PINK 0%, colors.$BAKANO-PURPLE 100%);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY 0%, colors.$BRAND-SECONDARY 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -176,8 +176,8 @@ $quote-color:  rgba(255, 255, 255, 0.80);
     height: 46px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid rgba(colors.$BAKANO-PINK, 0.35);
-    background: colors.$BAKANO-DARK;
+    border: 2px solid rgba(colors.$BRAND-PRIMARY, 0.35);
+    background: colors.$BRAND-DARK;
   }
 
   &__avatar {
@@ -207,7 +207,7 @@ $quote-color:  rgba(255, 255, 255, 0.80);
   &__cta-hint {
     @include fonts.interface-font(400);
     font-size: 0.72rem;
-    color: rgba(colors.$BAKANO-PINK, 0.75);
+    color: rgba(colors.$BRAND-PRIMARY, 0.75);
     text-transform: uppercase;
     letter-spacing: 1.5px;
   }
@@ -224,7 +224,7 @@ $quote-color:  rgba(255, 255, 255, 0.80);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK 0%, colors.$BAKANO-PURPLE 100%);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY 0%, colors.$BRAND-SECONDARY 100%);
     color: colors.$white;
     transition: transform 0.25s ease;
 
@@ -238,7 +238,7 @@ $quote-color:  rgba(255, 255, 255, 0.80);
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     opacity: 0;
     transition: opacity 0.35s ease;
   }

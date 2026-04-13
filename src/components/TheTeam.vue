@@ -263,7 +263,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
     inset: 0;
     background:
       radial-gradient(ellipse 60% 50% at 50% 60%,
-        rgba(colors.$BAKANO-PINK, 0.07) 0%,
+        rgba(colors.$BRAND-PRIMARY, 0.07) 0%,
         transparent 70%);
     pointer-events: none;
   }
@@ -280,7 +280,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
 .team__label {
   @include fonts.accent-font(700);
   font-size: 0.75rem;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   text-transform: uppercase;
   letter-spacing: 5px;
   margin-bottom: 20px;
@@ -304,7 +304,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
   }
 
   &-gradient {
-    background: linear-gradient(110deg, colors.$BAKANO-PINK 0%, colors.$BAKANO-PURPLE 100%);
+    background: linear-gradient(110deg, colors.$BRAND-PRIMARY 0%, colors.$BRAND-SECONDARY 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -423,8 +423,8 @@ $glass-border: rgba(255, 255, 255, 0.07);
     background: linear-gradient(
       180deg,
       transparent,
-      rgba(colors.$BAKANO-PINK, 0.25) 40%,
-      rgba(colors.$BAKANO-PURPLE, 0.2) 60%,
+      rgba(colors.$BRAND-PRIMARY, 0.25) 40%,
+      rgba(colors.$BRAND-SECONDARY, 0.2) 60%,
       transparent
     );
   }
@@ -442,7 +442,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
   overflow: hidden;
   border-radius: 18px;
   box-shadow:
-    0 0 80px rgba(colors.$BAKANO-PINK, 0.12),
+    0 0 80px rgba(colors.$BRAND-PRIMARY, 0.12),
     0 40px 80px rgba(0, 0, 0, 0.6);
 
   @media (max-width: 768px) {
@@ -515,7 +515,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
 .team__panel-eyebrow {
   @include fonts.accent-font(600);
   font-size: 0.72rem;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   text-transform: uppercase;
   letter-spacing: 4px;
   margin-bottom: 20px;
@@ -550,7 +550,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
 .team__panel-divider {
   width: 48px;
   height: 2px;
-  background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   border-radius: 1px;
   margin-bottom: 24px;
 }
@@ -576,7 +576,7 @@ $glass-border: rgba(255, 255, 255, 0.07);
   align-items: center;
   gap: 10px;
   background: transparent;
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.35);
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.35);
   border-radius: 50px;
   padding: 12px 24px;
   color: colors.$white;
@@ -594,9 +594,9 @@ $glass-border: rgba(255, 255, 255, 0.07);
   letter-spacing: 1.5px;
 
   &:hover {
-    background: rgba(colors.$BAKANO-PINK, 0.12);
-    border-color: rgba(colors.$BAKANO-PINK, 0.6);
-    box-shadow: 0 0 24px rgba(colors.$BAKANO-PINK, 0.15);
+    background: rgba(colors.$BRAND-PRIMARY, 0.12);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.6);
+    box-shadow: 0 0 24px rgba(colors.$BRAND-PRIMARY, 0.15);
     transform: translateY(-2px);
 
     .team__panel-arrow {

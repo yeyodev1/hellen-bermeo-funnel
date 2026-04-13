@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import CalendarModal from '@/components/CalendarModal.vue'
 
-const bakanoLogo = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png'
+import brandLogo from '@/assets/logos/logo.png'
 
 const calendarOpen = ref(false)
 </script>
@@ -12,7 +12,7 @@ const calendarOpen = ref(false)
 
     <!-- Top bar -->
     <header class="ty__topbar">
-      <img :src="bakanoLogo" alt="Bakano" class="ty__logo" />
+      <img :src="brandLogo" alt="Hellen Bermeo" class="ty__logo" />
     </header>
 
     <!-- Confirmation badge -->
@@ -30,8 +30,8 @@ const calendarOpen = ref(false)
         </h1>
 
         <p class="ty__subtitle">
-          Antes de agendar, mira el video y descubre cómo la metodología
-          <strong>Data Growth Business™</strong> ha transformado negocios como el tuyo.
+          Antes de agendar, mira el video y descubre cómo el servicio de
+          <strong>Hellen Bermeo</strong> ha transformado y protegido negocios como el tuyo.
         </p>
 
         <!-- VSL — Wistia embed (media-id: u9yljeo589) -->
@@ -67,36 +67,17 @@ const calendarOpen = ref(false)
         </div>
 
         <!-- Team -->
-        <div class="ty__team" aria-label="Equipo Bakano">
+        <div class="ty__team" aria-label="Hellen Bermeo">
           <div class="ty__team-card">
-            <img
-              src="https://res.cloudinary.com/dpuody0df/image/upload/v1775587087/bakano/team/luis.webp"
-              alt="Luis Reyes — Co-fundador & CEO"
-              class="ty__team-photo"
-              loading="lazy"
-            />
             <div class="ty__team-info">
-              <strong>Luis Reyes</strong>
-              <span>Co-fundador & CEO</span>
-            </div>
-          </div>
-          <div class="ty__team-card">
-            <img
-              src="https://res.cloudinary.com/dpuody0df/image/upload/v1775587088/bakano/team/denisse.webp"
-              alt="Denisse Quimi — Co-fundadora & CMO"
-              class="ty__team-photo"
-              loading="lazy"
-            />
-            <div class="ty__team-info">
-              <strong>Denisse Quimi</strong>
-              <span>Co-fundadora & CMO</span>
+              <strong>Hellen Bermeo</strong>
+              <span>CEO & Fundadora</span>
             </div>
           </div>
         </div>
 
         <p class="ty__disclaimer">
-          Los resultados no son típicos ni garantizados. La metodología Data Growth Business
-          depende de la madurez operativa y disposición de cada negocio.
+          Los resultados no son típicos ni garantizados. Los resultados económicos específicos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
         </p>
 
       </div>
@@ -111,7 +92,7 @@ const calendarOpen = ref(false)
           <RouterLink to="/aviso-legal">Aviso Legal</RouterLink>
         </nav>
         <p class="ty__footer-copyright">
-          Copyright <strong>NEGOCIOS DEL PACIFICO</strong> — Todos los derechos reservados
+          &copy; {{ new Date().getFullYear() }} Hellen Bermeo — Todos los derechos reservados
         </p>
       </div>
     </footer>
@@ -171,9 +152,9 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-family: fonts.$font-interface;
   font-size: 0.8rem;
   font-weight: 600;
-  color: colors.$BAKANO-GREEN;
-  background: rgba(colors.$BAKANO-GREEN, 0.1);
-  border: 1px solid rgba(colors.$BAKANO-GREEN, 0.25);
+  color: colors.$BRAND-ACCENT;
+  background: rgba(colors.$BRAND-ACCENT, 0.1);
+  border: 1px solid rgba(colors.$BRAND-ACCENT, 0.25);
   border-radius: 100px;
   padding: 6px 16px;
   margin-bottom: 24px;
@@ -191,7 +172,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 .ty__accent {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -217,7 +198,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   position: absolute;
   inset: -30px;
   background: radial-gradient(ellipse at center,
-    rgba(colors.$BAKANO-PURPLE, 0.2) 0%,
+    rgba(colors.$BRAND-SECONDARY, 0.2) 0%,
     transparent 70%);
   pointer-events: none;
   z-index: 0;
@@ -228,7 +209,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   z-index: 1;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.25);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.25);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
   // padding trick para 16:9 responsive
   padding-top: 56.25%;
@@ -266,16 +247,16 @@ $text-body: rgba(255, 255, 255, 0.72);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: colors.$white;
-  background: linear-gradient(135deg, colors.$BAKANO-PURPLE, colors.$BAKANO-PINK);
+  background: linear-gradient(135deg, colors.$BRAND-SECONDARY, colors.$BRAND-PRIMARY);
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  box-shadow: 0 8px 32px rgba(colors.$BAKANO-PURPLE, 0.45);
+  box-shadow: 0 8px 32px rgba(colors.$BRAND-SECONDARY, 0.45);
   transition: transform 0.2s ease, box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 48px rgba(colors.$BAKANO-PURPLE, 0.6);
+    box-shadow: 0 16px 48px rgba(colors.$BRAND-SECONDARY, 0.6);
   }
 
   &:active { transform: translateY(0); }
@@ -320,7 +301,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(colors.$BAKANO-PURPLE, 0.3);
+  border: 2px solid rgba(colors.$BRAND-SECONDARY, 0.3);
 }
 
 .ty__team-info {

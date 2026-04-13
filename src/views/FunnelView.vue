@@ -3,9 +3,9 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import RegistrationModal from '@/components/RegistrationModal.vue'
 import { captureFbParams } from '@/utils/fbclid'
-
-const bakanoLogo = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png'
-const luisPhoto = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587087/bakano/team/luis.webp'
+import brandLogo from '@/assets/logos/logo.png'
+import hellenPhoto from '@/assets/stock/hellen.jpeg'
+import vslPhoto from '@/assets/stock/imagen-falsa.webp'
 
 const router = useRouter()
 const modalOpen = ref(false)
@@ -26,26 +26,26 @@ const openModal = () => {
 const stats = [
   {
     icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
-    number: '+25',
-    text: 'negocios establecidos aumentaron su facturación más de un 20%',
+    number: '+500',
+    text: 'empresas aseguraron su tranquilidad financiera y contable',
   },
   {
     icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
-    number: '+$50K',
-    text: 'USD en ventas generadas para clientes con estrategia digital',
+    number: '+$100K',
+    text: 'USD en recargos y multas del SRI evitados por nuestros clientes',
   },
   {
     icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020.5 5.5V3.935',
-    number: '4',
-    text: 'países: Ecuador, Colombia, Estados Unidos y Singapur',
+    number: '10',
+    text: 'Años de experiencia blindando negocios y optimizando sus impuestos',
   },
 ]
 
 const pillars = [
-  'Sin depender de la suerte',
-  'Sin agencias de viralidad',
-  'Sin improvisación',
-  'Con estrategia data-driven',
+  'Sin multas del SRI',
+  'Sin complicaciones burocráticas',
+  'Sin fugas de capital',
+  'Asesoría para todo bolsillo',
 ]
 
 // Countdown urgency timer (24h rolling)
@@ -77,7 +77,7 @@ onMounted(() => {
          TOP BAR — solo logo centrado
          ══════════════════════════════════════════════ -->
     <header class="funnel__topbar">
-      <img :src="bakanoLogo" alt="Bakano" class="funnel__logo" />
+      <img :src="brandLogo" alt="Hellen Bermeo" class="funnel__logo" />
     </header>
 
     <!-- ══════════════════════════════════════════════
@@ -111,13 +111,13 @@ onMounted(() => {
       <div class="funnel__container">
 
         <!-- Eyebrow -->
-        <p class="funnel__eyebrow">Metodología Data Growth Business™</p>
+        <p class="funnel__eyebrow">Asesoría Contable y Financiera</p>
 
         <!-- Headline -->
         <h1 id="funnel-headline" class="funnel__headline">
-          Ayudamos a dueños de negocios establecidos a
-          <span class="funnel__headline-accent">abrir su mercado y aumentar su facturación entre un 10% y 20%</span>
-          de forma predecible
+          Tu tranquilidad financiera, en manos expertas.
+          <span class="funnel__headline-accent">Gestión contable estratégica</span>
+          respaldada por especialistas en crecimiento empresarial.
         </h1>
 
         <!-- Sub-pillars -->
@@ -135,8 +135,8 @@ onMounted(() => {
           <div class="funnel__vsl-glow" aria-hidden="true" />
           <div class="funnel__vsl" role="button" tabindex="0" aria-label="Ver video y registrarse" @click="openModal()" @keydown.enter="openModal()" @keydown.space.prevent="openModal()">
             <img
-              src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/pEFChujwCCaMWBNbZYD1/media/698ba28538edf84b711ef48c.png"
-              alt="Video — Metodología Data Growth Business"
+              :src="vslPhoto"
+              alt="Video — Asesoría Contable Hellen Bermeo"
               class="funnel__vsl-img"
               loading="eager"
             />
@@ -199,8 +199,8 @@ onMounted(() => {
         <div class="funnel__authority-photo-wrap">
           <div class="funnel__authority-photo-glow" aria-hidden="true" />
           <img
-            :src="luisPhoto"
-            alt="Luis Reyes — Co-fundador y Gerente de Bakano"
+            :src="hellenPhoto"
+            alt="Hellen Bermeo"
             class="funnel__authority-photo"
             loading="lazy"
           />
@@ -214,13 +214,12 @@ onMounted(() => {
 
         <!-- Bio -->
         <div class="funnel__authority-bio">
-          <p class="funnel__section-label">Conoce a tu mentor</p>
-          <h2 id="authority-heading" class="funnel__authority-name">Luis Reyes</h2>
-          <p class="funnel__authority-role">CEO & Co-fundador de Bakano</p>
+          <p class="funnel__section-label">Conoce a tu experta</p>
+          <h2 id="authority-heading" class="funnel__authority-name">Hellen Bermeo</h2>
+          <p class="funnel__authority-role">CEO & Fundadora de Hellen Bermeo</p>
           <p class="funnel__authority-desc">
-            Luis Reyes ha dedicado su carrera a construir modelos de negocio escalables con tecnología y datos,
-            optimizando operaciones y aumentando ventas en empresas de múltiples industrias en
-            <strong>Ecuador, Colombia, Estados Unidos y Singapur</strong>.
+            Hellen Bermeo ha dedicado su carrera a brindar soluciones contables y financieras escalables,
+            optimizando impuestos y evitando multas en empresas de múltiples industrias.
           </p>
 
           <ul class="funnel__authority-achievements" role="list">
@@ -230,7 +229,7 @@ onMounted(() => {
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </span>
-              <span>Ha ayudado a <strong>más de 25 negocios establecidos</strong> en Latinoamérica a aumentar su facturación en más de un 20% sin depender de videos virales</span>
+              <span>Ha ayudado a <strong>emprendedores y empresas</strong> a obtener su RUC y Firma Electrónica sin complicaciones</span>
             </li>
             <li class="funnel__authority-achievement">
               <span class="funnel__achievement-icon" aria-hidden="true">
@@ -238,7 +237,7 @@ onMounted(() => {
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </span>
-              <span>Generó <strong>más de $50.000 USD en ventas</strong> para sus clientes con estrategia digital estructurada</span>
+              <span>Construyó <strong>planes y estrategias de ahorro</strong> para pagar lo justo en impuestos reales.</span>
             </li>
             <li class="funnel__authority-achievement">
               <span class="funnel__achievement-icon" aria-hidden="true">
@@ -246,7 +245,7 @@ onMounted(() => {
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </span>
-              <span>Metodología probada en <strong>Ecuador, Colombia, EE.UU. y Singapur</strong></span>
+              <span>Metodología probada para <strong>mantener tu empresa en regla con el SRI</strong> y sin dolores de cabeza.</span>
             </li>
           </ul>
         </div>
@@ -262,19 +261,19 @@ onMounted(() => {
         <div class="funnel__second-cta-glow" aria-hidden="true" />
 
         <img
-          src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/pEFChujwCCaMWBNbZYD1/media/4173c290-13d1-4df9-a357-3a3abfd860be.png"
-          alt="Bakano — Data Growth Business"
-          class="funnel__second-cta-img"
+          :src="brandLogo"
+          alt="Hellen Bermeo — Consultoría Contable"
+          class="funnel__second-cta-logo"
           loading="lazy"
         />
 
         <h2 class="funnel__second-cta-title">
           ¿Listo para profesionalizar<br>
-          <span class="funnel__headline-accent">tu marketing y ventas?</span>
+          <span class="funnel__headline-accent">tus finanzas y contabilidad?</span>
         </h2>
         <p class="funnel__second-cta-sub">
-          Agenda tu asesoría gratuita y descubre cómo la metodología Data Growth Business
-          puede aumentar tu facturación de forma predecible.
+          Agenda tu asesoría y descubre cómo nuestro modelo de servicio
+          puede blindar a tu negocio y asegurar su crecimiento.
         </p>
 
         <div class="funnel__cta-wrap">
@@ -302,7 +301,7 @@ onMounted(() => {
          ══════════════════════════════════════════════ -->
     <footer class="funnel__footer" aria-label="Pie de página">
       <div class="funnel__container">
-        <img :src="bakanoLogo" alt="Bakano" class="funnel__footer-logo" />
+        <img :src="brandLogo" alt="Hellen Bermeo" class="funnel__footer-logo" />
 
         <nav class="funnel__footer-links" aria-label="Legal">
           <RouterLink to="/politicas-privacidad">Política de Privacidad</RouterLink>
@@ -311,14 +310,11 @@ onMounted(() => {
         </nav>
 
         <p class="funnel__footer-copyright">
-          Copyright <strong>NEGOCIOS DEL PACIFICO</strong> — Todos los derechos reservados
+          &copy; {{ new Date().getFullYear() }} Hellen Bermeo. Todos los derechos reservados.
         </p>
 
         <p class="funnel__footer-disclaimer">
-          Esta página web es operada y mantenida por <strong>Negocios del Pacifico</strong>.
-          Somos una empresa de educación y capacitación en ventas y marketing. No vendemos
-          una oportunidad de negocio, ni programas para "hacerse rico rápido". Los resultados
-          varían y dependen del esfuerzo, tiempo y habilidad individuales.
+          Esta página web es operada y mantenida por Hellen Bermeo. El uso del sitio web se rige por nuestros Términos de Servicio y Política de Privacidad. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos, inversiones financieras o sistemas de "enriquecimiento rápido". Nuestro objetivo es proporcionar herramientas y estrategias para el cumplimiento legal y la optimización de recursos; sin embargo, no garantizamos resultados económicos específicos, ya que estos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
           Este sitio <strong>NO</strong> está respaldado por Meta Platforms, Inc. ni forma parte de Facebook.
         </p>
       </div>
@@ -332,16 +328,17 @@ onMounted(() => {
 @use '@/styles/fonts.modules.scss' as fonts;
 
 // ── Variables ────────────────────────────────────────────────────────────────
-$dark: #0a0712;
-$dark-card: #110e1a;
-$border: rgba(255, 255, 255, 0.07);
-$text-muted: rgba(255, 255, 255, 0.45);
-$text-body: rgba(255, 255, 255, 0.72);
+$light: #ffffff;
+$light-card: #f8f9fa;
+$border: rgba(0, 0, 0, 0.08);
+$text-muted: rgba(0, 0, 0, 0.55);
+$text-body: rgba(0, 0, 0, 0.72);
+$text-dark: #212529;
 
 // ── Base ─────────────────────────────────────────────────────────────────────
 .funnel {
-  background: $dark;
-  color: colors.$white;
+  background: $light;
+  color: $text-dark;
   min-height: 100vh;
 }
 
@@ -362,7 +359,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   justify-content: center;
   padding: 20px 24px;
   border-bottom: 1px solid $border;
-  background: rgba($dark, 0.95);
+  background: rgba($light, 0.95);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -383,13 +380,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   gap: 12px;
   padding: 10px 16px;
   background: linear-gradient(135deg,
-    rgba(colors.$BAKANO-PINK, 0.18) 0%,
-    rgba(colors.$BAKANO-PURPLE, 0.12) 100%);
-  border-bottom: 1px solid rgba(colors.$BAKANO-PINK, 0.2);
+    rgba(colors.$BRAND-PRIMARY, 0.18) 0%,
+    rgba(colors.$BRAND-SECONDARY, 0.12) 100%);
+  border-bottom: 1px solid rgba(colors.$BRAND-PRIMARY, 0.2);
   font-family: fonts.$font-interface;
   font-size: 0.82rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
   flex-wrap: wrap;
   text-align: center;
 }
@@ -398,7 +395,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: colors.$BAKANO-PINK;
+  background: colors.$BRAND-PRIMARY;
   animation: pulse-dot 1.5s ease-in-out infinite;
   flex-shrink: 0;
 }
@@ -423,7 +420,7 @@ $text-body: rgba(255, 255, 255, 0.72);
     font-family: fonts.$font-accent;
     font-size: 1rem;
     font-weight: 700;
-    color: colors.$BAKANO-PINK;
+    color: colors.$BRAND-PRIMARY;
     min-width: 1.8ch;
     text-align: center;
   }
@@ -435,7 +432,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 .funnel__timer-sep {
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   font-weight: 700;
   margin-bottom: 2px;
 }
@@ -457,7 +454,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   margin: 0 0 20px;
 }
 
@@ -467,7 +464,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 800;
   line-height: 1.18;
   letter-spacing: -0.02em;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0 0 32px;
 
   @media (max-width: 600px) {
@@ -476,7 +473,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 .funnel__headline-accent {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK 0%, colors.$BAKANO-PURPLE 100%);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY 0%, colors.$BRAND-SECONDARY 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -502,7 +499,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   color: $text-body;
 
   svg {
-    color: colors.$BAKANO-GREEN;
+    color: colors.$BRAND-ACCENT;
     flex-shrink: 0;
   }
 }
@@ -517,8 +514,8 @@ $text-body: rgba(255, 255, 255, 0.72);
   position: absolute;
   inset: -40px;
   background: radial-gradient(ellipse 70% 60% at 50% 50%,
-    rgba(colors.$BAKANO-PINK, 0.12) 0%,
-    rgba(colors.$BAKANO-PURPLE, 0.07) 50%,
+    rgba(colors.$BRAND-PRIMARY, 0.12) 0%,
+    rgba(colors.$BRAND-SECONDARY, 0.07) 50%,
     transparent 70%);
   pointer-events: none;
   z-index: 0;
@@ -529,11 +526,11 @@ $text-body: rgba(255, 255, 255, 0.72);
   z-index: 1;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.2);
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.2);
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.04) inset,
-    0 32px 80px rgba(0,0,0,0.5),
-    0 0 60px rgba(colors.$BAKANO-PINK, 0.08);
+    0 0 0 1px rgba(0,0,0,0.04) inset,
+    0 16px 40px rgba(0,0,0,0.1),
+    0 0 60px rgba(colors.$BRAND-PRIMARY, 0.08);
   cursor: pointer;
 
   &:hover .funnel__vsl-play {
@@ -562,13 +559,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: colors.$BRAND-PRIMARY;
   display: flex;
   align-items: center;
   justify-content: center;
   color: colors.$white;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-  box-shadow: 0 8px 32px rgba(colors.$BAKANO-PINK, 0.45);
+  box-shadow: 0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.45);
 
   svg {
     margin-left: 3px;
@@ -600,23 +597,23 @@ $text-body: rgba(255, 255, 255, 0.72);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: colors.$white;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: colors.$BRAND-PRIMARY;
   border: none;
   border-radius: 50px;
   padding: 18px 40px;
   text-decoration: none;
   cursor: pointer;
   box-shadow:
-    0 8px 32px rgba(colors.$BAKANO-PINK, 0.4),
-    0 0 0 1px rgba(255,255,255,0.08) inset;
+    0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.3),
+    0 0 0 1px rgba(0,0,0,0.08) inset;
   transition: transform 0.2s ease, box-shadow 0.25s ease;
   animation: cta-pulse 2.5s ease-in-out infinite;
 
   &:hover {
     transform: translateY(-3px);
     box-shadow:
-      0 16px 48px rgba(colors.$BAKANO-PINK, 0.55),
-      0 0 0 1px rgba(255,255,255,0.12) inset;
+      0 16px 48px rgba(colors.$BRAND-PRIMARY, 0.45),
+      0 0 0 1px rgba(0,0,0,0.12) inset;
     animation: none;
   }
 
@@ -642,8 +639,8 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BAKANO-PINK, 0.4), 0 0 0 1px rgba(255,255,255,0.08) inset; }
-  50% { box-shadow: 0 8px 48px rgba(colors.$BAKANO-PINK, 0.65), 0 0 0 1px rgba(255,255,255,0.1) inset; }
+  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.3), 0 0 0 1px rgba(0,0,0,0.08) inset; }
+  50% { box-shadow: 0 8px 48px rgba(colors.$BRAND-PRIMARY, 0.45), 0 0 0 1px rgba(0,0,0,0.1) inset; }
 }
 
 .funnel__cta-sub {
@@ -653,7 +650,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   gap: 8px;
   font-family: fonts.$font-interface;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(0, 0, 0, 0.48);
   margin: 0;
   letter-spacing: 0.2px;
 
@@ -668,7 +665,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   padding: 64px 0;
   border-top: 1px solid $border;
   border-bottom: 1px solid $border;
-  background: $dark-card;
+  background: $light-card;
   text-align: center;
 }
 
@@ -678,7 +675,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   margin: 0 0 40px;
 }
 
@@ -703,12 +700,12 @@ $text-body: rgba(255, 255, 255, 0.72);
   padding: 32px 24px;
   border-radius: 16px;
   border: 1px solid $border;
-  background: rgba(255,255,255,0.02);
+  background: $light;
   transition: border-color 0.25s ease, background 0.25s ease;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PINK, 0.2);
-    background: rgba(colors.$BAKANO-PINK, 0.03);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.2);
+    background: rgba(colors.$BRAND-PRIMARY, 0.03);
   }
 }
 
@@ -717,22 +714,22 @@ $text-body: rgba(255, 255, 255, 0.72);
   height: 48px;
   border-radius: 12px;
   background: linear-gradient(135deg,
-    rgba(colors.$BAKANO-PINK, 0.15),
-    rgba(colors.$BAKANO-PURPLE, 0.1));
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.15);
+    rgba(colors.$BRAND-PRIMARY, 0.15),
+    rgba(colors.$BRAND-SECONDARY, 0.1));
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
 }
 
 .funnel__stat-number {
   font-family: fonts.$font-accent;
   font-size: 2.4rem;
   font-weight: 700;
-  color: colors.$white;
+  color: $text-dark;
   line-height: 1;
-  background: linear-gradient(110deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -783,7 +780,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   position: absolute;
   inset: -30px;
   background: radial-gradient(circle,
-    rgba(colors.$BAKANO-PINK, 0.15) 0%,
+    rgba(colors.$BRAND-PRIMARY, 0.15) 0%,
     transparent 65%);
   pointer-events: none;
   border-radius: 50%;
@@ -794,12 +791,12 @@ $text-body: rgba(255, 255, 255, 0.72);
   max-width: 280px;
   aspect-ratio: 3/4;
   object-fit: cover;
-  object-position: top;
+  object-position: left center;
   border-radius: 20px;
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.15);
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.15);
   box-shadow:
-    0 32px 80px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(255,255,255,0.04) inset;
+    0 16px 40px rgba(0,0,0,0.1),
+    0 0 0 1px rgba(0,0,0,0.04) inset;
   position: relative;
   z-index: 1;
 
@@ -820,13 +817,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   gap: 6px;
   padding: 6px 14px;
   border-radius: 50px;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: colors.$BRAND-PRIMARY;
   color: colors.$white;
   font-family: fonts.$font-interface;
   font-size: 0.7rem;
   font-weight: 600;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(colors.$BAKANO-PINK, 0.4);
+  box-shadow: 0 4px 16px rgba(colors.$BRAND-PRIMARY, 0.4);
 }
 
 .funnel__authority-name {
@@ -834,7 +831,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0 0 6px;
 }
 
@@ -844,7 +841,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   margin: 0 0 20px;
 }
 
@@ -879,7 +876,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   }
 
   strong {
-    color: colors.$white;
+    color: $text-dark;
   }
 }
 
@@ -888,7 +885,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: colors.$BRAND-PRIMARY;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -900,7 +897,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 .funnel__second-cta {
   padding: 96px 0 88px;
   border-top: 1px solid $border;
-  background: $dark-card;
+  background: $light-card;
 }
 
 .funnel__second-cta-inner {
@@ -916,18 +913,17 @@ $text-body: rgba(255, 255, 255, 0.72);
   position: absolute;
   inset: -60px;
   background: radial-gradient(ellipse 70% 60% at 50% 50%,
-    rgba(colors.$BAKANO-PURPLE, 0.1) 0%,
-    rgba(colors.$BAKANO-PINK, 0.06) 50%,
+    rgba(colors.$BRAND-SECONDARY, 0.1) 0%,
+    rgba(colors.$BRAND-PRIMARY, 0.06) 50%,
     transparent 70%);
   pointer-events: none;
 }
 
-.funnel__second-cta-img {
+.funnel__second-cta-logo {
   display: block;
   width: 100%;
-  max-width: 520px;
+  max-width: 320px;
   margin-inline: auto;
-  border-radius: 12px;
   margin-bottom: 40px;
   opacity: 0.9;
 }
@@ -938,7 +934,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.18;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0 0 16px;
   position: relative;
 
@@ -963,13 +959,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   padding: 48px 0 40px;
   border-top: 1px solid $border;
   text-align: center;
-  background: #07050e;
+  background: #f8f9fa;
 }
 
 .funnel__footer-logo {
   height: 22px;
   width: auto;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: 20px;
 }
 
@@ -989,7 +985,7 @@ $text-body: rgba(255, 255, 255, 0.72);
     transition: color 0.2s ease;
 
     &:hover {
-      color: colors.$white;
+      color: $text-dark;
     }
   }
 
@@ -1010,7 +1006,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-family: fonts.$font-interface;
   font-size: 0.68rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.25);
+  color: rgba(0,0,0,0.4);
   max-width: 680px;
   margin-inline: auto;
   margin-bottom: 0;

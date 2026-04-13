@@ -36,7 +36,7 @@ const props = defineProps({
   &__label {
     @include fonts.accent-font(600);
     font-size: 0.9rem;
-    color: colors.$BAKANO-PINK;
+    color: colors.$BRAND-PRIMARY;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 16px;

@@ -17,8 +17,7 @@ onMounted(() => {
   ;(window as any).fbq?.('track', 'CompleteRegistration', { content_name: 'cita-confirmada' })
 })
 
-const LUIS_PHOTO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587087/bakano/team/luis.webp';
-const DENISSE_PHOTO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587088/bakano/team/denisse.webp';
+import brandLogo from '@/assets/logos/logo.png';
 
 /**
  * Recuperar el nombre del contacto desde localStorage para una experiencia personalizada.
@@ -45,7 +44,7 @@ const nextSteps = [
   {
     icon: 'whatsapp',
     title: 'Un asesor te contactará por WhatsApp',
-    body: 'Un miembro del equipo Bakano te escribirá para confirmar la cita y resolver cualquier duda.',
+    body: 'Un experto de Hellen Bermeo te escribirá para confirmar la cita y resolver cualquier duda.',
   },
   {
     icon: 'chart-line',
@@ -59,15 +58,10 @@ const nextSteps = [
  */
 const team = [
   {
-    name: 'Luis Reyes',
-    role: 'Co-fundador & CEO',
-    photo: LUIS_PHOTO,
-  },
-  {
-    name: 'Denisse Quimi',
-    role: 'Co-fundadora & CMO',
-    photo: DENISSE_PHOTO,
-  },
+    name: 'Hellen Bermeo',
+    role: 'CEO & Fundadora',
+    photo: brandLogo,
+  }
 ];
 </script>
 
@@ -102,8 +96,7 @@ const team = [
             <i class="fa-solid fa-circle-info"></i>
           </div>
           <p>
-            Los resultados no son típicos ni garantizados. La metodología Data Growth Business
-            depende de la madurez operativa y disposición de cada negocio.
+            Los resultados económicos específicos dependen de la gestión administrativa, el mercado y las decisiones de cada cliente.
           </p>
         </section>
       </div>
@@ -135,8 +128,8 @@ const team = [
     z-index: 0;
     pointer-events: none;
     background: 
-      radial-gradient(circle at 10% 20%, rgba(colors.$BAKANO-PURPLE, 0.04) 0%, transparent 50%),
-      radial-gradient(circle at 90% 80%, rgba(colors.$BAKANO-PINK, 0.04) 0%, transparent 50%);
+      radial-gradient(circle at 10% 20%, rgba(colors.$BRAND-SECONDARY, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(colors.$BRAND-PRIMARY, 0.04) 0%, transparent 50%);
     
     .grain-overlay {
       position: absolute;
@@ -185,7 +178,7 @@ const team = [
 
     .disclaimer-icon {
       flex-shrink: 0;
-      color: rgba(colors.$BAKANO-PURPLE, 0.6);
+      color: rgba(colors.$BRAND-SECONDARY, 0.6);
       font-size: 1.1rem;
       margin-top: 0.1rem;
     }
@@ -220,7 +213,7 @@ const team = [
   &--1 {
     width: 450px;
     height: 450px;
-    background: colors.$BAKANO-PURPLE;
+    background: colors.$BRAND-SECONDARY;
     top: -150px;
     left: -200px;
   }
@@ -228,7 +221,7 @@ const team = [
   &--2 {
     width: 550px;
     height: 550px;
-    background: colors.$BAKANO-PINK;
+    background: colors.$BRAND-PRIMARY;
     bottom: -150px;
     right: -250px;
     animation-delay: -7s;
@@ -237,7 +230,7 @@ const team = [
   &--3 {
     width: 320px;
     height: 320px;
-    background: colors.$BAKANO-GREEN;
+    background: colors.$BRAND-ACCENT;
     top: 30%;
     right: 15%;
     opacity: 0.08;

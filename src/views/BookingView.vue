@@ -6,7 +6,7 @@ const router = useRouter()
 const iframeEl = ref<HTMLIFrameElement | null>(null)
 const iframeHeight = ref(1100)
 
-const LOGO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png'
+const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png'
 const BASE_URL = 'https://api.leadconnectorhq.com/widget/booking/dtpY2GCQjoOkpm8JUtYz'
 
 // Pre-fill calendar with stored contact data
@@ -56,7 +56,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
 
     <!-- TOP BAR -->
     <header class="booking__topbar">
-      <img :src="LOGO" alt="Bakano" class="booking__logo" />
+      <img :src="LOGO" alt="Hellen Bermeo" class="booking__logo" />
     </header>
 
     <!-- STEPPER -->
@@ -79,7 +79,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     <section class="booking__hero">
       <h1 class="booking__title">Selecciona tu horario</h1>
       <p class="booking__subtitle">
-        Elige el día y la hora que mejor se adapte a tu agenda
+        El primer paso hacia tu tranquilidad y cumplimiento financiero
       </p>
     </section>
 
@@ -90,7 +90,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
           ref="iframeEl"
           :src="calendarUrl"
           :style="{ height: iframeHeight + 'px' }"
-          title="Agenda tu asesoría con Bakano"
+          title="Agenda tu asesoría con Hellen Bermeo"
           class="calendar__iframe"
           frameborder="0"
           scrolling="yes"
@@ -137,7 +137,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     display: flex;
     justify-content: center;
     background: rgba(#0a0712, 0.95);
-    border-bottom: 1px solid rgba(colors.$BAKANO-PURPLE, 0.2);
+    border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -170,7 +170,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     line-height: 1.15;
     margin: 0 0 0.75rem;
-    background: linear-gradient(135deg, colors.$white 40%, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$white 40%, colors.$BRAND-SECONDARY);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -201,7 +201,7 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     width: 100%;
     padding: 2rem 1.5rem;
     text-align: center;
-    border-top: 1px solid rgba(colors.$BAKANO-PURPLE, 0.15);
+    border-top: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
   }
 }
 
@@ -230,19 +230,19 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     font-family: fonts.$font-accent;
     font-weight: 700;
     font-size: 0.9rem;
-    border: 2px solid rgba(colors.$BAKANO-PURPLE, 0.4);
+    border: 2px solid rgba(colors.$BRAND-SECONDARY, 0.4);
     color: rgba(colors.$white, 0.4);
     transition: all 0.3s ease;
 
     .stepper__step--done & {
-      background: colors.$BAKANO-GREEN;
-      border-color: colors.$BAKANO-GREEN;
+      background: colors.$BRAND-ACCENT;
+      border-color: colors.$BRAND-ACCENT;
       color: colors.$white;
     }
 
     .stepper__step--active & {
-      background: colors.$BAKANO-PINK;
-      border-color: colors.$BAKANO-PINK;
+      background: colors.$BRAND-PRIMARY;
+      border-color: colors.$BRAND-PRIMARY;
       color: colors.$white;
     }
   }
@@ -255,17 +255,17 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     text-transform: uppercase;
     letter-spacing: 0.04em;
 
-    .stepper__step--done & { color: colors.$BAKANO-GREEN; }
+    .stepper__step--done & { color: colors.$BRAND-ACCENT; }
     .stepper__step--active & { color: colors.$white; }
   }
 
   &__line {
     width: 48px;
     height: 2px;
-    background: rgba(colors.$BAKANO-PURPLE, 0.25);
+    background: rgba(colors.$BRAND-SECONDARY, 0.25);
     border-radius: 2px;
 
-    &--done { background: colors.$BAKANO-GREEN; }
+    &--done { background: colors.$BRAND-ACCENT; }
   }
 
   &__caption {
@@ -282,8 +282,8 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     width: 100%;
     border-radius: 16px;
     overflow: visible;
-    border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.25);
-    background: rgba(colors.$BAKANO-PURPLE, 0.05);
+    border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.25);
+    background: rgba(colors.$BRAND-SECONDARY, 0.05);
   }
 
   &__iframe {
@@ -322,9 +322,9 @@ onUnmounted(() => window.removeEventListener('message', onMessage))
     color: rgba(colors.$white, 0.6);
 
     &:hover {
-      border-color: colors.$BAKANO-PURPLE;
+      border-color: colors.$BRAND-SECONDARY;
       color: colors.$white;
-      background: rgba(colors.$BAKANO-PURPLE, 0.1);
+      background: rgba(colors.$BRAND-SECONDARY, 0.1);
     }
   }
 }

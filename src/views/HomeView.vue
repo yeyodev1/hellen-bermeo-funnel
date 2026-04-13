@@ -8,16 +8,16 @@ import TheContact from '@/components/TheContact.vue'
 
 <template>
   <main class="home" itemscope itemtype="https://schema.org/WebPage">
-    <section id="inicio" aria-label="Bakano - Agencia de Marketing Digital en Ecuador">
+    <section id="inicio" aria-label="Hellen Bermeo - Agencia de Marketing Digital en Ecuador">
       <TheHero />
     </section>
     <section id="servicios" aria-label="Servicios de marketing digital y metodología de crecimiento">
       <TheStrategies />
     </section>
-    <section id="testimonios" aria-label="Testimonios de clientes de Bakano Ecuador">
+    <section id="testimonios" aria-label="Testimonios de clientes de Hellen Bermeo Ecuador">
       <TheTestimonials />
     </section>
-    <section id="nosotros" aria-label="Equipo fundador de Bakano">
+    <section id="nosotros" aria-label="Equipo fundador de Hellen Bermeo">
       <TheTeam />
     </section>
     <TheContact />
@@ -30,7 +30,7 @@ import TheContact from '@/components/TheContact.vue'
 .home {
   margin-top: -56px;
   /* Para compensar el margin-top del header en App.vue */
-  background-color: colors.$BAKANO-DARK;
+  background-color: colors.$BRAND-DARK;
   /* Continuar con el tema oscuro del final del Hero */
 }
 </style>

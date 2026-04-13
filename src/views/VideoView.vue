@@ -104,8 +104,8 @@ onUnmounted(() => {
     <!-- ── Top bar ──────────────────────────────────────────────────────────── -->
     <header class="vv-topbar">
       <img
-        src="https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png"
-        alt="Bakano"
+        src="https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png"
+        alt="Hellen Bermeo"
         class="vv-topbar__logo"
       />
     </header>
@@ -126,11 +126,11 @@ onUnmounted(() => {
       <section class="vv-headline">
         <p class="vv-eyebrow">Antes de agendar</p>
         <h1 class="vv-h1">
-          Mira el video &mdash; puede
-          <span class="vv-accent">transformar tu negocio</span>
+          Escucha mi mensaje &mdash; puede
+          <span class="vv-accent">salvar a tu negocio de multas</span>
         </h1>
         <p class="vv-subtitle">
-          Ve el video completo. Los siguientes 2 minutos pueden cambiar el rumbo de tu negocio.
+          Ve el video completo. Los siguientes 2 minutos pueden cambiar la salud financiera de tu negocio, blindarte contra del SRI y asegurar que no pagues ni un dólar de más.
         </p>
       </section>
 
@@ -139,7 +139,7 @@ onUnmounted(() => {
         <div class="vv-video-ratio">
           <iframe
             src="https://fast.wistia.net/embed/iframe/u9yljeo589?videoFoam=true"
-            title="Video Bakano"
+            title="Video Hellen Bermeo"
             allow="autoplay; fullscreen"
             allowfullscreen
             class="vv-video-iframe"
@@ -195,9 +195,12 @@ onUnmounted(() => {
 
     <!-- ── Footer ────────────────────────────────────────────────────────────── -->
     <footer class="vv-footer">
-      <p class="vv-footer__copy">&copy; {{ new Date().getFullYear() }} NEGOCIOS DEL PACIFICO. Todos los derechos reservados.</p>
+      <p class="vv-footer__copy">&copy; {{ new Date().getFullYear() }} Hellen Bermeo. Todos los derechos reservados.</p>
+      <div style="font-size: 0.7rem; color: rgba(255, 255, 255, 0.38); max-width: 600px; text-align: center; margin-bottom: 20px;">
+        Esta página web es operada y mantenida por Hellen Bermeo. Hellen Bermeo es una firma dedicada a la asesoría contable, tributaria y financiera para emprendedores y empresas. No somos una entidad bancaria ni ofrecemos préstamos.
+      </div>
       <nav class="vv-footer__links" aria-label="Legal">
-        <RouterLink to="/politicas-privacidad" class="vv-footer__link">Politicas de Privacidad</RouterLink>
+        <RouterLink to="/politicas-privacidad" class="vv-footer__link">Políticas de Privacidad</RouterLink>
         <span class="vv-footer__sep" aria-hidden="true">&middot;</span>
         <RouterLink to="/aviso-legal" class="vv-footer__link">Aviso Legal</RouterLink>
       </nav>
@@ -385,8 +388,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
   align-items: center;
   gap: 8px;
   padding: 6px 14px 6px 10px;
-  background: rgba(colors.$BAKANO-PURPLE, 0.1);
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.22);
+  background: rgba(colors.$BRAND-SECONDARY, 0.1);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.22);
   border-radius: 100px;
 }
 
@@ -399,8 +402,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
   transition: background 0.2s;
 
   &--active {
-    background: colors.$BAKANO-PURPLE;
-    box-shadow: 0 0 8px rgba(colors.$BAKANO-PURPLE, 0.7);
+    background: colors.$BRAND-SECONDARY;
+    box-shadow: 0 0 8px rgba(colors.$BRAND-SECONDARY, 0.7);
   }
 }
 
@@ -410,7 +413,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(colors.$BAKANO-PURPLE, 0.85);
+  color: rgba(colors.$BRAND-SECONDARY, 0.85);
   padding-left: 4px;
 }
 
@@ -429,7 +432,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   font-weight: 600;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: colors.$BAKANO-PURPLE;
+  color: colors.$BRAND-SECONDARY;
   margin: 0;
 }
 
@@ -444,7 +447,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
 }
 
 .vv-accent {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -463,10 +466,10 @@ $text-body:   rgba(255, 255, 255, 0.68);
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.3);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.3);
   box-shadow:
-    0 0 0 1px rgba(colors.$BAKANO-PURPLE, 0.08) inset,
-    0 0 60px rgba(colors.$BAKANO-PURPLE, 0.18),
+    0 0 0 1px rgba(colors.$BRAND-SECONDARY, 0.08) inset,
+    0 0 60px rgba(colors.$BRAND-SECONDARY, 0.18),
     0 32px 80px rgba(0, 0, 0, 0.7);
 }
 
@@ -501,7 +504,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  background: rgba(colors.$BAKANO-DARK, 0.6);
+  background: rgba(colors.$BRAND-DARK, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   width: 100%;
@@ -523,7 +526,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
 .vv-lock-notice__timer {
   font-family: fonts.$font-accent;
   font-weight: 700;
-  color: colors.$BAKANO-PURPLE;
+  color: colors.$BRAND-SECONDARY;
 }
 
 // CTA button
@@ -559,9 +562,9 @@ $text-body:   rgba(255, 255, 255, 0.68);
 
   // Active / unlocked state
   &--active {
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     box-shadow:
-      0 8px 32px rgba(colors.$BAKANO-PINK, 0.35),
+      0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.35),
       0 2px 8px rgba(0, 0, 0, 0.4);
     cursor: pointer;
     animation: cta-pulse 2.8s ease-in-out infinite;
@@ -569,7 +572,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
     &:hover {
       transform: translateY(-3px);
       box-shadow:
-        0 14px 44px rgba(colors.$BAKANO-PINK, 0.5),
+        0 14px 44px rgba(colors.$BRAND-PRIMARY, 0.5),
         0 4px 12px rgba(0, 0, 0, 0.5);
       animation: none;
     }
@@ -581,8 +584,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
 }
 
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BAKANO-PINK, 0.35), 0 2px 8px rgba(0,0,0,0.4); }
-  50%       { box-shadow: 0 10px 44px rgba(colors.$BAKANO-PINK, 0.55), 0 2px 8px rgba(0,0,0,0.4); }
+  0%, 100% { box-shadow: 0 8px 32px rgba(colors.$BRAND-PRIMARY, 0.35), 0 2px 8px rgba(0,0,0,0.4); }
+  50%       { box-shadow: 0 10px 44px rgba(colors.$BRAND-PRIMARY, 0.55), 0 2px 8px rgba(0,0,0,0.4); }
 }
 
 // Trust line
@@ -665,7 +668,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   width: 100%;
   max-width: 460px;
   background: #12101c;
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.25);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.25);
   border-radius: 20px;
   padding: 40px 36px 32px;
   display: flex;
@@ -673,9 +676,9 @@ $text-body:   rgba(255, 255, 255, 0.68);
   align-items: center;
   gap: 0;
   box-shadow:
-    0 0 0 1px rgba(colors.$BAKANO-PURPLE, 0.08) inset,
+    0 0 0 1px rgba(colors.$BRAND-SECONDARY, 0.08) inset,
     0 32px 80px rgba(0, 0, 0, 0.8),
-    0 0 60px rgba(colors.$BAKANO-PURPLE, 0.15);
+    0 0 60px rgba(colors.$BRAND-SECONDARY, 0.15);
 
   @media (max-width: 480px) {
     padding: 32px 22px 28px;
@@ -686,8 +689,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: rgba(colors.$BAKANO-PURPLE, 0.12);
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.3);
+  background: rgba(colors.$BRAND-SECONDARY, 0.12);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -696,7 +699,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
 
 .cap-icon {
   font-size: 1.8rem;
-  color: colors.$BAKANO-PURPLE;
+  color: colors.$BRAND-SECONDARY;
 }
 
 .cap-h2 {
@@ -742,8 +745,8 @@ $text-body:   rgba(255, 255, 255, 0.68);
   gap: 5px;
 
   &--error .cap-input {
-    border-color: rgba(colors.$BAKANO-PINK, 0.6);
-    background: rgba(colors.$BAKANO-PINK, 0.04);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.6);
+    background: rgba(colors.$BRAND-PRIMARY, 0.04);
   }
 }
 
@@ -772,15 +775,15 @@ $text-body:   rgba(255, 255, 255, 0.68);
   &::placeholder { color: rgba(255, 255, 255, 0.22); }
 
   &:focus {
-    border-color: rgba(colors.$BAKANO-PURPLE, 0.55);
-    background: rgba(colors.$BAKANO-PURPLE, 0.06);
+    border-color: rgba(colors.$BRAND-SECONDARY, 0.55);
+    background: rgba(colors.$BRAND-SECONDARY, 0.06);
   }
 }
 
 .cap-error {
   font-family: fonts.$font-interface;
   font-size: 0.74rem;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
 }
 
 .cap-submit {
@@ -791,7 +794,7 @@ $text-body:   rgba(255, 255, 255, 0.68);
   justify-content: center;
   gap: 10px;
   padding: 16px 24px;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   border: none;
   border-radius: 12px;
   color: colors.$white;
@@ -802,13 +805,13 @@ $text-body:   rgba(255, 255, 255, 0.68);
   text-transform: uppercase;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
-  box-shadow: 0 8px 28px rgba(colors.$BAKANO-PINK, 0.35);
+  box-shadow: 0 8px 28px rgba(colors.$BRAND-PRIMARY, 0.35);
 
   i { font-size: 0.95rem; }
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(colors.$BAKANO-PINK, 0.5);
+    box-shadow: 0 12px 36px rgba(colors.$BRAND-PRIMARY, 0.5);
   }
 
   &:active:not(:disabled) { transform: translateY(0); }

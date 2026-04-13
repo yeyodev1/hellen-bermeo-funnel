@@ -42,7 +42,7 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  background: radial-gradient(circle at center, rgba(colors.$BAKANO-DARK, 0.4) 0%, rgba(colors.$BAKANO-DARK, 0.9) 100%);
+  background: radial-gradient(circle at center, rgba(colors.$BRAND-DARK, 0.4) 0%, rgba(colors.$BRAND-DARK, 0.9) 100%);
   backdrop-filter: blur(8px);
   pointer-events: none;
   text-align: center;
@@ -73,7 +73,7 @@
   &__wheel {
     width: 4px;
     height: 10px;
-    background: colors.$BAKANO-PRIMARY;
+    background: colors.$BRAND-PRIMARY;
     border-radius: 2px;
     animation: scroll-wheel 1.5s ease-in-out infinite;
   }
@@ -100,7 +100,7 @@
     .arrow {
       width: 40px;
       height: 40px;
-      color: colors.$BAKANO-PRIMARY;
+      color: colors.$BRAND-PRIMARY;
       animation: arrow-bounce 2s ease-in-out infinite;
     }
   }

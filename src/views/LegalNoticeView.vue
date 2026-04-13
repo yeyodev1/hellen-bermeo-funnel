@@ -25,7 +25,7 @@ onMounted(() => {
         <ul>
           <li>Mi denominación social es: Negocios Del Pacifico</li>
           <li>Mi domicilio social se encuentra en Dirección: Garzota, Guayaquil, Ecuador</li>
-          <li>Email: lreyes@bakano.ec</li>
+          <li>Email: info@hellenbermeo.ec</li>
           <li>Mi Servicios profesionales es: Servicios profesionales</li>
         </ul>
 
@@ -126,7 +126,7 @@ onMounted(() => {
 
       <section class="legal-notice__section">
         <h2 class="legal-notice__section-title">10. RECLAMACIONES Y DUDAS</h2>
-        <p>Negocios Del Pacifico informa que existen hojas de reclamación a disposición de usuarios y clientes pudiendo remitir un correo a lreyes@bakano.ec indicando su nombre y apellidos, el servicio o producto adquirido y exponiendo los motivos de su reclamación.</p>
+        <p>Hellen Bermeo informa que existen hojas de reclamación a disposición de usuarios y clientes pudiendo remitir un correo a info@hellenbermeo.ec indicando su nombre y apellidos, el servicio o producto adquirido y exponiendo los motivos de su reclamación.</p>
       </section>
 
       <section class="legal-notice__section">

@@ -35,7 +35,7 @@ const testimonials = [
   {
     id: 2,
     name: 'Johanna Quezada',
-    quote: 'Teníamos una desorganización total en nuestros cuatros restaurantes, al momento que llegó Bakano, todo cambió',
+    quote: 'Teníamos una desorganización total en nuestros cuatros restaurantes, al momento que llegó Hellen Bermeo, todo cambió',
     image: imgJohanna,
     videoUrl: 'https://www.instagram.com/p/DMtdBuMup4k',
   },
@@ -238,7 +238,7 @@ const openVideo = (url: string) => window.open(url, '_blank')
     z-index: 1;
     pointer-events: none;
     background: linear-gradient(175deg,
-        rgba(colors.$BAKANO-DARK, 0.15) 0%,
+        rgba(colors.$BRAND-DARK, 0.15) 0%,
         rgba(#000, 0.78) 100%);
   }
 
@@ -274,7 +274,7 @@ const openVideo = (url: string) => window.open(url, '_blank')
   &__label {
     @include fonts.accent-font(700);
     font-size: 0.78rem;
-    color: colors.$BAKANO-PINK;
+    color: colors.$BRAND-PRIMARY;
     text-transform: uppercase;
     letter-spacing: 5px;
     margin-bottom: 14px;

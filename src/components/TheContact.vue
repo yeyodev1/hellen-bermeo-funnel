@@ -113,8 +113,8 @@ import ContactWizard from './ContactWizard.vue'
   border-radius: 50%;
   background: radial-gradient(
     ellipse at center,
-    rgba(colors.$BAKANO-PINK, 0.06) 0%,
-    rgba(colors.$BAKANO-PURPLE, 0.04) 40%,
+    rgba(colors.$BRAND-PRIMARY, 0.06) 0%,
+    rgba(colors.$BRAND-SECONDARY, 0.04) 40%,
     transparent 70%
   );
   pointer-events: none;
@@ -150,7 +150,7 @@ import ContactWizard from './ContactWizard.vue'
 .contact__label {
   @include fonts.accent-font(700);
   font-size: 0.75rem;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   text-transform: uppercase;
   letter-spacing: 5px;
   margin: 0;
@@ -172,7 +172,7 @@ import ContactWizard from './ContactWizard.vue'
 }
 
 .contact__title-grad {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK 0%, colors.$BAKANO-PURPLE 100%);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY 0%, colors.$BRAND-SECONDARY 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -210,12 +210,12 @@ import ContactWizard from './ContactWizard.vue'
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: rgba(colors.$BAKANO-PINK, 0.12);
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.25);
+  background: rgba(colors.$BRAND-PRIMARY, 0.12);
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   flex-shrink: 0;
 }
 
@@ -226,8 +226,8 @@ import ContactWizard from './ContactWizard.vue'
   gap: 18px;
   padding: 20px 24px;
   border-radius: 14px;
-  border: 1px solid rgba(colors.$BAKANO-PINK, 0.12);
-  background: rgba(colors.$BAKANO-PINK, 0.04);
+  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.12);
+  background: rgba(colors.$BRAND-PRIMARY, 0.04);
   max-width: 380px;
 }
 
@@ -235,7 +235,7 @@ import ContactWizard from './ContactWizard.vue'
   @include fonts.heading-font(900);
   font-size: 3rem;
   line-height: 1;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

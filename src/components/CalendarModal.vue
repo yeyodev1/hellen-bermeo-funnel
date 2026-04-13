@@ -14,27 +14,25 @@ const submitting = ref(false)
 const touched = ref(false)
 
 const form = ref({
-  facturacion: '',
-  ubicacion: '',
-  objetivo: '',
-  mejora: '',
+  situacion: '',
+  area: '',
+  invertir: '',
+  presupuesto: '',
   consent: false,
 })
 
-const wordCount = (text: string) => text.trim().split(/\s+/).filter(Boolean).length
-
 const isValid = () =>
-  !!form.value.facturacion &&
-  !!form.value.ubicacion &&
-  !!form.value.objetivo &&
-  wordCount(form.value.mejora) >= 15 &&
+  !!form.value.situacion &&
+  !!form.value.area &&
+  !!form.value.invertir &&
+  !!form.value.presupuesto &&
   form.value.consent
 
 const IS_DEV = window.location.hostname === 'localhost'
 
 const qualifies = () => {
-  if (form.value.facturacion === '<10k') return false
-  if (form.value.objetivo === 'viral') return false
+  if (form.value.invertir === 'costos') return false
+  if (form.value.presupuesto === 'menor_500') return false
   return true
 }
 
@@ -47,40 +45,48 @@ const handleSubmit = async () => {
   const califica = qualifies()
 
   const etiquetas = [
-    'funnel-bakano',
+    'funnel-hellenbermeo',
     'step-2-cualificacion',
     califica ? 'califica' : 'no-califica',
-    `facturacion-${form.value.facturacion.replace(/[<>]/g, '')}`,
-    `ubicacion-${form.value.ubicacion}`,
-    `objetivo-${form.value.objetivo}`,
+    `situacion-${form.value.situacion}`,
+    `area-${form.value.area}`,
+    `invertir-${form.value.invertir}`,
+    `presupuesto-${form.value.presupuesto}`,
   ]
 
-  const facturacionLabel: Record<string, string> = {
-    '<10k':    'Menos de $10,000 USD',
-    '10k-25k': 'Entre $10,000 y $25,000 USD',
-    '>25k':    'Más de $25,000 USD',
+  const situacionLabel: Record<string, string> = {
+    emprendedor: 'Emprendedor (Persona Natural)',
+    pyme: 'Dueño de Negocio / Pyme (Sociedad)',
+    profesional: 'Profesional Independiente',
+    empezar: 'Aún no tengo RUC, quiero empezar',
   }
-  const ubicacionLabel: Record<string, string> = {
-    guayaquil: 'Guayaquil / Samborondón',
-    otra:      'Otra ciudad / extranjero',
+  const areaLabel: Record<string, string> = {
+    tributario: 'Cumplimiento Tributario',
+    gestion: 'Gestión y Formalización',
+    estrategia: 'Estrategia y Ahorro',
+    seguro: 'No estoy seguro',
   }
-  const objetivoLabel: Record<string, string> = {
-    viral:       'Aumentar seguidores y hacerse viral',
-    facturacion: 'Abrir mercado y aumentar facturación con datos',
-    ventas:      'Profesionalizar ventas y captación',
+  const invertirLabel: Record<string, string> = {
+    mensual: 'Servicio profesional mensual',
+    puntual: 'Trámite puntual',
+    costos: 'Buscando información de costos',
+  }
+  const presupuestoLabel: Record<string, string> = {
+    mayor_500: 'Más de $500 USD',
+    menor_500: 'Menos de $500 USD',
   }
 
-  const nota = `${califica ? '✅ LEAD CALIFICADO' : '❌ NO CALIFICA'} — Bakano Funnel
+  const nota = `${califica ? '✅ LEAD CALIFICADO' : '❌ NO CALIFICA'} — Hellen Bermeo Funnel
 ━━━━━━━━━━━━━━━━━━━━━━━━
 👤 ${contact.nombre} ${contact.apellido}
 🏢 Negocio: ${contact.negocio}
 📧 ${contact.email}
 📱 ${contact.telefono}
 ━━━━━━━━━━━━━━━━━━━━━━━━
-💰 Facturación: ${facturacionLabel[form.value.facturacion] ?? form.value.facturacion}
-📍 Ubicación: ${ubicacionLabel[form.value.ubicacion] ?? form.value.ubicacion}
-🎯 Objetivo: ${objetivoLabel[form.value.objetivo] ?? form.value.objetivo}
-💡 Mejora: ${form.value.mejora}
+🧑‍💼 Situación: ${situacionLabel[form.value.situacion] ?? form.value.situacion}
+🎯 Área: ${areaLabel[form.value.area] ?? form.value.area}
+💸 Para Invertir: ${invertirLabel[form.value.invertir] ?? form.value.invertir}
+💰 Presupuesto: ${presupuestoLabel[form.value.presupuesto] ?? form.value.presupuesto}
 ━━━━━━━━━━━━━━━━━━━━━━━━
 📊 Resultado: ${califica ? '🟢 AGENDA CITA' : '🔴 RECHAZADO'}
 🕐 ${new Date().toLocaleString('es-EC', { timeZone: 'America/Guayaquil' })}
@@ -92,10 +98,10 @@ const handleSubmit = async () => {
     negocio: contact.negocio,
     email: contact.email,
     telefono: contact.telefono,
-    facturacion: form.value.facturacion,
-    ubicacion: form.value.ubicacion,
-    objetivo: form.value.objetivo,
-    mejora: form.value.mejora,
+    situacion: form.value.situacion,
+    area: form.value.area,
+    invertir: form.value.invertir,
+    presupuesto: form.value.presupuesto,
     califica,
     resultado: califica ? 'AGENDA' : 'RECHAZADO',
     etiquetas,
@@ -103,7 +109,7 @@ const handleSubmit = async () => {
     timestamp: new Date().toISOString(),
     ...getStoredFbParams(),
   }
-  console.info('[Bakano Agenda]', payload)
+  console.info('[Hellen Bermeo Agenda]', payload)
 
   const scheduleEventId = `schedule_${Date.now()}_${Math.random().toString(36).slice(2)}`
 
@@ -145,7 +151,7 @@ const onKeydown = (e: KeyboardEvent) => { if (e.key === 'Escape') emit('close') 
 onMounted(() => document.addEventListener('keydown', onKeydown))
 onUnmounted(() => document.removeEventListener('keydown', onKeydown))
 
-watch(() => props.open, (v) => { if (v) { touched.value = false; form.value = { facturacion: '', ubicacion: '', objetivo: '', mejora: '', consent: false } } })
+watch(() => props.open, (v) => { if (v) { touched.value = false; form.value = { situacion: '', area: '', invertir: '', presupuesto: '', consent: false } } })
 </script>
 
 <template>
@@ -171,91 +177,84 @@ watch(() => props.open, (v) => { if (v) { touched.value = false; form.value = { 
             <form class="cal-form" @submit.prevent="handleSubmit" novalidate>
 
               <!-- Q1 -->
-              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.facturacion }">
+              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.situacion }">
                 <legend class="cal-legend">
                   <span class="cal-q-num">01</span>
-                  ¿Cuál es tu facturación mensual actual?
+                  ¿Cuál es tu situación actual como contribuyente? *
                 </legend>
                 <div class="cal-options">
                   <label v-for="opt in [
-                    { value: '<10k', label: 'Menos de $10,000 USD' },
-                    { value: '10k-25k', label: 'Entre $10,000 y $25,000 USD' },
-                    { value: '>25k', label: 'Más de $25,000 USD' },
-                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.facturacion === opt.value }">
-                    <input type="radio" :value="opt.value" v-model="form.facturacion" hidden />
+                    { value: 'emprendedor', label: 'Emprendedor (Persona Natural)' },
+                    { value: 'pyme', label: 'Dueño de Negocio / Pyme (Sociedad)' },
+                    { value: 'profesional', label: 'Profesional Independiente' },
+                    { value: 'empezar', label: 'Aún no tengo RUC, quiero empezar.' }
+                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.situacion === opt.value }">
+                    <input type="radio" :value="opt.value" v-model="form.situacion" hidden />
                     <span class="cal-option__radio" aria-hidden="true" />
                     <span class="cal-option__label">{{ opt.label }}</span>
                   </label>
                 </div>
-                <span v-if="touched && !form.facturacion" class="cal-error">Selecciona una opción</span>
+                <span v-if="touched && !form.situacion" class="cal-error">Selecciona una opción</span>
               </fieldset>
 
               <!-- Q2 -->
-              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.ubicacion }">
+              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.area }">
                 <legend class="cal-legend">
                   <span class="cal-q-num">02</span>
-                  ¿Dónde está tu base de operaciones?
+                  ¿En qué área necesitas apoyo inmediato? *
                 </legend>
                 <div class="cal-options">
                   <label v-for="opt in [
-                    { value: 'guayaquil', label: 'Guayaquil / Samborondón' },
-                    { value: 'otra', label: 'Otra ciudad de Ecuador o el extranjero' },
-                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.ubicacion === opt.value }">
-                    <input type="radio" :value="opt.value" v-model="form.ubicacion" hidden />
+                    { value: 'tributario', label: 'Cumplimiento Tributario: (Declaraciones, SRI)' },
+                    { value: 'gestion', label: 'Gestión y Formalización: (RUC, Firma Electrónica)' },
+                    { value: 'estrategia', label: 'Estrategia y Ahorro: (Optimizar finanzas e impuestos)' },
+                    { value: 'seguro', label: 'No estoy seguro: (Necesito asesoría para evitar multas)' }
+                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.area === opt.value }">
+                    <input type="radio" :value="opt.value" v-model="form.area" hidden />
                     <span class="cal-option__radio" aria-hidden="true" />
                     <span class="cal-option__label">{{ opt.label }}</span>
                   </label>
                 </div>
-                <span v-if="touched && !form.ubicacion" class="cal-error">Selecciona una opción</span>
+                <span v-if="touched && !form.area" class="cal-error">Selecciona una opción</span>
               </fieldset>
 
               <!-- Q3 -->
-              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.objetivo }">
+              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.invertir }">
                 <legend class="cal-legend">
                   <span class="cal-q-num">03</span>
-                  ¿Cuál es tu objetivo principal este año?
+                  ¿Estás listo para invertir en la salud financiera de tu negocio? *
                 </legend>
                 <div class="cal-options">
                   <label v-for="opt in [
-                    { value: 'viral', label: 'Aumentar seguidores, likes y hacerme viral' },
-                    { value: 'facturacion', label: 'Abrir mercado y aumentar facturación con datos' },
-                    { value: 'ventas', label: 'Profesionalizar mi proceso de ventas y captación' },
-                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.objetivo === opt.value }">
-                    <input type="radio" :value="opt.value" v-model="form.objetivo" hidden />
+                    { value: 'mensual', label: 'Sí, busco un servicio profesional mensual.' },
+                    { value: 'puntual', label: 'Sí, necesito solucionar un trámite puntual ahora mismo.' },
+                    { value: 'costos', label: 'Estoy buscando información de costos por el momento.' },
+                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.invertir === opt.value }">
+                    <input type="radio" :value="opt.value" v-model="form.invertir" hidden />
                     <span class="cal-option__radio" aria-hidden="true" />
                     <span class="cal-option__label">{{ opt.label }}</span>
                   </label>
                 </div>
-                <span v-if="touched && !form.objetivo" class="cal-error">Selecciona una opción</span>
+                <span v-if="touched && !form.invertir" class="cal-error">Selecciona una opción</span>
               </fieldset>
 
               <!-- Q4 -->
-              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && wordCount(form.mejora) < 15 }">
+              <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.presupuesto }">
                 <legend class="cal-legend">
                   <span class="cal-q-num">04</span>
-                  ¿Qué quisieras mejorar en tu negocio?
+                  ¿Cuentas con un presupuesto de inversión para la solución a tu problema? *
                 </legend>
-                <div class="cal-textarea-wrap">
-                  <textarea
-                    v-model="form.mejora"
-                    class="cal-textarea"
-                    :class="{ error: touched && wordCount(form.mejora) < 15 }"
-                    placeholder="Explícanos con tus propias palabras qué aspecto de tu negocio quieres mejorar y por qué es importante para ti..."
-                    rows="4"
-                    maxlength="1000"
-                  />
-                  <div class="cal-textarea-footer">
-                    <span v-if="touched && wordCount(form.mejora) < 15" class="cal-error">
-                      Escribe al menos 15 palabras (llevas {{ wordCount(form.mejora) }})
-                    </span>
-                    <span v-else class="cal-word-hint">
-                      {{ wordCount(form.mejora) }} palabra{{ wordCount(form.mejora) !== 1 ? 's' : '' }}
-                      <span v-if="wordCount(form.mejora) >= 15" class="cal-word-ok">
-                        <i class="fa-solid fa-circle-check" />
-                      </span>
-                    </span>
-                  </div>
+                <div class="cal-options">
+                  <label v-for="opt in [
+                    { value: 'mayor_500', label: 'Cuento con más de $500 dólares para solucionar mi problema de raíz.' },
+                    { value: 'menor_500', label: 'Mi presupuesto es menor a $500 dólares en este momento.' }
+                  ]" :key="opt.value" class="cal-option" :class="{ selected: form.presupuesto === opt.value }">
+                    <input type="radio" :value="opt.value" v-model="form.presupuesto" hidden />
+                    <span class="cal-option__radio" aria-hidden="true" />
+                    <span class="cal-option__label">{{ opt.label }}</span>
+                  </label>
                 </div>
+                <span v-if="touched && !form.presupuesto" class="cal-error">Selecciona una opción</span>
               </fieldset>
 
               <!-- Consent -->
@@ -267,8 +266,8 @@ watch(() => props.open, (v) => { if (v) { touched.value = false; form.value = { 
                   </svg>
                 </span>
                 <span class="cal-consent__text">
-                  Consiento que Bakano me contacte para ofrecerme sus servicios y acepto sus
-                  <RouterLink to="/politicas-privacidad" target="_blank" class="cal-link">términos y condiciones</RouterLink>.
+                  Consiento que Hellen Bermeo me contacte para ofrecerme sus servicios y enviarme información sobre sus planes y beneficios. Además acepto sus
+                  <RouterLink to="/politicas-privacidad" target="_blank" class="cal-link">políticas y condiciones de uso</RouterLink>.
                 </span>
               </label>
 
@@ -323,13 +322,13 @@ $text-body: rgba(255, 255, 255, 0.7);
   width: 100%;
   max-width: 500px;
   background: $dark;
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.2);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
   border-radius: 24px;
   padding: 48px 36px 40px;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.03) inset,
     0 40px 100px rgba(0,0,0,0.8),
-    0 0 80px rgba(colors.$BAKANO-PURPLE, 0.08);
+    0 0 80px rgba(colors.$BRAND-SECONDARY, 0.08);
   max-height: 92vh;
   overflow-y: auto;
 
@@ -356,8 +355,8 @@ $text-body: rgba(255, 255, 255, 0.7);
   transition: border-color 0.2s, color 0.2s;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PURPLE, 0.4);
-    color: colors.$BAKANO-PURPLE;
+    border-color: rgba(colors.$BRAND-SECONDARY, 0.4);
+    color: colors.$BRAND-SECONDARY;
   }
 }
 
@@ -368,7 +367,7 @@ $text-body: rgba(255, 255, 255, 0.7);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: colors.$BAKANO-PURPLE;
+  color: colors.$BRAND-SECONDARY;
   margin: 0 0 10px;
 }
 
@@ -383,7 +382,7 @@ $text-body: rgba(255, 255, 255, 0.7);
 }
 
 .cal-accent {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -427,9 +426,9 @@ $text-body: rgba(255, 255, 255, 0.7);
   font-family: fonts.$font-accent;
   font-size: 0.65rem;
   font-weight: 700;
-  color: colors.$BAKANO-PURPLE;
-  background: rgba(colors.$BAKANO-PURPLE, 0.12);
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.2);
+  color: colors.$BRAND-SECONDARY;
+  background: rgba(colors.$BRAND-SECONDARY, 0.12);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.2);
   border-radius: 4px;
   padding: 1px 6px;
   letter-spacing: 1px;
@@ -454,16 +453,16 @@ $text-body: rgba(255, 255, 255, 0.7);
   transition: border-color 0.18s, background 0.18s;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PURPLE, 0.3);
-    background: rgba(colors.$BAKANO-PURPLE, 0.04);
+    border-color: rgba(colors.$BRAND-SECONDARY, 0.3);
+    background: rgba(colors.$BRAND-SECONDARY, 0.04);
   }
 
   &.selected {
-    border-color: rgba(colors.$BAKANO-PURPLE, 0.5);
-    background: rgba(colors.$BAKANO-PURPLE, 0.08);
+    border-color: rgba(colors.$BRAND-SECONDARY, 0.5);
+    background: rgba(colors.$BRAND-SECONDARY, 0.08);
 
     .cal-option__radio {
-      border-color: colors.$BAKANO-PURPLE;
+      border-color: colors.$BRAND-SECONDARY;
 
       &::after {
         opacity: 1;
@@ -487,7 +486,7 @@ $text-body: rgba(255, 255, 255, 0.7);
     position: absolute;
     inset: 3px;
     border-radius: 50%;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     opacity: 0;
     transform: scale(0.4);
     transition: opacity 0.18s, transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -538,7 +537,7 @@ $text-body: rgba(255, 255, 255, 0.7);
   color: colors.$white;
 
   &.checked {
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     border-color: transparent;
   }
 }
@@ -551,12 +550,12 @@ $text-body: rgba(255, 255, 255, 0.7);
 }
 
 .cal-link {
-  color: rgba(colors.$BAKANO-PURPLE, 0.8);
+  color: rgba(colors.$BRAND-SECONDARY, 0.8);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color 0.2s;
 
-  &:hover { color: colors.$BAKANO-PURPLE; }
+  &:hover { color: colors.$BRAND-SECONDARY; }
 }
 
 // ── Button ────────────────────────────────────────────────────────────────────
@@ -573,17 +572,17 @@ $text-body: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: colors.$white;
-  background: linear-gradient(135deg, colors.$BAKANO-PURPLE, colors.$BAKANO-PINK);
+  background: linear-gradient(135deg, colors.$BRAND-SECONDARY, colors.$BRAND-PRIMARY);
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 8px 28px rgba(colors.$BAKANO-PURPLE, 0.4);
+  box-shadow: 0 8px 28px rgba(colors.$BRAND-SECONDARY, 0.4);
   transition: transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s;
   text-decoration: none;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(colors.$BAKANO-PURPLE, 0.55);
+    box-shadow: 0 14px 40px rgba(colors.$BRAND-SECONDARY, 0.55);
   }
 
   &:active:not(:disabled) { transform: translateY(0); }
@@ -635,8 +634,8 @@ $text-body: rgba(255, 255, 255, 0.7);
   }
 
   &:focus {
-    border-color: rgba(colors.$BAKANO-PURPLE, 0.45);
-    background: rgba(colors.$BAKANO-PURPLE, 0.04);
+    border-color: rgba(colors.$BRAND-SECONDARY, 0.45);
+    background: rgba(colors.$BRAND-SECONDARY, 0.04);
   }
 
   &.error {
@@ -660,7 +659,7 @@ $text-body: rgba(255, 255, 255, 0.7);
 }
 
 .cal-word-ok {
-  color: colors.$BAKANO-GREEN;
+  color: colors.$BRAND-ACCENT;
   font-size: 0.75rem;
 }
 

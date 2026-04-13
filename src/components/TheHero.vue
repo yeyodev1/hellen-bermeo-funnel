@@ -168,7 +168,7 @@ const { open: openContactModal } = useContactModal()
           <!-- Logo Textual Sutil (Se oculta al hacer zoom) -->
           <div class="cube-logo">
             <svg viewBox="0 0 300 100" class="cube-logo__svg">
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-size="48" font-weight="900" letter-spacing="4">BAKANO</text>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#ffffff" font-size="32" font-weight="900" letter-spacing="2">HELLEN<tspan x="50%" dy="1.2em">BERMEO</tspan></text>
             </svg>
           </div>
         </div>
@@ -345,7 +345,7 @@ const { open: openContactModal } = useContactModal()
 }
 
 .cube-back {
-  background-color: colors.$BAKANO-PRIMARY; // Color estático post-transición
+  background-color: colors.$BRAND-PRIMARY; // Color estático post-transición
   transform: rotateY(180deg);
 }
 
@@ -413,7 +413,7 @@ const { open: openContactModal } = useContactModal()
   .bg-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(colors.$BAKANO-DARK, 0.75); // Dark overlay para contraste de texto
+    background: rgba(colors.$BRAND-DARK, 0.75); // Dark overlay para contraste de texto
     mix-blend-mode: multiply; // Enriquece los colores del fondo
   }
 }
@@ -454,7 +454,7 @@ const { open: openContactModal } = useContactModal()
     color: colors.$white; // Contraste absoluto
 
     strong {
-      color: colors.$BAKANO-PRIMARY; // Un toque de color de marca en el keyword principal
+      color: colors.$BRAND-PRIMARY; // Un toque de color de marca en el keyword principal
     }
   }
 
@@ -474,7 +474,7 @@ const { open: openContactModal } = useContactModal()
 
 .btn--primary {
   @include fonts.body-font(700);
-  background: colors.$BAKANO-PRIMARY;
+  background: colors.$BRAND-PRIMARY;
   color: colors.$white;
   padding: 1.5rem 3rem;
   border: none;
@@ -486,8 +486,8 @@ const { open: openContactModal } = useContactModal()
 
   &:hover {
     transform: translateY(-4px);
-    background: colors.$BAKANO-PURPLE;
-    box-shadow: 0 20px 40px rgba(colors.$BAKANO-PRIMARY, 0.4);
+    background: colors.$BRAND-SECONDARY;
+    box-shadow: 0 20px 40px rgba(colors.$BRAND-PRIMARY, 0.4);
   }
 }
 
@@ -628,10 +628,10 @@ const { open: openContactModal } = useContactModal()
 
 .scroll-hint__fill {
   height: 100%;
-  background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   border-radius: 1px;
   transition: width 0.1s linear;
-  box-shadow: 0 0 8px rgba(colors.$BAKANO-PINK, 0.6);
+  box-shadow: 0 0 8px rgba(colors.$BRAND-PRIMARY, 0.6);
 }
 
 @keyframes arrow-pulse {

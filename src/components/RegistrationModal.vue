@@ -33,6 +33,7 @@ const allCountries: Country[] = getCountries()
     name: nameMap[code] ?? code,
     dial: '+' + getCountryCallingCode(code),
     flag: flagEmoji(code),
+    tags: ['funnel-hellenbermeo'],
   }))
 
 const priorityList = PRIORITY
@@ -157,7 +158,7 @@ const handleSubmit = async () => {
     ...getStoredFbParams(),
   }
 
-  console.info('[Bakano Registro]', payload)
+  console.info('[Hellen Bermeo Registro]', payload)
 
   await fetch('https://services.leadconnectorhq.com/hooks/pEFChujwCCaMWBNbZYD1/webhook-trigger/acf01034-9790-4a8f-a765-dfe9ae157e2d', {
     method: 'POST',
@@ -433,7 +434,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.03) inset,
     0 40px 100px rgba(0,0,0,0.7),
-    0 0 80px rgba(colors.$BAKANO-PINK, 0.05);
+    0 0 80px rgba(colors.$BRAND-PRIMARY, 0.05);
   max-height: 92vh;
   overflow-y: auto;
 
@@ -461,9 +462,9 @@ $text-body: rgba(255, 255, 255, 0.72);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PINK, 0.4);
-    color: colors.$BAKANO-PINK;
-    background: rgba(colors.$BAKANO-PINK, 0.06);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.4);
+    color: colors.$BRAND-PRIMARY;
+    background: rgba(colors.$BRAND-PRIMARY, 0.06);
   }
 }
 
@@ -474,7 +475,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   margin: 0 0 12px;
 }
 
@@ -489,7 +490,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 .rmodal__title-accent {
-  background: linear-gradient(110deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(110deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -548,9 +549,9 @@ $text-body: rgba(255, 255, 255, 0.72);
     &::placeholder { color: rgba(255,255,255,0.22); }
 
     &:focus {
-      border-color: rgba(colors.$BAKANO-PINK, 0.5);
-      background: rgba(colors.$BAKANO-PINK, 0.04);
-      box-shadow: 0 0 0 3px rgba(colors.$BAKANO-PINK, 0.08);
+      border-color: rgba(colors.$BRAND-PRIMARY, 0.5);
+      background: rgba(colors.$BRAND-PRIMARY, 0.04);
+      box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.08);
     }
   }
 
@@ -578,8 +579,8 @@ $text-body: rgba(255, 255, 255, 0.72);
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus-within {
-    border-color: rgba(colors.$BAKANO-PINK, 0.5);
-    box-shadow: 0 0 0 3px rgba(colors.$BAKANO-PINK, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.5);
+    box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.08);
   }
 
   .has-error & {
@@ -688,11 +689,11 @@ $text-body: rgba(255, 255, 255, 0.72);
   transition: background 0.15s;
 
   &:hover:not(.separator) {
-    background: rgba(colors.$BAKANO-PINK, 0.08);
+    background: rgba(colors.$BRAND-PRIMARY, 0.08);
   }
 
   &.active {
-    background: rgba(colors.$BAKANO-PINK, 0.12);
+    background: rgba(colors.$BRAND-PRIMARY, 0.12);
   }
 
   &.separator {
@@ -756,8 +757,8 @@ $text-body: rgba(255, 255, 255, 0.72);
   flex-shrink: 0;
 
   &.valid {
-    background: rgba(colors.$BAKANO-GREEN, 0.15);
-    color: colors.$BAKANO-GREEN;
+    background: rgba(colors.$BRAND-ACCENT, 0.15);
+    color: colors.$BRAND-ACCENT;
   }
 
   &.invalid {
@@ -769,7 +770,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 .rmodal__phone-preview {
   font-family: fonts.$font-interface;
   font-size: 0.68rem;
-  color: rgba(colors.$BAKANO-GREEN, 0.8);
+  color: rgba(colors.$BRAND-ACCENT, 0.8);
   padding: 2px 0;
 }
 
@@ -788,16 +789,16 @@ $text-body: rgba(255, 255, 255, 0.72);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: colors.$white;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 8px 28px rgba(colors.$BAKANO-PINK, 0.35);
+  box-shadow: 0 8px 28px rgba(colors.$BRAND-PRIMARY, 0.35);
   transition: transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 14px 40px rgba(colors.$BAKANO-PINK, 0.5);
+    box-shadow: 0 14px 40px rgba(colors.$BRAND-PRIMARY, 0.5);
   }
 
   &:active:not(:disabled) {
@@ -847,12 +848,12 @@ $text-body: rgba(255, 255, 255, 0.72);
   gap: 6px;
   padding: 6px 14px;
   border-radius: 50px;
-  background: rgba(colors.$BAKANO-GREEN, 0.12);
-  border: 1px solid rgba(colors.$BAKANO-GREEN, 0.25);
+  background: rgba(colors.$BRAND-ACCENT, 0.12);
+  border: 1px solid rgba(colors.$BRAND-ACCENT, 0.25);
   font-family: fonts.$font-interface;
   font-size: 0.72rem;
   font-weight: 600;
-  color: colors.$BAKANO-GREEN;
+  color: colors.$BRAND-ACCENT;
   letter-spacing: 0.5px;
 }
 
@@ -910,8 +911,8 @@ $text-body: rgba(255, 255, 255, 0.72);
   transition: border-color 0.2s, background 0.2s;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PINK, 0.2);
-    background: rgba(colors.$BAKANO-PINK, 0.03);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.2);
+    background: rgba(colors.$BRAND-PRIMARY, 0.03);
   }
 }
 
@@ -921,7 +922,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   border-radius: 50%;
   object-fit: cover;
   object-position: top;
-  border: 2px solid rgba(colors.$BAKANO-PINK, 0.3);
+  border: 2px solid rgba(colors.$BRAND-PRIMARY, 0.3);
   flex-shrink: 0;
 }
 
@@ -951,8 +952,8 @@ $text-body: rgba(255, 255, 255, 0.72);
 }
 
 @keyframes cta-glow {
-  0%, 100% { box-shadow: 0 8px 28px rgba(colors.$BAKANO-PINK, 0.35); }
-  50% { box-shadow: 0 8px 44px rgba(colors.$BAKANO-PINK, 0.6); }
+  0%, 100% { box-shadow: 0 8px 28px rgba(colors.$BRAND-PRIMARY, 0.35); }
+  50% { box-shadow: 0 8px 44px rgba(colors.$BRAND-PRIMARY, 0.6); }
 }
 
 // ── Transiciones ──────────────────────────────────────────────────────────────

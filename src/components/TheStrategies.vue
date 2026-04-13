@@ -200,8 +200,8 @@ onUnmounted(() => {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at 30% 30%, rgba(colors.$BAKANO-PINK, 0.05) 0%, transparent 30%),
-      radial-gradient(circle at 70% 70%, rgba(colors.$BAKANO-PURPLE, 0.05) 0%, transparent 30%);
+    background: radial-gradient(circle at 30% 30%, rgba(colors.$BRAND-PRIMARY, 0.05) 0%, transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(colors.$BRAND-SECONDARY, 0.05) 0%, transparent 30%);
     pointer-events: none;
     z-index: 0;
   }
@@ -224,7 +224,7 @@ onUnmounted(() => {
 
   &__subtitle {
     @include fonts.body-font(600);
-    color: colors.$BAKANO-PINK;
+    color: colors.$BRAND-PRIMARY;
     font-size: 1rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -243,7 +243,7 @@ onUnmounted(() => {
       color: transparent;
       -webkit-text-stroke: 2px rgba(colors.$white, 0.9);
       // Otra opción: usar un gradiente de texto
-      // background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+      // background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
       // -webkit-background-clip: text;
       // -webkit-text-fill-color: transparent;
     }
@@ -270,7 +270,7 @@ onUnmounted(() => {
   .btn-header-contact {
     @include fonts.body-font(700);
     background: transparent;
-    border: 2px solid colors.$BAKANO-PINK;
+    border: 2px solid colors.$BRAND-PRIMARY;
     color: colors.$white;
     padding: 1rem 2.5rem;
     font-size: 1.1rem;
@@ -284,11 +284,11 @@ onUnmounted(() => {
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(colors.$BAKANO-PINK, 0.2);
+    box-shadow: 0 10px 30px rgba(colors.$BRAND-PRIMARY, 0.2);
 
     i {
       font-size: 1.2rem;
-      color: colors.$BAKANO-PINK;
+      color: colors.$BRAND-PRIMARY;
       transition: all 0.4s ease;
     }
 
@@ -299,7 +299,7 @@ onUnmounted(() => {
       left: 0;
       width: 100%;
       height: 100%;
-      background: colors.$BAKANO-PINK;
+      background: colors.$BRAND-PRIMARY;
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 0.4s ease;
@@ -313,7 +313,7 @@ onUnmounted(() => {
     }
 
     &:hover {
-      box-shadow: 0 15px 40px rgba(colors.$BAKANO-PINK, 0.4);
+      box-shadow: 0 15px 40px rgba(colors.$BRAND-PRIMARY, 0.4);
       transform: translateY(-5px);
 
       &::before {
@@ -354,11 +354,11 @@ onUnmounted(() => {
 
     &:hover {
       background: rgba(colors.$white, 0.05);
-      border-color: colors.$BAKANO-PRIMARY;
+      border-color: colors.$BRAND-PRIMARY;
       transform: translateY(-10px);
 
       .step-card__number {
-        color: colors.$BAKANO-PRIMARY;
+        color: colors.$BRAND-PRIMARY;
       }
     }
 
@@ -405,7 +405,7 @@ onUnmounted(() => {
         gap: 1rem;
 
         i {
-          color: colors.$BAKANO-PINK;
+          color: colors.$BRAND-PRIMARY;
           margin-top: 4px;
           font-size: 0.9rem;
         }
@@ -427,13 +427,13 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(135deg, rgba(colors.$BAKANO-DARK, 0.9) 0%, rgba(#111, 0.9) 100%);
-    border: 1px solid rgba(colors.$BAKANO-PINK, 0.3);
+    background: linear-gradient(135deg, rgba(colors.$BRAND-DARK, 0.9) 0%, rgba(#111, 0.9) 100%);
+    border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.3);
     border-radius: 20px;
     padding: 3rem 4rem;
     width: 100%;
     max-width: 1000px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(colors.$BAKANO-PINK, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(colors.$BRAND-PRIMARY, 0.1);
     position: relative;
     overflow: hidden;
 
@@ -444,7 +444,7 @@ onUnmounted(() => {
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle at 50% 10%, rgba(colors.$BAKANO-PINK, 0.15) 0%, transparent 60%);
+      background: radial-gradient(circle at 50% 10%, rgba(colors.$BRAND-PRIMARY, 0.15) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -483,7 +483,7 @@ onUnmounted(() => {
 
   .btn-primary-massive {
     @include fonts.body-font(700);
-    background: colors.$BAKANO-PRIMARY;
+    background: colors.$BRAND-PRIMARY;
     color: colors.$white;
     border: none;
     padding: 1.5rem 3rem;
@@ -504,9 +504,9 @@ onUnmounted(() => {
     }
 
     &:hover {
-      background: colors.$BAKANO-PINK;
+      background: colors.$BRAND-PRIMARY;
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(colors.$BAKANO-PRIMARY, 0.4);
+      box-shadow: 0 15px 30px rgba(colors.$BRAND-PRIMARY, 0.4);
 
       i {
         transform: translateX(8px);

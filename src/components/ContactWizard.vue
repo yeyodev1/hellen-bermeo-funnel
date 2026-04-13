@@ -96,7 +96,7 @@ function buildNotes(): string {
     `Objetivo principal: ${s2.value.objective}`,
     `Urgencia: ${URGENCY_LABEL[s2.value.urgency] ?? s2.value.urgency}`,
     s2.value.message.trim() ? `Mensaje del lead: ${s2.value.message.trim()}` : null,
-    `Fuente: Formulario web bakano.ec`,
+    `Fuente: Formulario web hellenbermeo.ec`,
   ].filter(Boolean).join('\n')
 }
 
@@ -136,7 +136,7 @@ async function submitS1() {
         email: s1.value.email.trim(),
         phone,
         companyName: s1.value.company.trim(),
-        source: 'bakano-web',
+        source: 'hellenbermeo-web',
         tags: ['web-lead'],
         event_id: regEventId,
         ...getStoredFbParams(),
@@ -145,7 +145,7 @@ async function submitS1() {
     // Meta Pixel — CompleteRegistration: señal de volumen para el algoritmo
     // Se dispara para TODO contacto que completa Step 1, sin importar calificación
     ;(window as any).fbq?.('track', 'CompleteRegistration',
-      { content_name: 'contacto-web-bakano' },
+      { content_name: 'contacto-web-hellenbermeo' },
       { eventID: regEventId },
     )
     dir.value = 'fwd'
@@ -176,7 +176,7 @@ async function submitS2() {
           email: s1.value.email.trim(),
           phone,
           companyName: s1.value.company.trim(),
-          source: 'bakano-web',
+          source: 'hellenbermeo-web',
           // Datos de cualificación (Step 2) — keys = texto exacto de la pregunta en GHL
           '1. ¿Cuál es el rango de facturación mensual actual de tu negocio?': s2.value.revenue,
           '2. ¿Dónde se encuentra ubicado tu establecimiento o base de operaciones principal?': s2.value.location,
@@ -530,15 +530,15 @@ const urgencyOpts = [
   transition: all 0.4s ease;
 
   &.is-active {
-    border-color: colors.$BAKANO-PINK;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    border-color: colors.$BRAND-PRIMARY;
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     color: colors.$white;
-    box-shadow: 0 0 16px rgba(colors.$BAKANO-PINK, 0.35);
+    box-shadow: 0 0 16px rgba(colors.$BRAND-PRIMARY, 0.35);
   }
 
   &.is-done {
-    border-color: colors.$BAKANO-PINK;
-    background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    border-color: colors.$BRAND-PRIMARY;
+    background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     color: colors.$white;
   }
 }
@@ -552,7 +552,7 @@ const urgencyOpts = [
   min-width: 32px;
 
   &.is-active {
-    background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   }
 }
 
@@ -615,9 +615,9 @@ const urgencyOpts = [
   }
 
   &:focus {
-    border-color: rgba(colors.$BAKANO-PINK, 0.55);
-    background: rgba(colors.$BAKANO-PINK, 0.04);
-    box-shadow: 0 0 0 3px rgba(colors.$BAKANO-PINK, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.55);
+    background: rgba(colors.$BRAND-PRIMARY, 0.04);
+    box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.08);
   }
 }
 
@@ -632,8 +632,8 @@ const urgencyOpts = [
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 
   &:focus-within {
-    border-color: rgba(colors.$BAKANO-PINK, 0.55);
-    box-shadow: 0 0 0 3px rgba(colors.$BAKANO-PINK, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.55);
+    box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.08);
   }
 }
 
@@ -686,7 +686,7 @@ const urgencyOpts = [
   @include fonts.accent-font(700);
   font-size: 0.65rem;
   letter-spacing: 3px;
-  color: colors.$BAKANO-PINK;
+  color: colors.$BRAND-PRIMARY;
   margin: 0;
   text-transform: uppercase;
 }
@@ -720,14 +720,14 @@ const urgencyOpts = [
   }
 
   &--sel {
-    border-color: rgba(colors.$BAKANO-PINK, 0.45);
-    background: rgba(colors.$BAKANO-PINK, 0.07);
-    box-shadow: 0 0 0 1px rgba(colors.$BAKANO-PINK, 0.12);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.45);
+    background: rgba(colors.$BRAND-PRIMARY, 0.07);
+    box-shadow: 0 0 0 1px rgba(colors.$BRAND-PRIMARY, 0.12);
 
     .wf-opt__radio {
-      border-color: colors.$BAKANO-PINK;
-      background: colors.$BAKANO-PINK;
-      box-shadow: 0 0 8px rgba(colors.$BAKANO-PINK, 0.45);
+      border-color: colors.$BRAND-PRIMARY;
+      background: colors.$BRAND-PRIMARY;
+      box-shadow: 0 0 8px rgba(colors.$BRAND-PRIMARY, 0.45);
 
       &::after {
         opacity: 1;
@@ -808,9 +808,9 @@ const urgencyOpts = [
   }
 
   &:focus {
-    border-color: rgba(colors.$BAKANO-PINK, 0.55);
-    background: rgba(colors.$BAKANO-PINK, 0.04);
-    box-shadow: 0 0 0 3px rgba(colors.$BAKANO-PINK, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.55);
+    background: rgba(colors.$BRAND-PRIMARY, 0.04);
+    box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.08);
   }
 }
 
@@ -854,7 +854,7 @@ const urgencyOpts = [
   cursor: pointer;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   color: colors.$white;
   transition: opacity 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
   flex: 1;
@@ -862,7 +862,7 @@ const urgencyOpts = [
   &:hover:not(:disabled) {
     opacity: 0.92;
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(colors.$BAKANO-PINK, 0.35);
+    box-shadow: 0 12px 28px rgba(colors.$BRAND-PRIMARY, 0.35);
   }
 
   &:disabled {
@@ -927,12 +927,12 @@ const urgencyOpts = [
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: linear-gradient(135deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
   display: flex;
   align-items: center;
   justify-content: center;
   color: colors.$white;
-  box-shadow: 0 0 40px rgba(colors.$BAKANO-PINK, 0.4);
+  box-shadow: 0 0 40px rgba(colors.$BRAND-PRIMARY, 0.4);
   animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 

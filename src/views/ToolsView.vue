@@ -10,13 +10,13 @@ const tools = [
   {
     id: 'metrics',
     num: '01',
-    name: 'Bakano Metrics',
+    name: 'Hellen Bermeo Metrics',
     tagline: 'Inteligencia de datos en tiempo real',
     description:
       'Visualiza el rendimiento de tus campañas, ventas y audiencias desde un solo lugar. Dashboards interactivos construidos sobre tus datos reales.',
     tags: ['Analytics', 'Dashboards', 'Tiempo real'],
-    url: 'https://metrics.bakano.ec',
-    urlLabel: 'metrics.bakano.ec',
+    url: 'https://hellenbermeo.ec',
+    urlLabel: 'hellenbermeo.ec',
     gradient: 'linear-gradient(135deg, #e6285c 0%, #85529c 100%)',
     glowColor: 'rgba(230, 40, 92, 0.18)',
     icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -78,7 +78,7 @@ const openTool = (url: string) => {
       <div class="tools-hero__inner">
         <p class="tools-hero__eyebrow">
           <span class="tools-hero__eyebrow-dot" aria-hidden="true" />
-          Ecosistema Bakano
+          Ecosistema Hellen Bermeo
         </p>
 
         <h1 class="tools-hero__title" ref="titleRef">
@@ -217,8 +217,8 @@ $dark2: #11091f;
     right: -160px;
     background: radial-gradient(
       circle,
-      rgba(colors.$BAKANO-PINK, 0.12) 0%,
-      rgba(colors.$BAKANO-PURPLE, 0.06) 50%,
+      rgba(colors.$BRAND-PRIMARY, 0.12) 0%,
+      rgba(colors.$BRAND-SECONDARY, 0.06) 50%,
       transparent 70%
     );
 
@@ -232,7 +232,7 @@ $dark2: #11091f;
       right: auto;
       background: radial-gradient(
         circle,
-        rgba(colors.$BAKANO-PURPLE, 0.1) 0%,
+        rgba(colors.$BRAND-SECONDARY, 0.1) 0%,
         transparent 65%
       );
     }
@@ -253,7 +253,7 @@ $dark2: #11091f;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: rgba(colors.$BAKANO-PINK, 0.8);
+    color: rgba(colors.$BRAND-PRIMARY, 0.8);
     margin: 0 0 28px;
   }
 
@@ -262,7 +262,7 @@ $dark2: #11091f;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: colors.$BAKANO-PINK;
+    background: colors.$BRAND-PRIMARY;
     animation: pulse-dot 2s ease-in-out infinite;
   }
 
@@ -273,7 +273,7 @@ $dark2: #11091f;
     letter-spacing: -0.04em;
     line-height: 1;
     margin: 0 0 32px;
-    background: linear-gradient(90deg, colors.$white 0%, colors.$BAKANO-PINK 60%, colors.$BAKANO-PURPLE 100%);
+    background: linear-gradient(90deg, colors.$white 0%, colors.$BRAND-PRIMARY 60%, colors.$BRAND-SECONDARY 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -282,7 +282,7 @@ $dark2: #11091f;
   &__line {
     width: 60px;
     height: 2px;
-    background: linear-gradient(90deg, colors.$BAKANO-PINK, colors.$BAKANO-PURPLE);
+    background: linear-gradient(90deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
     margin: 0 auto 28px;
     border-radius: 2px;
   }
@@ -320,7 +320,7 @@ $dark2: #11091f;
     }
 
     svg {
-      color: rgba(colors.$BAKANO-PINK, 0.5);
+      color: rgba(colors.$BRAND-PRIMARY, 0.5);
       animation: bounce-down 2s ease-in-out infinite;
     }
   }
@@ -366,11 +366,11 @@ $dark2: #11091f;
     box-shadow 0.35s ease;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PINK, 0.3);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.3);
     transform: translateY(-6px);
     box-shadow:
       0 20px 60px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(colors.$BAKANO-PINK, 0.08) inset;
+      0 0 0 1px rgba(colors.$BRAND-PRIMARY, 0.08) inset;
 
     .tool-card__glow {
       opacity: 1;
@@ -409,7 +409,7 @@ $dark2: #11091f;
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: rgba(colors.$BAKANO-PINK, 0.5);
+    color: rgba(colors.$BRAND-PRIMARY, 0.5);
   }
 
   &__icon {
@@ -432,7 +432,7 @@ $dark2: #11091f;
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: rgba(colors.$BAKANO-PINK, 0.7);
+    color: rgba(colors.$BRAND-PRIMARY, 0.7);
     margin: 0;
   }
 
@@ -501,7 +501,7 @@ $dark2: #11091f;
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: colors.$BAKANO-PINK;
+    color: colors.$BRAND-PRIMARY;
 
     svg {
       transition: transform 0.25s ease;

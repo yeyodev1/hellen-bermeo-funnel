@@ -70,7 +70,7 @@ const props = defineProps({
     align-items: center;
     gap: 0.75rem;
 
-    i { color: colors.$BAKANO-PINK; }
+    i { color: colors.$BRAND-PRIMARY; }
 
     @media (min-width: 768px) {
       font-size: 1.25rem;
@@ -97,21 +97,21 @@ const props = defineProps({
   align-items: flex-start;
   gap: 1rem;
   padding: 1.25rem;
-  background: rgba(colors.$BAKANO-PURPLE, 0.04);
-  border: 1px solid rgba(colors.$BAKANO-PURPLE, 0.15);
+  background: rgba(colors.$BRAND-SECONDARY, 0.04);
+  border: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
   border-radius: 20px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
   &:hover {
-    background: rgba(colors.$BAKANO-PURPLE, 0.08);
-    border-color: rgba(colors.$BAKANO-PINK, 0.4);
+    background: rgba(colors.$BRAND-SECONDARY, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.4);
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 
     .steps-item__icon-wrap {
-      background: rgba(colors.$BAKANO-PINK, 0.2);
+      background: rgba(colors.$BRAND-PRIMARY, 0.2);
       transform: scale(1.1);
     }
   }
@@ -126,7 +126,7 @@ const props = defineProps({
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: colors.$BAKANO-PINK;
+    background: colors.$BRAND-PRIMARY;
     color: colors.$white;
     display: flex;
     align-items: center;
@@ -146,17 +146,17 @@ const props = defineProps({
     width: 38px;
     height: 38px;
     border-radius: 12px;
-    background: rgba(colors.$BAKANO-PINK, 0.1);
+    background: rgba(colors.$BRAND-PRIMARY, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(colors.$BAKANO-PINK, 0.2);
+    border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.2);
     transition: all 0.3s ease;
 
     i {
       font-size: 1rem;
-      color: colors.$BAKANO-PINK;
-      filter: drop-shadow(0 0 8px rgba(colors.$BAKANO-PINK, 0.4));
+      color: colors.$BRAND-PRIMARY;
+      filter: drop-shadow(0 0 8px rgba(colors.$BRAND-PRIMARY, 0.4));
     }
 
     @media (min-width: 768px) {

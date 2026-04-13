@@ -3,12 +3,12 @@
  * BookedHeader.vue
  * Dedicated top bar for the confirmation page.
  */
-const LOGO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/bakano/logos/bakano-light.png';
+const LOGO = 'https://assets.cdn.filesafe.space/fy1F7zMSleMO2xTmoE30/media/69b57a89cab7f76d86d38f87.png';
 </script>
 
 <template>
   <header class="booked-header">
-    <img :src="LOGO" alt="Bakano" class="booked-header__logo" />
+    <img :src="LOGO" alt="Hellen Bermeo" class="booked-header__logo" />
   </header>
 </template>
 
@@ -23,7 +23,7 @@ const LOGO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/baka
   background: rgba(#0a0712, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(colors.$BAKANO-PURPLE, 0.15);
+  border-bottom: 1px solid rgba(colors.$BRAND-SECONDARY, 0.15);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -31,7 +31,7 @@ const LOGO = 'https://res.cloudinary.com/dpuody0df/image/upload/v1775587085/baka
   &__logo {
     height: 26px;
     width: auto;
-    filter: drop-shadow(0 0 12px rgba(colors.$BAKANO-PINK, 0.2));
+    filter: drop-shadow(0 0 12px rgba(colors.$BRAND-PRIMARY, 0.2));
     transition: transform 0.3s ease;
 
     &:hover {

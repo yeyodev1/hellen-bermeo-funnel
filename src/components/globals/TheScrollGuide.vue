@@ -164,11 +164,11 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     transform     0.3s ease;
 
   &.is-active {
-    background: colors.$BAKANO-PINK;
-    border-color: colors.$BAKANO-PINK;
+    background: colors.$BRAND-PRIMARY;
+    border-color: colors.$BRAND-PRIMARY;
     box-shadow:
-      0 0 8px  rgba(colors.$BAKANO-PINK, 0.55),
-      0 0 22px rgba(colors.$BAKANO-PINK, 0.22);
+      0 0 8px  rgba(colors.$BRAND-PRIMARY, 0.55),
+      0 0 22px rgba(colors.$BRAND-PRIMARY, 0.22);
     transform: scale(1.4);
   }
 
@@ -226,9 +226,9 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
     background   0.3s ease;
 
   &:hover {
-    border-color: rgba(colors.$BAKANO-PINK, 0.5);
-    color: colors.$BAKANO-PINK;
-    background: rgba(colors.$BAKANO-PINK, 0.08);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.5);
+    color: colors.$BRAND-PRIMARY;
+    background: rgba(colors.$BRAND-PRIMARY, 0.08);
     animation-play-state: paused;
   }
 

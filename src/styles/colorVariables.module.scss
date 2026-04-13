@@ -1,17 +1,14 @@
-// Colores principales de Bakano
-$BAKANO-PINK: #e6285c;
-$BAKANO-DARK: #191423;
-$BAKANO-LIGHT: #f5f3ef;
-$BAKANO-PURPLE: #85529c;
-$BAKANO-GREEN: #3bb77e;
-
-// Color primario principal (usando el rosa como principal)
-$BAKANO-PRIMARY: $BAKANO-PINK;
+// Colores principales (Formal / Contable)
+$BRAND-PRIMARY: #1e3a8a; // Navy Blue (Formal)
+$BRAND-DARK: #0f172a; // Slate Dark
+$BRAND-LIGHT: #f8fafc;
+$BRAND-SECONDARY: #ca8a04; // Gold / Yellow Accent
+$BRAND-ACCENT: #0ea5e9; // Light Blue
 
 // Colores base
 $white: #ffffff;
-$text-light: #f5f5f5;
-$overlay-purple: rgba($BAKANO-PURPLE, 0.1);
+$text-light: #f1f5f9;
+$overlay-purple: rgba($BRAND-PRIMARY, 0.1);
 
 // Colores adicionales para UI
 $gray-100: #f8f9fa;

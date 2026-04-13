@@ -71,7 +71,7 @@ const props = defineProps({
     align-items: center;
     gap: 0.75rem;
 
-    i { color: colors.$BAKANO-PINK; }
+    i { color: colors.$BRAND-PRIMARY; }
 
     @media (min-width: 768px) {
       font-size: 1.35rem;
@@ -107,14 +107,14 @@ const props = defineProps({
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(colors.$BAKANO-PINK, 0.1), transparent 70%);
+    background: radial-gradient(circle at top right, rgba(colors.$BRAND-PRIMARY, 0.1), transparent 70%);
     opacity: 0;
     transition: opacity 0.5s ease;
   }
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(colors.$BAKANO-PINK, 0.3);
+    border-color: rgba(colors.$BRAND-PRIMARY, 0.3);
     transform: translateY(-8px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 
@@ -122,12 +122,12 @@ const props = defineProps({
 
     .team-card__image-wrap {
       transform: scale(1.08) rotate(-3deg);
-      border-color: colors.$BAKANO-PINK;
+      border-color: colors.$BRAND-PRIMARY;
     }
 
     .team-card__verified-badge {
       transform: scale(1.2) rotate(15deg);
-      background: colors.$BAKANO-PINK;
+      background: colors.$BRAND-PRIMARY;
       color: colors.$white;
     }
   }
@@ -171,7 +171,7 @@ const props = defineProps({
     right: 2px;
     width: 22px;
     height: 22px;
-    background: rgba(colors.$BAKANO-PURPLE, 0.9);
+    background: rgba(colors.$BRAND-SECONDARY, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;

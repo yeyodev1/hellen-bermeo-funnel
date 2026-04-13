@@ -32,14 +32,14 @@ const router = createRouter({
       name: 'funnel',
       component: FunnelView,
       meta: {
-        title: 'Bakano | Aumenta tu facturación entre 10% y 20% — Asesoría Gratuita',
+        title: 'Hellen Bermeo | Asesoría Contable Especializada',
         description:
-          'Ayudamos a dueños de negocios establecidos a aumentar su facturación entre un 10% y 20% de forma predecible con la metodología Data Growth Business. Agenda tu asesoría gratuita.',
-        canonical: 'https://mkt.bakano.ec/registro-vsl-tr',
-        ogTitle: 'Bakano | Aumenta tu facturación entre 10% y 20%',
+          'Tu tranquilidad financiera, en manos expertas. Gestión contable estratégica respaldada por especialistas en crecimiento empresarial.',
+        canonical: 'https://mkt.hellenbermeo.ec/registro-vsl-tr',
+        ogTitle: 'Hellen Bermeo | Asesoría Contable Especializada',
         ogDescription:
-          'Metodología Data Growth Business: profesionaliza tu marketing y ventas sin depender de la suerte ni de agencias de viralidad. Asesoría gratuita — cupos limitados.',
-        ogUrl: 'https://mkt.bakano.ec/registro-vsl-tr',
+          'Tu tranquilidad financiera en manos expertas. Únete a Hellen Bermeo.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/registro-vsl-tr',
       } satisfies RouteMeta,
     },
     {
@@ -47,12 +47,12 @@ const router = createRouter({
       name: 'video',
       component: VideoView,
       meta: {
-        title: 'Mira el video | Bakano — Paso 1 de 2',
-        description: 'Ve el video completo y descubre cómo la metodología Data Growth Business puede aumentar la facturación de tu negocio entre un 10% y 20%.',
-        canonical: 'https://bakano.ec/ver-video',
-        ogTitle: 'Mira el video | Bakano',
-        ogDescription: 'Ve el video y agenda tu Cita Estratégica gratuita con el equipo de Bakano.',
-        ogUrl: 'https://bakano.ec/ver-video',
+        title: 'Mira el video | Hellen Bermeo — Paso 1 de 2',
+        description: 'Ve el video completo y descubre cómo podemos ayudarte.',
+        canonical: 'https://mkt.hellenbermeo.ec/ver-video',
+        ogTitle: 'Mira el video | Hellen Bermeo',
+        ogDescription: 'Ve el video y agenda tu Cita Estratégica gratuita con el equipo de Hellen Bermeo.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/ver-video',
       } satisfies RouteMeta,
     },
     {
@@ -60,12 +60,12 @@ const router = createRouter({
       name: 'booking',
       component: BookingView,
       meta: {
-        title: 'Agenda tu Cita | Bakano — Paso 2 de 2',
-        description: 'Selecciona el día y hora para tu Cita Estratégica gratuita con el equipo de Bakano.',
-        canonical: 'https://bakano.ec/agendar',
-        ogTitle: 'Agenda tu Cita | Bakano',
-        ogDescription: 'Elige tu horario y reserva tu Cita Estratégica gratuita con Bakano.',
-        ogUrl: 'https://bakano.ec/agendar',
+        title: 'Agenda tu Cita | Hellen Bermeo — Paso 2 de 2',
+        description: 'Selecciona el día y hora para tu Cita Estratégica.',
+        canonical: 'https://mkt.hellenbermeo.ec/agendar',
+        ogTitle: 'Agenda tu Cita | Hellen Bermeo',
+        ogDescription: 'Elige tu horario y reserva tu Cita Estratégica gratuita.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/agendar',
       } satisfies RouteMeta,
     },
     {
@@ -73,12 +73,12 @@ const router = createRouter({
       name: 'booked',
       component: BookedView,
       meta: {
-        title: 'Cita Confirmada | Bakano',
-        description: 'Tu cita estratégica con el equipo de Bakano está confirmada. Revisa tu correo y prepárate.',
-        canonical: 'https://bakano.ec/cita-confirmada',
-        ogTitle: 'Cita Confirmada | Bakano',
-        ogDescription: 'Tu cita con el equipo de Bakano está reservada. Te contactaremos pronto.',
-        ogUrl: 'https://bakano.ec/cita-confirmada',
+        title: 'Cita Confirmada | Hellen Bermeo',
+        description: 'Tu cita está confirmada. Revisa tu correo y prepárate.',
+        canonical: 'https://mkt.hellenbermeo.ec/cita-confirmada',
+        ogTitle: 'Cita Confirmada | Hellen Bermeo',
+        ogDescription: 'Tu cita con el equipo de Hellen Bermeo está reservada. Te contactaremos pronto.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/cita-confirmada',
       } satisfies RouteMeta,
     },
     {
@@ -86,12 +86,12 @@ const router = createRouter({
       name: 'no-space',
       component: NoSpaceView,
       meta: {
-        title: 'Sin Espacio Disponible | Bakano',
-        description: 'En este momento los cupos de asesoría de Bakano están completos. Te notificaremos cuando se libere un espacio.',
-        canonical: 'https://bakano.ec/sin-espacio',
-        ogTitle: 'Sin Espacio Disponible | Bakano',
+        title: 'Sin Espacio Disponible | Hellen Bermeo',
+        description: 'En este momento los cupos de asesoría de Hellen Bermeo están completos. Te notificaremos cuando se libere un espacio.',
+        canonical: 'https://mkt.hellenbermeo.ec/sin-espacio',
+        ogTitle: 'Sin Espacio Disponible | Hellen Bermeo',
         ogDescription: 'Los cupos de asesoría están completos. Te avisaremos cuando haya disponibilidad.',
-        ogUrl: 'https://bakano.ec/sin-espacio',
+        ogUrl: 'https://mkt.hellenbermeo.ec/sin-espacio',
       } satisfies RouteMeta,
     },
     {
@@ -99,12 +99,12 @@ const router = createRouter({
       name: 'privacy-policy',
       component: PrivacyPolicyView,
       meta: {
-        title: 'Política de Privacidad | Bakano Ecuador',
-        description: 'Política de privacidad de Bakano. Información sobre el tratamiento de datos personales conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador.',
-        canonical: 'https://bakano.ec/politicas-privacidad',
-        ogTitle: 'Política de Privacidad | Bakano Ecuador',
-        ogDescription: 'Política de privacidad de Bakano Ecuador.',
-        ogUrl: 'https://bakano.ec/politicas-privacidad',
+        title: 'Política de Privacidad | Hellen Bermeo',
+        description: 'Política de privacidad de Hellen Bermeo.',
+        canonical: 'https://mkt.hellenbermeo.ec/politicas-privacidad',
+        ogTitle: 'Política de Privacidad | Hellen Bermeo',
+        ogDescription: 'Política de privacidad de Hellen Bermeo.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/politicas-privacidad',
       } satisfies RouteMeta,
     },
     {
@@ -112,12 +112,12 @@ const router = createRouter({
       name: 'legal-notice',
       component: LegalNoticeView,
       meta: {
-        title: 'Aviso Legal | Bakano Ecuador',
-        description: 'Aviso legal de Bakano Ecuador. Términos y condiciones de uso del sitio web bakano.ec.',
-        canonical: 'https://bakano.ec/aviso-legal',
-        ogTitle: 'Aviso Legal | Bakano Ecuador',
-        ogDescription: 'Aviso legal de Bakano Ecuador.',
-        ogUrl: 'https://bakano.ec/aviso-legal',
+        title: 'Aviso Legal | Hellen Bermeo',
+        description: 'Aviso legal de Hellen Bermeo.',
+        canonical: 'https://mkt.hellenbermeo.ec/aviso-legal',
+        ogTitle: 'Aviso Legal | Hellen Bermeo',
+        ogDescription: 'Aviso legal de Hellen Bermeo.',
+        ogUrl: 'https://mkt.hellenbermeo.ec/aviso-legal',
       } satisfies RouteMeta,
     },
   ],
@@ -144,7 +144,7 @@ const setCanonical = (href: string) => {
 
 router.afterEach((to) => {
   const meta = to.meta
-  document.title = meta.title ?? 'Bakano'
+  document.title = meta.title ?? 'Hellen Bermeo'
   setMeta('description', meta.description ?? '')
   setOgMeta('og:title', meta.ogTitle ?? meta.title ?? '')
   setOgMeta('og:description', meta.ogDescription ?? meta.description ?? '')

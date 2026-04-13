@@ -401,11 +401,12 @@ watch(dropdownOpen, open => {
 @use '@/styles/colorVariables.module.scss' as colors;
 @use '@/styles/fonts.modules.scss' as fonts;
 
-$dark: #0d0a18;
-$border: rgba(255, 255, 255, 0.08);
-$input-bg: rgba(255, 255, 255, 0.04);
-$text-muted: rgba(255, 255, 255, 0.4);
-$text-body: rgba(255, 255, 255, 0.72);
+$light: #ffffff;
+$border: rgba(0, 0, 0, 0.08);
+$input-bg: rgba(0, 0, 0, 0.04);
+$text-muted: rgba(0, 0, 0, 0.55);
+$text-body: rgba(0, 0, 0, 0.72);
+$text-dark: #212529;
 
 // ── Overlay ──────────────────────────────────────────────────────────────────
 .rmodal-overlay {
@@ -427,13 +428,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   position: relative;
   width: 100%;
   max-width: 520px;
-  background: $dark;
+  background: $light;
   border: 1px solid $border;
   border-radius: 24px;
   padding: 48px 40px 40px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.03) inset,
-    0 40px 100px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(0,0,0,0.03) inset,
+    0 40px 100px rgba(0,0,0,0.15),
     0 0 80px rgba(colors.$BRAND-PRIMARY, 0.05);
   max-height: 92vh;
   overflow-y: auto;
@@ -453,7 +454,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   height: 36px;
   border-radius: 50%;
   border: 1px solid $border;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
   color: $text-muted;
   cursor: pointer;
   display: flex;
@@ -485,7 +486,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.18;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0 0 8px;
 }
 
@@ -529,7 +530,7 @@ $text-body: rgba(255, 255, 255, 0.72);
     font-family: fonts.$font-interface;
     font-size: 0.74rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.55);
+    color: rgba(0,0,0,0.55);
     letter-spacing: 0.5px;
   }
 
@@ -542,11 +543,11 @@ $text-body: rgba(255, 255, 255, 0.72);
     padding: 11px 14px;
     font-family: fonts.$font-secondary;
     font-size: 0.92rem;
-    color: colors.$white;
+    color: $text-dark;
     outline: none;
     transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 
-    &::placeholder { color: rgba(255,255,255,0.22); }
+    &::placeholder { color: rgba(0,0,0,0.22); }
 
     &:focus {
       border-color: rgba(colors.$BRAND-PRIMARY, 0.5);
@@ -597,14 +598,14 @@ $text-body: rgba(255, 255, 255, 0.72);
   border: none;
   border-right: 1px solid $border;
   cursor: pointer;
-  color: colors.$white;
+  color: $text-dark;
   white-space: nowrap;
   flex-shrink: 0;
   transition: background 0.15s;
   border-radius: 10px 0 0 10px;
 
   &:hover {
-    background: rgba(255,255,255,0.04);
+    background: rgba(0,0,0,0.04);
   }
 }
 
@@ -617,7 +618,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-family: fonts.$font-accent;
   font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.8);
+  color: rgba(0,0,0,0.8);
 }
 
 .rmodal__chevron {
@@ -639,10 +640,10 @@ $text-body: rgba(255, 255, 255, 0.72);
   width: 280px;
   max-height: 240px;
   overflow: hidden;
-  background: #16111f;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: $light;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 12px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
 
@@ -655,16 +656,16 @@ $text-body: rgba(255, 255, 255, 0.72);
   width: 100%;
   box-sizing: border-box;
   padding: 10px 14px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.04);
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  color: colors.$white;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  color: $text-dark;
   font-family: fonts.$font-secondary;
   font-size: 0.84rem;
   outline: none;
   border-radius: 12px 12px 0 0;
 
-  &::placeholder { color: rgba(255,255,255,0.25); }
+  &::placeholder { color: rgba(0,0,0,0.25); }
 }
 
 .rmodal__country-dropdown ul {
@@ -676,7 +677,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
-  &::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+  &::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 99px; }
 }
 
 .rmodal__country-item {
@@ -706,13 +707,13 @@ $text-body: rgba(255, 255, 255, 0.72);
   display: block;
   height: 1px;
   width: 100%;
-  background: rgba(255,255,255,0.07);
+  background: rgba(0,0,0,0.07);
 }
 
 .rmodal__country-name {
   font-family: fonts.$font-secondary;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.75);
+  color: rgba(0,0,0,0.75);
   flex: 1;
   white-space: nowrap;
   overflow: hidden;
@@ -722,7 +723,7 @@ $text-body: rgba(255, 255, 255, 0.72);
 .rmodal__country-dial {
   font-family: fonts.$font-accent;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(0,0,0,0.35);
   flex-shrink: 0;
 }
 
@@ -736,11 +737,11 @@ $text-body: rgba(255, 255, 255, 0.72);
   padding: 11px 40px 11px 12px !important;
   font-family: fonts.$font-secondary;
   font-size: 0.92rem;
-  color: colors.$white;
+  color: $text-dark;
   outline: none !important;
   box-shadow: none !important;
 
-  &::placeholder { color: rgba(255,255,255,0.22); }
+  &::placeholder { color: rgba(0,0,0,0.22); }
 }
 
 .rmodal__phone-status {
@@ -789,7 +790,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   color: colors.$white;
-  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, colors.$BRAND-SECONDARY);
+  background: colors.$BRAND-PRIMARY;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -863,7 +864,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  color: colors.$white;
+  color: $text-dark;
   margin: 0;
 }
 
@@ -879,7 +880,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   font-family: fonts.$font-interface;
   font-size: 0.68rem;
   line-height: 1.6;
-  color: rgba(255,255,255,0.22);
+  color: rgba(0,0,0,0.4);
   max-width: 420px;
   margin: 0;
 }
@@ -902,7 +903,7 @@ $text-body: rgba(255, 255, 255, 0.72);
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  background: rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.03);
   border: 1px solid $border;
   border-radius: 14px;
   flex: 1;
@@ -936,13 +937,13 @@ $text-body: rgba(255, 255, 255, 0.72);
     font-family: fonts.$font-interface;
     font-size: 0.82rem;
     font-weight: 700;
-    color: colors.$white;
+    color: $text-dark;
   }
 
   span {
     font-family: fonts.$font-interface;
     font-size: 0.68rem;
-    color: rgba(255,255,255,0.38);
+    color: rgba(0,0,0,0.38);
     line-height: 1.3;
   }
 }

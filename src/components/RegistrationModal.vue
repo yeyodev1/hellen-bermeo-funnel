@@ -160,7 +160,9 @@ const handleSubmit = async () => {
 
   console.info('[Hellen Bermeo Registro]', payload)
 
-  await fetch('https://services.leadconnectorhq.com/hooks/pEFChujwCCaMWBNbZYD1/webhook-trigger/acf01034-9790-4a8f-a765-dfe9ae157e2d', {
+  const webhookUrl = import.meta.env.VITE_LEAD_CONNECTOR_WEBHOOK
+
+  await fetch(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

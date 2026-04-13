@@ -175,7 +175,7 @@ const handleSubmit = async () => {
 
   // Petición al webhook y timer mínimo de 2.5s para la "carga bonita"
   await Promise.all([
-    fetch(import.meta.env.VITE_LEAD_CONNECTOR_WEBHOOK, {
+    fetch(import.meta.env.VITE_QUALIFICATION_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(finalPayload),

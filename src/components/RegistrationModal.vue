@@ -146,15 +146,24 @@ const handleSubmit = async () => {
   const leadEventId = `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`
 
   const payload = {
+    // Contact Data (Spanish - for current GHL mapping)
     nombre: form.value.nombre.trim(),
     apellido: form.value.apellido.trim(),
     email: form.value.email.trim().toLowerCase(),
     telefono: parsedPhoneE164.value,
-    telefonoDisplay: selectedCountry.value.dial + ' ' + formattedPhone.value,
     empresa: form.value.empresa.trim(),
+
+    // Contact Data (English - for GHL automatic mapping)
+    firstName: form.value.nombre.trim(),
+    lastName: form.value.apellido.trim(),
+    phone: parsedPhoneE164.value,
+    companyName: form.value.empresa.trim(),
+
+    telefonoDisplay: selectedCountry.value.dial + ' ' + formattedPhone.value,
     pais: selectedCountry.value.name,
     timestamp: new Date().toISOString(),
     event_id: leadEventId,
+    source: 'hellenbermeo-web',
     ...getStoredFbParams(),
   }
 

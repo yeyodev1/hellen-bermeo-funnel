@@ -45,6 +45,7 @@ const step = ref<1 | 2 | 'ok'>(1)
 const loading = ref(false)
 const errMsg = ref('')
 const dir = ref<'fwd' | 'back'>('fwd')
+const currentEventId = ref('')
 
 // Step 1
 const s1 = ref({
@@ -134,15 +135,24 @@ async function submitS1() {
   try {
     const phone = `${s1.value.dial}${s1.value.phone.replace(/\D/g, '')}`
     const regEventId = `reg_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`
+    currentEventId.value = regEventId
     await fetch(WH_CONTACT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        // Contact Data (English)
         firstName: s1.value.firstName.trim(),
         lastName: s1.value.lastName.trim(),
         email: s1.value.email.trim(),
         phone,
         companyName: s1.value.company.trim(),
+
+        // Contact Data (Spanish - for consistency)
+        nombre: s1.value.firstName.trim(),
+        apellido: s1.value.lastName.trim(),
+        telefono: phone,
+        empresa: s1.value.company.trim(),
+
         source: 'hellenbermeo-web',
         tags: ['web-lead'],
         event_id: regEventId,
@@ -177,32 +187,39 @@ async function submitS2() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          // Identificación
+          // Contact Data (English - for automatic mapping)
           firstName: s1.value.firstName.trim(),
           lastName: s1.value.lastName.trim(),
-          email: s1.value.email.trim(),
+          email: s1.value.email.trim().toLowerCase(),
           phone,
           companyName: s1.value.company.trim(),
           source: 'hellenbermeo-web',
 
-          // Variables de Control GHL (PARA LA RAMA DE LA IMAGEN)
+          // Contact Data (Spanish - for consistency with Registration modal)
+          nombre: s1.value.firstName.trim(),
+          apellido: s1.value.lastName.trim(),
+          telefono: phone,
+          empresa: s1.value.company.trim(),
+
+          // Qualification Logic
           is_qualified: isQualified,
-          qualification_status: isQualified ? 'QUALIFIED' : 'DISQUALIFIED',
+          qualification_status: isQualified ? 'si' : 'no',
           qualification_text: isQualified ? 'SÍ (Cualifica)' : 'NO (No cualifica)',
 
-          // Datos de cualificación (Simplified Keys)
+          // Questionnaire Answers
           revenue: s2.value.revenue,
           location: s2.value.location,
           objective: s2.value.objective,
           urgency: s2.value.urgency,
           message: s2.value.message.trim(),
 
-          // Metadata
+          // Metadata & Attribution
           tags,
           notes,
+          event_id: currentEventId.value || `lead_${Date.now()}`,
           ...getStoredFbParams(),
 
-          // Keep original keys for backward compatibility if needed in some mappings
+          // Compatibility fields (Original questionnaire)
           '1. ¿Cuál es el rango de facturación mensual actual de tu negocio?': s2.value.revenue,
           '2. ¿Dónde se encuentra ubicado tu establecimiento o base de operaciones principal?': s2.value.location,
           '3. ¿Cuál es tu objetivo principal al invertir en marketing este año?': s2.value.objective,

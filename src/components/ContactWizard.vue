@@ -101,10 +101,14 @@ function buildNotes(): string {
 }
 
 // ── Lógica de tags ────────────────────────────────────────────────────────────
-function calcTags(): string[] {
+// ── Lógica de tags ────────────────────────────────────────────────────────────
+function getQualification() {
   // "Solo estoy explorando" → descalifica y no es urgente
   if (s2.value.urgency === 'just-looking') {
-    return ['no-cualificado-web', 'no-urgente']
+    return {
+      isQualified: false,
+      tags: ['no-cualificado-web', 'no-urgente']
+    }
   }
 
   // Los 3 criterios deben cumplirse para cualificar
@@ -113,10 +117,13 @@ function calcTags(): string[] {
     s2.value.location === 'Guayaquil / Samborondón' &&
     s2.value.objective !== 'Aumentar seguidores, likes y hacerme viral con tendencias.'
 
-  return [
-    qualifies ? 'cualificado-web' : 'no-cualificado-web',
-    s2.value.urgency === 'immediate' ? 'urgente' : 'no-urgente',
-  ]
+  return {
+    isQualified: qualifies,
+    tags: [
+      qualifies ? 'cualificado-web' : 'no-cualificado-web',
+      s2.value.urgency === 'immediate' ? 'urgente' : 'no-urgente',
+    ]
+  }
 }
 
 // ── Envíos ────────────────────────────────────────────────────────────────────
@@ -162,7 +169,7 @@ async function submitS2() {
   loading.value = true
   errMsg.value = ''
   try {
-    const tags = calcTags()
+    const { tags, isQualified } = getQualification()
     const phone = `${s1.value.dial}${s1.value.phone.replace(/\D/g, '')}`
     const notes = buildNotes()
     if (WH_QUALIFY) {
@@ -170,22 +177,34 @@ async function submitS2() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          // Datos de contacto (Step 1)
+          // Identificación
           firstName: s1.value.firstName.trim(),
           lastName: s1.value.lastName.trim(),
           email: s1.value.email.trim(),
           phone,
           companyName: s1.value.company.trim(),
           source: 'hellenbermeo-web',
-          // Datos de cualificación (Step 2) — keys = texto exacto de la pregunta en GHL
+
+          // Variables de Control GHL (PARA LA RAMA DE LA IMAGEN)
+          is_qualified: isQualified,
+          qualification_status: isQualified ? 'QUALIFIED' : 'DISQUALIFIED',
+          qualification_text: isQualified ? 'SÍ (Cualifica)' : 'NO (No cualifica)',
+
+          // Datos de cualificación (Simplified Keys)
+          revenue: s2.value.revenue,
+          location: s2.value.location,
+          objective: s2.value.objective,
+          urgency: s2.value.urgency,
+          message: s2.value.message.trim(),
+
+          // Metadata
+          tags,
+          notes,
+
+          // Keep original keys for backward compatibility if needed in some mappings
           '1. ¿Cuál es el rango de facturación mensual actual de tu negocio?': s2.value.revenue,
           '2. ¿Dónde se encuentra ubicado tu establecimiento o base de operaciones principal?': s2.value.location,
           '3. ¿Cuál es tu objetivo principal al invertir en marketing este año?': s2.value.objective,
-          urgency: s2.value.urgency,
-          message: s2.value.message.trim(),
-          tags,
-          // Resumen legible para notas en GHL
-          notes,
         }),
       })
     }

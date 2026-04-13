@@ -175,7 +175,7 @@ const handleSubmit = async () => {
 
   // Petición al webhook y timer mínimo de 2.5s para la "carga bonita"
   await Promise.all([
-    fetch('https://services.leadconnectorhq.com/hooks/pEFChujwCCaMWBNbZYD1/webhook-trigger/69dc0e5f-e2c0-4e9f-9625-10a708787d59', {
+    fetch(import.meta.env.VITE_LEAD_CONNECTOR_WEBHOOK, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(finalPayload),

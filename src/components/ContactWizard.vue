@@ -200,6 +200,7 @@ async function submitS2() {
           // Metadata
           tags,
           notes,
+          ...getStoredFbParams(),
 
           // Keep original keys for backward compatibility if needed in some mappings
           '1. ¿Cuál es el rango de facturación mensual actual de tu negocio?': s2.value.revenue,

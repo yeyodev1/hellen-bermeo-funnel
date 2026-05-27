@@ -76,7 +76,7 @@ src/
 Los subcomponentes (`BookedHero`, `BookedSteps`, `BookedTeam`) usan `padding: 0` horizontal — heredan del contenedor.
 
 ## Videos
-- **Wistia media-id `u9yljeo589`** → video principal del funnel (usado en `/ver-video`)
+- **Wistia media-id `w5gwy44l50`** → video principal del funnel (usado en `/ver-video`)
 - Script Wistia no se agrega al HTML global; se usa iframe responsive 16:9
 
 - **Headline**: "Tu tranquilidad financiera, en manos expertas. Gestión contable estratégica respaldada por especialistas en crecimiento empresarial."

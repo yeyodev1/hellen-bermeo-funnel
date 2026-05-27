@@ -34,12 +34,12 @@ const calendarOpen = ref(false)
           <strong>Hellen Bermeo</strong> ha transformado y protegido negocios como el tuyo.
         </p>
 
-        <!-- VSL — Wistia embed (media-id: u9yljeo589) -->
+        <!-- VSL — Wistia embed (media-id: w5gwy44l50) -->
         <div class="ty__vsl-wrap">
           <div class="ty__vsl-glow" aria-hidden="true" />
           <div class="ty__vsl">
             <iframe
-              src="https://fast.wistia.net/embed/iframe/u9yljeo589?videoFoam=true&autoPlay=false"
+              src="https://fast.wistia.net/embed/iframe/w5gwy44l50?videoFoam=true&autoPlay=false"
               title="Video — Método Hellen Bermeo"
               allow="autoplay; fullscreen"
               allowfullscreen

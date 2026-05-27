@@ -23,9 +23,8 @@ const showLeaveWarning = ref(false)
 const form = ref({
   situacion: '',
   area: '',
-  invertir: '',
-  presupuesto: '',
   detalle: '',
+  invertir: '',
   consent: false,
 })
 
@@ -45,8 +44,8 @@ const wordCount = computed(() => {
 })
 
 const isValidStep = (step: number) => {
-  if (step === 1) return !!form.value.situacion && !!form.value.area && !!form.value.invertir
-  if (step === 2) return !!form.value.presupuesto && wordCount.value >= 15 && form.value.consent
+  if (step === 1) return !!form.value.situacion && !!form.value.area && wordCount.value >= 15
+  if (step === 2) return !!form.value.invertir && form.value.consent
   return false
 }
 
@@ -77,8 +76,7 @@ const isValid = () => isValidStep(1) && isValidStep(2)
 const IS_DEV = window.location.hostname === 'localhost'
 
 const qualifies = () => {
-  if (form.value.invertir === 'costos') return false
-  if (form.value.presupuesto === 'menor_500') return false
+  if (form.value.invertir === 'nolisto') return false
   return true
 }
 
@@ -97,7 +95,6 @@ const handleSubmit = async () => {
     `situacion-${form.value.situacion}`,
     `area-${form.value.area}`,
     `invertir-${form.value.invertir}`,
-    `presupuesto-${form.value.presupuesto}`,
   ]
 
   const situacionLabel: Record<string, string> = {
@@ -113,13 +110,8 @@ const handleSubmit = async () => {
     seguro: 'No estoy seguro',
   }
   const invertirLabel: Record<string, string> = {
-    mensual: 'Servicio profesional mensual',
-    puntual: 'Trámite puntual',
-    costos: 'Buscando información de costos',
-  }
-  const presupuestoLabel: Record<string, string> = {
-    mayor_500: 'Más de $500 USD',
-    menor_500: 'Menos de $500 USD',
+    listo: 'Sí, listo para invertir mínimo $1,000',
+    nolisto: 'No, presupuesto menor por ahora',
   }
 
   const nota = `${califica ? '✅ LEAD CALIFICADO' : '❌ NO CALIFICA'} — Hellen Bermeo Funnel
@@ -131,9 +123,9 @@ const handleSubmit = async () => {
 ━━━━━━━━━━━━━━━━━━━━━━━━
 🧑‍💼 Situación: ${situacionLabel[form.value.situacion] ?? form.value.situacion}
 🎯 Área: ${areaLabel[form.value.area] ?? form.value.area}
-💸 Para Invertir: ${invertirLabel[form.value.invertir] ?? form.value.invertir}
-💰 Presupuesto: ${presupuestoLabel[form.value.presupuesto] ?? form.value.presupuesto}
 📝 Detalle:\n${form.value.detalle}
+━━━━━━━━━━━━━━━━━━━━━━━━
+💰 Inversión: ${invertirLabel[form.value.invertir] ?? form.value.invertir}
 ━━━━━━━━━━━━━━━━━━━━━━━━
 📊 Resultado: ${califica ? '🟢 AGENDA CITA' : '🔴 RECHAZADO'}
 🕐 ${new Date().toLocaleString('es-EC', { timeZone: 'America/Guayaquil' })}
@@ -147,9 +139,8 @@ const handleSubmit = async () => {
     telefono: contact.telefono,
     situacion: form.value.situacion,
     area: form.value.area,
-    invertir: form.value.invertir,
-    presupuesto: form.value.presupuesto,
     detalle: form.value.detalle,
+    invertir: form.value.invertir,
     califica,
     resultado: califica ? 'AGENDA' : 'RECHAZADO',
     etiquetas,
@@ -224,7 +215,7 @@ watch(() => props.open, (v) => {
     touched.value = false; 
     currentStep.value = 1; 
     showLeaveWarning.value = false;
-    form.value = { situacion: '', area: '', invertir: '', presupuesto: '', detalle: '', consent: false } 
+    form.value = { situacion: '', area: '', detalle: '', invertir: '', consent: false } 
   } 
 })
 </script>
@@ -236,23 +227,21 @@ watch(() => props.open, (v) => {
         <div class="cal-modal">
 
           <button v-if="!submitting" class="cal-close" @click="attemptClose" aria-label="Cerrar">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
+            <i class="fa-solid fa-xmark"></i>
           </button>
 
           <!-- ── ALERTA DE ABANDONO ────────────────────────────────────────── -->
           <div v-if="showLeaveWarning" class="cal-warning-state">
             <div class="cal-warning-icon">
-              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
+              <i class="fa-solid fa-triangle-exclamation"></i>
             </div>
             <h2 class="cal-warning-title">¿Seguro que quieres irte?</h2>
             <p class="cal-warning-text">Estás a un paso de <strong>resolver tu problema contable</strong> y asegurar la salud financiera de tu negocio. Los turnos para la Sesión Gratuita son muy limitados y podrías perder esta oportunidad.</p>
-            <button class="cal-btn cal-btn--warning" @click="showLeaveWarning = false">QUIERO RESOLVER ESTO Y CONTINUAR</button>
-            <button class="cal-warning-link" @click="forceClose">Sí, salir y rendirme</button>
+            <button class="cal-btn cal-btn--warning" @click="showLeaveWarning = false">
+              <i class="fa-solid fa-shield-halved"></i>
+              QUIERO RESOLVER ESTO Y CONTINUAR
+            </button>
+            <button class="cal-warning-link" @click="forceClose"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sí, salir y rendirme</button>
           </div>
 
           <!-- ── PANTALLA DE CARGA (Loading Interactivo) ────────────────── -->
@@ -271,9 +260,7 @@ watch(() => props.open, (v) => {
           <div v-else>
             <div class="cal-header cal-wizard-header">
               <button v-if="currentStep > 1" type="button" class="cal-back" @click="prevStep" aria-label="Atrás">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
+                <i class="fa-solid fa-chevron-left"></i>
               </button>
               <img :src="brandLogo" alt="Hellen Bermeo" class="cal-logo" />
               
@@ -292,20 +279,20 @@ watch(() => props.open, (v) => {
             <form class="cal-form" @submit.prevent="handleSubmit" novalidate>
               <Transition name="slide-fade" mode="out-in">
 
-                <!-- STEP 1 -->
+                <!-- STEP 1 — Situación + Área + Problema -->
                 <div v-if="currentStep === 1" key="step1" class="cal-step" style="display:flex; flex-direction:column; gap:24px;">
                   <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.situacion }">
                     <legend class="cal-legend">
                       <span class="cal-q-num">01</span>
-                      ¿Cuál es tu situación actual como contribuyente? *
+                      <span><i class="fa-solid fa-store cal-legend-icon"></i> ¿Cuál es tu situación actual como contribuyente? *</span>
                     </legend>
                     <div class="cal-options">
                       <label v-for="opt in [
-                        { value: 'emprendedor', label: '1. Emprendedor (Persona Natural)' },
-                        { value: 'pyme', label: '2. Dueño de Negocio / Pyme (Sociedad)' },
-                        { value: 'profesional', label: '3. Profesional Independiente' },
-                        { value: 'empezar', label: '4. Aún no tengo RUC, quiero empezar.' }
-                      ]" :key="opt.value" class="cal-option" :class="{ selected: form.situacion === opt.value }">
+                        { value: 'emprendedor', label: 'Emprendedor (Persona Natural)' },
+                        { value: 'pyme', label: 'Dueño de Negocio / Pyme (Sociedad)' },
+                        { value: 'profesional', label: 'Profesional Independiente' },
+                        { value: 'empezar', label: 'Aún no tengo RUC, quiero empezar.' }
+                      ]" :key="opt.value" class="cal-option" :class="{ selected: form.situacion === opt.value }" :style="{ '--opt-delay': '0ms' }">
                         <input type="radio" name="situacion" v-model="form.situacion" :value="opt.value" hidden />
                         <span class="cal-option__radio" aria-hidden="true" />
                         <span class="cal-option__label">{{ opt.label }}</span>
@@ -317,14 +304,14 @@ watch(() => props.open, (v) => {
                   <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.area }">
                     <legend class="cal-legend">
                       <span class="cal-q-num">02</span>
-                      ¿En qué área necesitas apoyo inmediato? *
+                      <span><i class="fa-solid fa-bullseye cal-legend-icon"></i> ¿En qué área necesitas apoyo inmediato? *</span>
                     </legend>
                     <div class="cal-options">
                       <label v-for="opt in [
-                        { value: 'tributario', label: '1. Cumplimiento Tributario (Declaraciones, SRI)' },
-                        { value: 'gestion', label: '2. Gestión y Formalización (RUC, Firma)' },
-                        { value: 'estrategia', label: '3. Estrategia y Ahorro (Optimizar impuestos)' },
-                        { value: 'seguro', label: '4. No estoy seguro (Necesito diagnóstico)' }
+                        { value: 'tributario', label: 'Cumplimiento Tributario (Declaraciones, SRI)' },
+                        { value: 'gestion', label: 'Gestión y Formalización (RUC, Firma)' },
+                        { value: 'estrategia', label: 'Estrategia y Ahorro (Optimizar impuestos)' },
+                        { value: 'seguro', label: 'No estoy seguro (Necesito diagnóstico)' }
                       ]" :key="opt.value" class="cal-option" :class="{ selected: form.area === opt.value }">
                         <input type="radio" name="area" v-model="form.area" :value="opt.value" hidden />
                         <span class="cal-option__radio" aria-hidden="true" />
@@ -334,84 +321,93 @@ watch(() => props.open, (v) => {
                     <span v-if="touched && !form.area" class="cal-error">Selecciona una opción</span>
                   </fieldset>
 
+                  <!-- ── PROBLEMA TEXTAREA (KEY) ──────────────────────────── -->
+                  <div class="cal-problema-card">
+                    <div class="cal-problema-header">
+                      <span class="cal-q-num">03</span>
+                      <span class="cal-problema-title">
+                        <i class="fa-solid fa-pen cal-legend-icon"></i>
+                        Cuéntanos tu problema en detalle *
+                      </span>
+                    </div>
+                    <p class="cal-problema-hint">
+                      Describe tu situación actual — entre más detalles, mejor podremos ayudarte
+                    </p>
+                    <div class="cal-textarea-wrap" :class="{ 'has-count': form.detalle.length > 0 }">
+                      <textarea
+                        v-model="form.detalle"
+                        class="cal-textarea cal-textarea--problema"
+                        placeholder="Ej. Tengo facturas atrasadas del SRI, no he declarado los últimos meses y necesito regularizar mi situación antes de que me multen..."
+                        :class="{ 'error': touched && wordCount > 0 && wordCount < 15 }"
+                        rows="5"
+                      ></textarea>
+                      <div class="cal-textarea-footer">
+                        <span v-if="wordCount === 0" class="cal-word-neutral">
+                          <i class="fa-regular fa-pen-to-square"></i> Escribe al menos 15 palabras
+                        </span>
+                        <span v-else-if="wordCount < 15" class="cal-word-hint">
+                          <i class="fa-solid fa-circle-exclamation"></i>
+                          Te faltan {{ 15 - wordCount }} palabras
+                        </span>
+                        <span v-else class="cal-word-ok">
+                          <i class="fa-solid fa-circle-check"></i>
+                          {{ wordCount }} palabras — ¡gracias por el detalle!
+                        </span>
+                      </div>
+                    </div>
+                    <span v-if="touched && wordCount === 0" class="cal-error">Por favor descríbenos tu caso para poder ayudarte.</span>
+                  </div>
+
+                  <div style="margin-top: 6px;">
+                    <button class="cal-btn" type="button" @click="nextStep" :disabled="!isValidStep(1)">
+                      <i class="fa-solid fa-arrow-right"></i>
+                      AVANZAR AL ÚLTIMO PASO
+                    </button>
+                  </div>
+                </div>
+
+                <!-- STEP 2 — Inversión $1,000 + Consent -->
+                <div v-else-if="currentStep === 2" key="step2" class="cal-step" style="display:flex; flex-direction:column; gap:24px;">
+
+                  <!-- Investment hero card -->
+                  <div class="cal-invest-hero">
+                    <div class="cal-invest-hero__icon">
+                      <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="cal-invest-hero__title">¿Estás listo para invertir en tu negocio?</h3>
+                    <p class="cal-invest-hero__text">
+                      Nuestros servicios profesionales requieren una inversión <strong>mínima de $1,000</strong>.
+                      Queremos asegurarnos de que sea el momento adecuado para ti.
+                    </p>
+                  </div>
+
                   <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.invertir }">
                     <legend class="cal-legend">
-                      <span class="cal-q-num">03</span>
-                      ¿Estás listo para invertir en la salud financiera de tu negocio? *
+                      <span class="cal-q-num">04</span>
+                      <span><i class="fa-solid fa-coins cal-legend-icon"></i> ¿Cuentas con mínimo $1,000 para invertir en tu estabilidad financiera? *</span>
                     </legend>
                     <div class="cal-options">
                       <label v-for="opt in [
-                        { value: 'mensual', label: '1. Sí, busco un servicio profesional mensual.' },
-                        { value: 'puntual', label: '2. Sí, necesito solucionar un trámite puntual ahora.' },
-                        { value: 'costos', label: '3. Estoy buscando información de costos por el momento.' },
-                      ]" :key="opt.value" class="cal-option" :class="{ selected: form.invertir === opt.value }">
+                        { value: 'listo', label: 'Sí, tengo el presupuesto y quiero agendar mi asesoría', sub: 'Inversión desde $1,000' },
+                        { value: 'nolisto', label: 'No, mi presupuesto es menor por ahora', sub: 'Te orientamos con recursos gratuitos' }
+                      ]" :key="opt.value" class="cal-option cal-option--invest" :class="{ selected: form.invertir === opt.value }">
                         <input type="radio" name="invertir" v-model="form.invertir" :value="opt.value" hidden />
                         <span class="cal-option__radio" aria-hidden="true" />
-                        <span class="cal-option__label">{{ opt.label }}</span>
+                        <span class="cal-option__content">
+                          <span class="cal-option__label">{{ opt.label }}</span>
+                          <span class="cal-option__sub">{{ opt.sub }}</span>
+                        </span>
                       </label>
                     </div>
                     <span v-if="touched && !form.invertir" class="cal-error">Selecciona una opción</span>
                   </fieldset>
 
-                  <div style="margin-top: 10px;">
-                    <button class="cal-btn" type="button" @click="nextStep">AVANZAR AL ÚLTIMO PASO</button>
-                  </div>
-                </div>
-
-                <!-- STEP 2 -->
-                <div v-else-if="currentStep === 2" key="step2" class="cal-step" style="display:flex; flex-direction:column; gap:24px;">
-                  <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.presupuesto }">
-                    <legend class="cal-legend">
-                      <span class="cal-q-num">04</span>
-                      ¿Cuentas con un presupuesto de inversión para solucionar tu problema hoy mismo? *
-                    </legend>
-                    <div class="cal-options">
-                      <label v-for="opt in [
-                        { value: 'mayor_500', label: '1. Cuento con más de $500 para solucionar mi problema estructural.' },
-                        { value: 'menor_500', label: '2. Mi presupuesto es limitado (menor a $500) en este momento.' }
-                      ]" :key="opt.value" class="cal-option" :class="{ selected: form.presupuesto === opt.value }">
-                        <input type="radio" name="presupuesto" v-model="form.presupuesto" :value="opt.value" hidden />
-                        <span class="cal-option__radio" aria-hidden="true" />
-                        <span class="cal-option__label">{{ opt.label }}</span>
-                      </label>
-                    </div>
-                    <span v-if="touched && !form.presupuesto" class="cal-error">Selecciona una opción</span>
-                  </fieldset>
-
-                  <fieldset class="cal-fieldset" :class="{ 'has-error': touched && wordCount === 0 }">
-                    <legend class="cal-legend">
-                      <span class="cal-q-num">05</span>
-                      Detalla un poco más lo que te pasa en mínimo 15 palabras *
-                    </legend>
-                    <div class="cal-textarea-wrap">
-                      <textarea 
-                        v-model="form.detalle" 
-                        class="cal-textarea" 
-                        placeholder="Ej. Tengo problemas con facturas atrasadas del SRI y quiero regular mi negocio corporativo..."
-                        :class="{ 'error': touched && wordCount > 0 && wordCount < 15 }"
-                      ></textarea>
-                      <div class="cal-textarea-footer">
-                        <span class="cal-word-hint" v-if="wordCount < 15">
-                          Te faltan {{ 15 - wordCount }} palabras para avanzar
-                        </span>
-                        <span class="cal-word-ok" v-else>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                            <polyline points="20 6 9 17 4 12"/>
-                          </svg> Detalle adecuado
-                        </span>
-                      </div>
-                    </div>
-                    <span v-if="touched && wordCount === 0" class="cal-error">Por favor descríbenos tu caso para poder ayudarte.</span>
-                  </fieldset>
-
                   <!-- Consent -->
                   <fieldset class="cal-fieldset">
-                    <label class="cal-consent" :class="{ 'has-error': touched && !form.consent }" style="margin-top: -4px;">
+                    <label class="cal-consent" :class="{ 'has-error': touched && !form.consent }">
                       <input type="checkbox" v-model="form.consent" hidden />
                       <span class="cal-consent__box" :class="{ checked: form.consent }" aria-hidden="true">
-                        <svg v-if="form.consent" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                          <polyline points="20 6 9 17 4 12"/>
-                        </svg>
+                        <i v-if="form.consent" class="fa-solid fa-check"></i>
                       </span>
                       <span class="cal-consent__text">
                         Consiento que Hellen Bermeo me contacte para ofrecerme sus servicios. Además acepto sus
@@ -420,10 +416,8 @@ watch(() => props.open, (v) => {
                     </label>
                   </fieldset>
 
-                  <button class="cal-btn" type="submit" style="margin-top: -4px;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
+                  <button class="cal-btn" type="submit" :disabled="!isValidStep(2)">
+                    <i class="fa-solid fa-calendar-check"></i>
                     CONFIRMAR Y VER DISPONIBILIDAD
                   </button>
                 </div>
@@ -488,22 +482,22 @@ $text-dark: #1e293b;
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: #f8fafc;
+  border: none;
+  background: #f1f5f9;
   color: #64748b;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.15rem;
   transition: all 0.2s;
 
   &:hover {
-    background: #f1f5f9;
+    background: #e2e8f0;
     color: #0f172a;
-    border-color: rgba(0,0,0,0.15);
   }
 }
 
@@ -582,15 +576,16 @@ $text-dark: #1e293b;
 
 .cal-q-num {
   font-family: fonts.$font-accent;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  color: colors.$BRAND-PRIMARY;
-  background: rgba(colors.$BRAND-PRIMARY, 0.1);
-  border: 1px solid rgba(colors.$BRAND-PRIMARY, 0.2);
+  color: colors.$white;
+  background: colors.$BRAND-PRIMARY;
   border-radius: 6px;
-  padding: 2px 8px;
+  padding: 3px 8px;
   letter-spacing: 0.5px;
   flex-shrink: 0;
+  min-width: 32px;
+  text-align: center;
 }
 
 .cal-options {
@@ -602,9 +597,9 @@ $text-dark: #1e293b;
 
 .cal-option {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 16px 18px;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 2px solid rgba(0,0,0,0.06);
   background: white;
@@ -622,7 +617,7 @@ $text-dark: #1e293b;
 
   &.selected {
     border-color: colors.$BRAND-PRIMARY;
-    background: #eef5ff; // fondo azul sutil
+    background: #eef5ff;
     box-shadow: 0 8px 24px rgba(colors.$BRAND-PRIMARY, 0.15);
 
     .cal-option__radio {
@@ -634,7 +629,7 @@ $text-dark: #1e293b;
         transform: scale(1);
       }
     }
-    
+
     .cal-option__label {
       color: colors.$BRAND-PRIMARY;
       font-weight: 700;
@@ -667,11 +662,44 @@ $text-dark: #1e293b;
 
 .cal-option__label {
   font-family: fonts.$font-secondary;
-  font-size: 0.94rem;
+  font-size: 0.88rem;
   color: $text-dark;
-  line-height: 1.45;
+  line-height: 1.4;
   font-weight: 500;
   transition: color 0.2s;
+  flex: 1;
+}
+
+// ── Option with subtitle (invest step) ─────────────────────────────────────
+.cal-option--invest {
+  padding: 16px 18px;
+  flex-direction: row;
+}
+
+.cal-option__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.cal-option__sub {
+  font-family: fonts.$font-interface;
+  font-size: 0.75rem;
+  color: rgba(0,0,0,0.45);
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.cal-option.selected .cal-option__sub {
+  color: rgba(colors.$BRAND-PRIMARY, 0.7);
+}
+
+// ── Legend icons ────────────────────────────────────────────────────────────
+.cal-legend-icon {
+  margin-right: 4px;
+  font-size: 0.82rem;
+  color: colors.$BRAND-PRIMARY;
 }
 
 .cal-error {
@@ -687,31 +715,85 @@ $text-dark: #1e293b;
   background: rgba(220, 38, 38, 0.02);
 }
 
-// ── TEXTAREA STEP 5 ──────────────────────────────────────────────────────────
+// ── PROBLEMA CARD (STEP 1) ───────────────────────────────────────────────────
+.cal-problema-card {
+  background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
+  border: 2px solid rgba(colors.$BRAND-PRIMARY, 0.15);
+  border-radius: 16px;
+  padding: 24px 20px 20px;
+  position: relative;
+  transition: border-color 0.3s;
+
+  &:focus-within {
+    border-color: colors.$BRAND-PRIMARY;
+    box-shadow: 0 0 0 4px rgba(colors.$BRAND-PRIMARY, 0.08);
+  }
+}
+
+.cal-problema-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cal-problema-title {
+  font-family: fonts.$font-interface;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: $text-dark;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .cal-legend-icon {
+    font-size: 0.85rem;
+  }
+}
+
+.cal-problema-hint {
+  font-family: fonts.$font-secondary;
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.5);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+// ── TEXTAREA ─────────────────────────────────────────────────────────────────
 .cal-textarea-wrap {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 10px;
+
+  &.has-count {
+    .cal-textarea {
+      min-height: 110px;
+    }
+  }
 }
 
 .cal-textarea {
   width: 100%;
   min-height: 120px;
   resize: vertical;
-  padding: 14px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.08);
   background: white;
   font-family: fonts.$font-secondary;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: $text-dark;
-  transition: all 0.2s;
+  line-height: 1.6;
+  transition: all 0.25s;
 
   &:focus {
     outline: none;
     border-color: colors.$BRAND-PRIMARY;
-    box-shadow: 0 0 0 3px rgba(colors.$BRAND-PRIMARY, 0.1);
+    box-shadow: 0 0 0 4px rgba(colors.$BRAND-PRIMARY, 0.1);
+  }
+
+  &::placeholder {
+    color: rgba(0,0,0,0.3);
   }
 
   &.error {
@@ -721,16 +803,30 @@ $text-dark: #1e293b;
   }
 }
 
+.cal-textarea--problema {
+  min-height: 100px;
+
+  &:focus {
+    border-color: colors.$BRAND-PRIMARY;
+    box-shadow: 0 0 0 4px rgba(colors.$BRAND-PRIMARY, 0.1), 0 4px 20px rgba(colors.$BRAND-PRIMARY, 0.06);
+  }
+}
+
 .cal-textarea-footer {
   display: flex;
   justify-content: flex-end;
   font-family: fonts.$font-secondary;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
+  gap: 6px;
+  align-items: center;
 }
 
 .cal-word-hint {
   color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .cal-word-ok {
@@ -738,6 +834,74 @@ $text-dark: #1e293b;
   display: flex;
   align-items: center;
   gap: 4px;
+}
+
+.cal-word-neutral {
+  color: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// ── INVEST HERO (STEP 2) ─────────────────────────────────────────────────────
+.cal-invest-hero {
+  text-align: center;
+  padding: 28px 20px 22px;
+  background: linear-gradient(135deg, #fefce8 0%, #fffbeb 50%, #fef3c7 100%);
+  border: 1px solid #fde68a;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(colors.$BRAND-PRIMARY, 0.04);
+    pointer-events: none;
+  }
+}
+
+.cal-invest-hero__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, colors.$BRAND-PRIMARY, darken(colors.$BRAND-PRIMARY, 10%));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto 16px;
+  box-shadow: 0 6px 20px rgba(colors.$BRAND-PRIMARY, 0.25);
+}
+
+.cal-invest-hero__title {
+  font-family: fonts.$font-principal;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.cal-invest-hero__text {
+  font-family: fonts.$font-secondary;
+  font-size: 0.88rem;
+  color: rgba(0,0,0,0.55);
+  margin: 0;
+  line-height: 1.55;
+  max-width: 90%;
+  margin: 0 auto;
+
+  strong {
+    color: #92400e;
+    font-weight: 700;
+  }
 }
 
 // ── Consent ───────────────────────────────────────────────────────────────────
@@ -1001,22 +1165,22 @@ $text-dark: #1e293b;
   position: absolute;
   top: 12px;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: white;
+  border: none;
+  background: #f1f5f9;
   color: #64748b;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.95rem;
   transition: all 0.2s;
 
   &:hover {
-    background: #f1f5f9;
+    background: #e2e8f0;
     color: #0f172a;
-    border-color: rgba(0,0,0,0.15);
   }
 }
 

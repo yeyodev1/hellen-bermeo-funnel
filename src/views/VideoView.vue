@@ -99,7 +99,7 @@ onMounted(() => {
   document.head.appendChild(script1)
 
   const script2 = document.createElement('script')
-  script2.src = 'https://fast.wistia.com/embed/4jhhq3de5e.js'
+  script2.src = 'https://fast.wistia.com/embed/w5gwy44l50.js'
   script2.async = true
   script2.type = 'module'
   document.head.appendChild(script2)
@@ -149,9 +149,9 @@ onUnmounted(() => {
       <!-- Wistia video embed -->
       <div class="vv-video-wrapper">
         <component is="style">
-          wistia-player[media-id='4jhhq3de5e']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/4jhhq3de5e/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
+          wistia-player[media-id='w5gwy44l50']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/w5gwy44l50/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }
         </component>
-        <wistia-player media-id="4jhhq3de5e" aspect="1.7777777777777777"></wistia-player>
+        <wistia-player media-id="w5gwy44l50" aspect="1.7777777777777777"></wistia-player>
       </div>
 
       <!-- CTA section -->

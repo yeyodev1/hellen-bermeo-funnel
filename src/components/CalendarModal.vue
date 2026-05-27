@@ -145,6 +145,13 @@ const handleSubmit = async () => {
     resultado: califica ? 'AGENDA' : 'RECHAZADO',
     etiquetas,
     nota,
+    notas: `
+Situación: ${situacionLabel[form.value.situacion] ?? form.value.situacion}
+Área: ${areaLabel[form.value.area] ?? form.value.area}
+Detalle: ${form.value.detalle}
+Inversión: ${invertirLabel[form.value.invertir] ?? form.value.invertir}
+Resultado: ${califica ? 'Califica — Agenda cita' : 'No califica'}
+    `.trim(),
     timestamp: new Date().toISOString(),
     ...getStoredFbParams(),
   }
